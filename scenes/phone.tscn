@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://d3pnjw7tqycwq"]
 
 [ext_resource type="PackedScene" uid="uid://67afmomwrb2m" path="res://Assets/Props/Phone.glb" id="1_08mii"]
-[ext_resource type="Material" uid="uid://dwslou3wpdsev" path="res://materials/phone_screen.tres" id="2_ewalk"]
 
-[node name="Phone2" unique_id=1478830521 instance=ExtResource("1_08mii")]
+[node name="Phone2" unique_id=996516936 instance=ExtResource("1_08mii")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-
-[node name="Phone" parent="." index="0" unique_id=169785065]
-surface_material_override/0 = ExtResource("2_ewalk")
