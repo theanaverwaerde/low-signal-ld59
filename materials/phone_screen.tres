@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dwslou3wpdsev"]
+
+[resource]
+no_depth_test = true
+depth_test = 1
+shading_mode = 0

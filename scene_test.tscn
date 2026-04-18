@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://blnekb8kx40ly"]
 
-[ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://character_body_3d.gd" id="1_dplmw"]
+[ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="1_dplmw"]
+[ext_resource type="Script" uid="uid://c0g1at0tt1qc5" path="res://scripts/phone.gd" id="2_k8rpb"]
+[ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="4_0n4ab"]
+[ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="4_1cf3j"]
+[ext_resource type="Texture2D" uid="uid://d3ly61ahyfp1g" path="res://icon.svg" id="5_ycaat"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oxcob"]
 
@@ -11,7 +15,15 @@ size = Vector2(40, 40)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6v5sk"]
 
+[sub_resource type="Curve" id="Curve_ycaat"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycaat"]
+albedo_color = Color(0.20784314, 0.58431375, 0.19215687, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_dplmw"]
+material = SubResource("StandardMaterial3D_ycaat")
 size = Vector3(1, 6, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dplmw"]
@@ -27,6 +39,35 @@ sky = SubResource("Sky_oqoec")
 ambient_light_source = 3
 reflected_light_source = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0n4ab"]
+albedo_color = Color(0.5080529, 0.3834968, 0.20644057, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1cf3j"]
+material = SubResource("StandardMaterial3D_0n4ab")
+height = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cwa6w"]
+height = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_d33ho"]
+size = Vector3(5, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bd7xp"]
+size = Vector3(5, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_map62"]
+size = Vector3(1, 0.67, 0.16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjd3o"]
+size = Vector3(1, 0.78, 0.16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycaat"]
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0n4ab"]
+viewport_path = NodePath("Helper/StaticBody3D/SubViewport")
+
 [node name="Node" type="Node" unique_id=726614676]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1243677146]
@@ -38,7 +79,8 @@ shape = SubResource("WorldBoundaryShape3D_oxcob")
 mesh = SubResource("PlaneMesh_dplmw")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1210901839]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.591554, 1, 7.533944)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.614305, 1.000001, 17.455276)
 script = ExtResource("1_dplmw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1521969113]
@@ -50,29 +92,253 @@ mesh = SubResource("CapsuleMesh_6v5sk")
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=285497711]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70038366, 0)
+cull_mask = 1048573
+current = true
+
+[node name="Phone2" parent="Player/Camera3D" unique_id=1714709003 instance=ExtResource("4_0n4ab")]
+transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 0, 0, 0)
+script = ExtResource("2_k8rpb")
+switch_curve = SubResource("Curve_ycaat")
+
+[node name="fullPos" type="Node3D" parent="Player/Camera3D" unique_id=712498919]
+transform = Transform3D(-1.0823147, 0, 0.19645566, 0, 1.1, 0, -0.19645566, 0, -1.0823147, 0.6178875, 0.0004980564, -0.9099941)
+
+[node name="minPos" type="Node3D" parent="Player/Camera3D" unique_id=1658173068]
+transform = Transform3D(-0.48558068, 0, 0.2582857, 0, 0.5500001, 0, -0.2582857, 0, -0.48558068, 0.9749336, -0.339638, -1.057188)
 
 [node name="SignalSource" type="MeshInstance3D" parent="." unique_id=915544493]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.098267, 3, -13.156573)
 mesh = SubResource("BoxMesh_dplmw")
+script = ExtResource("4_1cf3j")
 
-[node name="Control" type="Control" parent="." unique_id=1679539396]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="FullZone" type="Area3D" parent="SignalSource" unique_id=1500450499]
 
-[node name="SignalLabel" type="Label" parent="Control" unique_id=1013091871]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 468.0
-offset_bottom = 156.0
-text = "SIGNAL: "
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/FullZone" unique_id=815584779]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 59.86
+polygon = PackedVector2Array(-0.9026623, -8.948346, 5.1011987, -5.0161676, 5.794135, 2.2219324, -0.97600746, 5.715393, -6.2480564, 2.1325483, -5.3605995, -5.2938128)
+debug_color = Color(0, 0.59607846, 0.12941177, 1)
+
+[node name="HalfZone" type="Area3D" parent="SignalSource" unique_id=466120924]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/HalfZone" unique_id=1784488922]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 12.21
+polygon = PackedVector2Array(0.87643814, -24.076958, 17.215294, -15.531304, 25.38472, 3.0648975, 20.440071, 20.47868, 7.2184978, 24.617142, -11.8614235, 25.315842, -23.255627, 18.866293, -25.297985, 4.838523, -21.858227, -12.360276, -10.19529, -18.809826)
+debug_color = Color(0.65882355, 0.5137255, 0.011764706, 1)
+
+[node name="LowZone" type="Area3D" parent="SignalSource" unique_id=1519869200]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/LowZone" unique_id=1248923831]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 9.77
+polygon = PackedVector2Array(1.2370453, -46.26687, 14.377968, -34.755825, 34.751503, -13.567357, 35.158974, 6.8061757, 33.63096, 21.169518, 19.063896, 39.098225, -6.8104935, 41.441177, -29.32325, 37.162735, -40.630554, 21.475117, -47.048218, -5.723546, -36.148376, -31.801662, -15.367378, -38.728664)
+margin = 0.001
+debug_color = Color(0.8980392, 0.29803923, 0.28235295, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=465365216]
 transform = Transform3D(0.8231117, -0.45519796, 0.33953235, 0.08669081, 0.69160795, 0.71705174, -0.56122375, -0.56077915, 0.608732, 9.824569, 5.666151, 8.025142)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1848073026]
 environment = SubResource("Environment_6v5sk")
+
+[node name="Trees" type="Node" parent="." unique_id=373572123]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trees" unique_id=400083122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9489, 1.8667221, 9.961961)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D" unique_id=104670056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8802185, 0, 2.609604)
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D" unique_id=2115454211]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Trees" unique_id=74320736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.614438, 1.8667221, 11.335951)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D2" unique_id=411630022]
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D2" unique_id=1668050559]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Trees" unique_id=899906910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.66095, 1.8667216, 6.0556498)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D3" unique_id=1804113973]
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D3" unique_id=251619020]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Trees" unique_id=226192742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.965796, 1.8667216, 11.787345)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D4" unique_id=1634743348]
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D4" unique_id=672634509]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Trees" unique_id=2019582441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.274831, 1.8667216, 12.144228)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D5" unique_id=1473257677]
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D5" unique_id=904630218]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Trees" unique_id=801071267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.081308, 1.8667212, 15.70097)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D6" unique_id=514960871]
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D6" unique_id=1269047143]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="Trees" unique_id=570840223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.111028, 1.8667212, 16.225952)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D7" unique_id=771325387]
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D7" unique_id=1285429334]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="Trees" unique_id=720839073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.176636, 1.8667212, 0.87264633)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D8" unique_id=917377886]
+mesh = SubResource("CapsuleMesh_1cf3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trees/StaticBody3D8" unique_id=12850334]
+shape = SubResource("CapsuleShape3D_cwa6w")
+
+[node name="Barriere" type="Node" parent="." unique_id=2058087194]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barriere" unique_id=478283470]
+transform = Transform3D(-0.2989576, 0, 0.9542664, 0, 1, 0, -0.9542664, 0, -0.2989576, -1.2601919, 0.8694339, 9.523561)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D" unique_id=1420754029]
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Barriere/StaticBody3D" unique_id=1664171381]
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999999, -4.088008, 0, 0.77548766)
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Barriere/StaticBody3D" unique_id=1463892700]
+transform = Transform3D(0.9999998, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999998, -8.582923, 0, -2.0869427)
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriere/StaticBody3D" unique_id=49066018]
+shape = SubResource("BoxShape3D_bd7xp")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Barriere" unique_id=2033187332]
+transform = Transform3D(0.6758989, 0, 0.73699427, 0, 1, 0, -0.73699427, 0, 0.6758989, 0.09635782, 0.86943483, 5.007812)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D2" unique_id=1347156729]
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriere/StaticBody3D2" unique_id=544325466]
+shape = SubResource("BoxShape3D_bd7xp")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Barriere" unique_id=549201590]
+transform = Transform3D(0.6758989, 0, 0.73699427, 0, 1, 0, -0.73699427, 0, 0.6758989, 5.415545, 0.86943483, -0.67654514)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D3" unique_id=1402608673]
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriere/StaticBody3D3" unique_id=159522467]
+shape = SubResource("BoxShape3D_bd7xp")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Barriere" unique_id=2107967925]
+transform = Transform3D(0.96553624, 0, -0.26026848, 0, 1, 0, 0.26026848, 0, 0.96553624, 9.880909, 0.86943483, -1.890212)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D4" unique_id=2076883612]
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Barriere/StaticBody3D4" unique_id=1379319627]
+transform = Transform3D(0.23166311, 0, 0.9727961, 0, 1, 0, -0.9727961, 0, 0.23166311, -1.9684877, 0, -2.3551807)
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Barriere/StaticBody3D4" unique_id=1265963905]
+transform = Transform3D(0.4042959, 0, 0.91462827, 0, 1, 0, -0.91462827, 0, 0.4042959, 0.38049698, 0, -6.8352213)
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Barriere/StaticBody3D4" unique_id=394467833]
+transform = Transform3D(0.7285147, 0, 0.68503034, 0, 1, 0, -0.68503034, 0, 0.7285147, 3.5837603, 0, -10.441644)
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriere/StaticBody3D4" unique_id=206869093]
+shape = SubResource("BoxShape3D_bd7xp")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Barriere" unique_id=1784579881]
+transform = Transform3D(0.65579545, 0, 0.75493854, 0, 1, 0, -0.75493854, 0, 0.65579545, 2.5077572, -0.22646046, 2.2379475)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D5" unique_id=394663461]
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriere/StaticBody3D5" unique_id=1690643242]
+shape = SubResource("BoxShape3D_bd7xp")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Barriere" unique_id=671682896]
+transform = Transform3D(0.65579545, 0, 0.75493854, 0, 1, 0, -0.75493854, 0, 0.65579545, 2.5077572, 3.8633246, 2.2379475)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D6" unique_id=1553438842]
+mesh = SubResource("BoxMesh_d33ho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriere/StaticBody3D6" unique_id=413344904]
+shape = SubResource("BoxShape3D_bd7xp")
+
+[node name="Helper" type="Node" parent="." unique_id=90854787]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Helper" unique_id=690277892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.888626, 1.4951497, 13.364521)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Helper/StaticBody3D" unique_id=1351713888]
+mesh = SubResource("BoxMesh_map62")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Helper/StaticBody3D" unique_id=713114121]
+shape = SubResource("BoxShape3D_rjd3o")
+
+[node name="SubViewport" type="SubViewport" parent="Helper/StaticBody3D" unique_id=729337194]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(96, 48)
+render_target_update_mode = 4
+
+[node name="Label" type="Label" parent="Helper/StaticBody3D/SubViewport" unique_id=674301422]
+offset_right = 40.0
+offset_bottom = 156.0
+text = "Network here
+<---"
+label_settings = SubResource("LabelSettings_ycaat")
+
+[node name="Sprite3D" type="Sprite3D" parent="Helper/StaticBody3D" unique_id=1060076880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019897461, -0.0005186796, 0.11839199)
+texture = SubResource("ViewportTexture_0n4ab")
+
+[node name="PhoneScreen" type="SubViewport" parent="." unique_id=536857083]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(512, 856)
+
+[node name="TextureRect" type="TextureRect" parent="PhoneScreen" unique_id=1770678230]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ycaat")
+stretch_mode = 4
+
+[node name="SignalLabel" type="Label" parent="PhoneScreen" unique_id=1013091871]
+unique_name_in_owner = true
+offset_right = 468.0
+offset_bottom = 156.0
+text = "SIGNAL: "
