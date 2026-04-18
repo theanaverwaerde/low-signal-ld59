@@ -14,6 +14,8 @@ config/name="LowSignal"
 config/version="1.0"
 run/main_scene="uid://blnekb8kx40ly"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(0.9411765, 0.9843137, 1, 1)
+boot_splash/image="uid://ctmjxxu5vxtif"
 config/icon="res://icon.svg"
 
 [display]
