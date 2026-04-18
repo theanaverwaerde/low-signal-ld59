@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "M_Phone"
-cull_mode = 2
 no_depth_test = true
 albedo_texture = ExtResource("1_r1plr")
 roughness = 0.5
