@@ -14,12 +14,16 @@ const PHONE_SCREEN = preload("uid://dwslou3wpdsev")
 
 var show_phone : bool = false
 var current_time : float
-var first_touch : bool
+var need_click : bool
 
 const RAY_LENGTH = 100
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		need_click = true
+	else:
+		need_click = false
 	
 	set_mesh($Phone)
 	
@@ -30,10 +34,11 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		need_click = true
 		
-	if !first_touch && event is InputEventMouseButton and event.pressed:
+	if need_click and !show_phone and event is InputEventMouseButton and event.pressed:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		first_touch = true
+		need_click = false
 	
 	if event.is_action_pressed("phone"):
 #		if helper_text.visible:
@@ -43,6 +48,8 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+				need_click = true
 		
 	if show_phone and current_time == TIME:
 		if event is InputEventMouseButton:
