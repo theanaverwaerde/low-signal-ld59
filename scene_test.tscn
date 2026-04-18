@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://blnekb8kx40ly"]
+
+[ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://character_body_3d.gd" id="1_dplmw"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oxcob"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dplmw"]
+size = Vector2(40, 40)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqoec"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6v5sk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dplmw"]
+size = Vector3(1, 6, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dplmw"]
+sky_curve = 0.12183792
+
+[sub_resource type="Sky" id="Sky_oqoec"]
+sky_material = SubResource("ProceduralSkyMaterial_dplmw")
+
+[sub_resource type="Environment" id="Environment_6v5sk"]
+background_mode = 2
+background_energy_multiplier = 1.41
+sky = SubResource("Sky_oqoec")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[node name="Node" type="Node" unique_id=726614676]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1243677146]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=552007888]
+shape = SubResource("WorldBoundaryShape3D_oxcob")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=79985489]
+mesh = SubResource("PlaneMesh_dplmw")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1210901839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.591554, 1, 7.533944)
+script = ExtResource("1_dplmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1521969113]
+shape = SubResource("CapsuleShape3D_oqoec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1334335612]
+mesh = SubResource("CapsuleMesh_6v5sk")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=285497711]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70038366, 0)
+
+[node name="SignalSource" type="MeshInstance3D" parent="." unique_id=915544493]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.098267, 3, -13.156573)
+mesh = SubResource("BoxMesh_dplmw")
+
+[node name="Control" type="Control" parent="." unique_id=1679539396]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SignalLabel" type="Label" parent="Control" unique_id=1013091871]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 468.0
+offset_bottom = 156.0
+text = "SIGNAL: "
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=465365216]
+transform = Transform3D(0.8231117, -0.45519796, 0.33953235, 0.08669081, 0.69160795, 0.71705174, -0.56122375, -0.56077915, 0.608732, 9.824569, 5.666151, 8.025142)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1848073026]
+environment = SubResource("Environment_6v5sk")
