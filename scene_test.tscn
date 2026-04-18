@@ -5,7 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="4_0n4ab"]
 [ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="4_1cf3j"]
 [ext_resource type="Script" uid="uid://c0slynclpl5jx" path="res://scripts/phone_screen.gd" id="5_0n4ab"]
+[ext_resource type="PackedScene" uid="uid://bm7u7lq7fppw6" path="res://Assets/Enviro/Stone_03.glb" id="5_kqxlm"]
 [ext_resource type="Texture2D" uid="uid://d3ly61ahyfp1g" path="res://icon.svg" id="5_ycaat"]
+[ext_resource type="PackedScene" uid="uid://cxno3gmr1ye1f" path="res://Assets/Enviro/Tree_02.glb" id="7_cwa6w"]
+[ext_resource type="PackedScene" uid="uid://bhbqlkwc60ub" path="res://Assets/Enviro/Tree_01.glb" id="8_d33ho"]
+[ext_resource type="PackedScene" uid="uid://b0s5tw5w4m50q" path="res://Assets/Enviro/Stone_05.glb" id="8_lsd60"]
+[ext_resource type="PackedScene" uid="uid://30axgxowd4g5" path="res://Assets/Enviro/Stone_01.glb" id="9_ybi10"]
+[ext_resource type="PackedScene" uid="uid://cq631fpladr18" path="res://Assets/Enviro/Stone_02.glb" id="10_rucgl"]
+[ext_resource type="PackedScene" uid="uid://ca444q1pbv1gq" path="res://Assets/Enviro/Stone_04.glb" id="11_kqxlm"]
+[ext_resource type="PackedScene" uid="uid://ckc74uxojqhn5" path="res://Assets/Enviro/Stone_06.glb" id="12_lsd60"]
+[ext_resource type="PackedScene" uid="uid://b3b7ohb0q1hug" path="res://Assets/Enviro/Souche_01.glb" id="13_aa3pj"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oxcob"]
 
@@ -158,6 +167,7 @@ environment = SubResource("Environment_6v5sk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Trees" unique_id=400083122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.812996, 1.8667221, 12.773834)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D" unique_id=104670056]
@@ -168,6 +178,7 @@ shape = SubResource("CapsuleShape3D_cwa6w")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Trees" unique_id=74320736]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.614438, 1.8667221, 11.335951)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D2" unique_id=411630022]
@@ -178,6 +189,7 @@ shape = SubResource("CapsuleShape3D_cwa6w")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Trees" unique_id=899906910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.66095, 1.8667216, 6.0556498)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D3" unique_id=1804113973]
@@ -188,6 +200,7 @@ shape = SubResource("CapsuleShape3D_cwa6w")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Trees" unique_id=226192742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.965796, 1.8667216, 11.787345)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D4" unique_id=1634743348]
@@ -198,6 +211,7 @@ shape = SubResource("CapsuleShape3D_cwa6w")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="Trees" unique_id=2019582441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.274831, 1.8667216, 12.144228)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D5" unique_id=1473257677]
@@ -208,6 +222,7 @@ shape = SubResource("CapsuleShape3D_cwa6w")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="Trees" unique_id=801071267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.081308, 1.8667212, 15.70097)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D6" unique_id=514960871]
@@ -218,6 +233,7 @@ shape = SubResource("CapsuleShape3D_cwa6w")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="Trees" unique_id=570840223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.111028, 1.8667212, 16.225952)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D7" unique_id=771325387]
@@ -228,6 +244,7 @@ shape = SubResource("CapsuleShape3D_cwa6w")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="Trees" unique_id=720839073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.176636, 1.8667212, 0.87264633)
+visible = false
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trees/StaticBody3D8" unique_id=917377886]
@@ -259,7 +276,7 @@ mesh = SubResource("BoxMesh_d33ho")
 shape = SubResource("BoxShape3D_bd7xp")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="Barriere" unique_id=1485395028]
-transform = Transform3D(-0.2989576, 0, 0.9542664, 0, 1, 0, -0.9542664, 0, -0.2989576, -0.89470387, 0.8694329, 18.216976)
+transform = Transform3D(-0.43859085, 0, 0.89868695, 0, 1, 0, -0.89868695, 0, -0.43859085, -1.8925104, 0.8694329, 18.529573)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D8" unique_id=832397816]
@@ -289,7 +306,7 @@ mesh = SubResource("BoxMesh_d33ho")
 shape = SubResource("BoxShape3D_bd7xp")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Barriere" unique_id=2107967925]
-transform = Transform3D(0.96553624, 0, -0.26026848, 0, 1, 0, 0.26026848, 0, 0.96553624, 9.880909, 0.86943483, -1.890212)
+transform = Transform3D(0.9917898, 0, 0.12787832, 0, 1, 0, -0.12787832, 0, 0.9917898, 10.059358, 0.86943483, -2.3227901)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Barriere/StaticBody3D4" unique_id=2076883612]
@@ -420,5 +437,94 @@ text = "CALL"
 [node name="Result" type="Label" parent="PhoneScreen/VBoxContainer" unique_id=2111289511]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_0n4ab")
+
+[node name="Node" type="Node" parent="." unique_id=1488693816]
+
+[node name="Tree_02" parent="Node" unique_id=83394640 instance=ExtResource("7_cwa6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.061046, 0, 15.604618)
+
+[node name="Tree_01" parent="Node" unique_id=32524198 instance=ExtResource("8_d33ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.667209, 0, 11.190495)
+
+[node name="Tree_08" parent="Node" unique_id=1465940801 instance=ExtResource("8_d33ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.660124, 0, 6.1674166)
+
+[node name="Tree_06" parent="Node" unique_id=676961317 instance=ExtResource("8_d33ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.955462, -9.536743e-07, 11.735474)
+
+[node name="Tree_07" parent="Node" unique_id=1775520669 instance=ExtResource("8_d33ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.077947, -9.536743e-07, 12.224099)
+
+[node name="Tree_04" parent="Node" unique_id=398594689 instance=ExtResource("8_d33ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.117515, 0, 16.23536)
+
+[node name="Tree_05" parent="Node" unique_id=991684509 instance=ExtResource("8_d33ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.974497, 0, 0.84124947)
+
+[node name="Tree_03" parent="Node" unique_id=787247229 instance=ExtResource("8_d33ho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.814102, 0, 12.858579)
+
+[node name="Stone_012" parent="Node" unique_id=136082794 instance=ExtResource("9_ybi10")]
+transform = Transform3D(-0.17646632, 0, 0.9843067, 0, 1, 0, -0.9843067, 0, -0.17646632, -0.76647997, 0.00015175395, 6.9257603)
+
+[node name="Stone_02" parent="Node" unique_id=678262600 instance=ExtResource("10_rucgl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7204733, 0.00015175436, 8.186494)
+
+[node name="Stone_03" parent="Node" unique_id=730774819 instance=ExtResource("10_rucgl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69735384, 0.00015127752, 4.9786806)
+
+[node name="Stone_04" parent="Node" unique_id=1708916860 instance=ExtResource("11_kqxlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.609781, 0.00015175395, 0.48248768)
+
+[node name="Stone_05" parent="Node" unique_id=861799224 instance=ExtResource("11_kqxlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.487947, 0.00015175395, 4.0900455)
+
+[node name="Stone_06" parent="Node" unique_id=1812854654 instance=ExtResource("12_lsd60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054670334, 0.00015175389, 11.339162)
+
+[node name="Souche_01" parent="Node" unique_id=1183864134 instance=ExtResource("13_aa3pj")]
+transform = Transform3D(0.90039474, -0.19710663, -0.3878638, 0, 0.8914894, -0.45304167, 0.43507397, 0.4079163, 0.80269235, 3.637018, 1.3798684, 3.502429)
+
+[node name="Tree_09" parent="Node" unique_id=1830964106 instance=ExtResource("7_cwa6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36354876, 0, 19.74485)
+
+[node name="Stone_07" parent="Node" unique_id=1666753016 instance=ExtResource("12_lsd60")]
+transform = Transform3D(0.64487094, 0, -0.76429147, 0, 1, 0, 0.76429147, 0, 0.64487094, 1.7467341, 0.00015175389, 14.852873)
+
+[node name="Stone_08" parent="Node" unique_id=1477237124 instance=ExtResource("11_kqxlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47673774, 0.00015175395, 12.357785)
+
+[node name="Stone_013" parent="Node" unique_id=1056949628 instance=ExtResource("9_ybi10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.536119, 0.00015223079, 18.435455)
+
+[node name="Stone_09" parent="Node" unique_id=1901485933 instance=ExtResource("5_kqxlm")]
+transform = Transform3D(0.62356585, 0, -0.7817708, 0, 1, 0, 0.7817708, 0, 0.62356585, 7.221678, 0.4237976, -0.69878066)
+
+[node name="Stone_10" parent="Node" unique_id=619896290 instance=ExtResource("11_kqxlm")]
+transform = Transform3D(0.40942943, 0, 0.9123418, 0, 1, 0, -0.9123418, 0, 0.40942943, 9.376158, -0.10712898, -1.9107828)
+
+[node name="Stone_11" parent="Node" unique_id=1089527441 instance=ExtResource("10_rucgl")]
+transform = Transform3D(0.43604797, 0, -0.89992344, 0, 1, 0, 0.89992344, 0, 0.43604797, 12.968986, 0.00015175436, -2.7031627)
+
+[node name="Stone_12" parent="Node" unique_id=1745305577 instance=ExtResource("11_kqxlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.169953, 0.00015175395, -4.5586586)
+
+[node name="Stone_13" parent="Node" unique_id=2057500589 instance=ExtResource("8_lsd60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.179204, -0.030937433, -9.93468)
+
+[node name="Stone_14" parent="Node" unique_id=1317186603 instance=ExtResource("10_rucgl")]
+transform = Transform3D(0.88748586, 0, -0.46083498, 0, 1, 0, 0.46083498, 0, 0.88748586, 11.479786, 0.00015175436, -8.645954)
+
+[node name="Stone_15" parent="Node" unique_id=1866856323 instance=ExtResource("8_lsd60")]
+transform = Transform3D(0.91471297, 0, 0.40410414, 0, 1, 0, -0.40410414, 0, 0.91471297, 10.349742, 0.00015127711, -5.9911265)
+
+[node name="Stone_16" parent="Node" unique_id=1459811140 instance=ExtResource("5_kqxlm")]
+transform = Transform3D(0.78614825, 0, -0.618038, 0, 1, 0, 0.618038, 0, 0.78614825, 14.626696, 0.00015175436, -11.7643795)
+
+[node name="Stone_17" parent="Node" unique_id=1338247373 instance=ExtResource("8_lsd60")]
+transform = Transform3D(0.59871614, 0, 0.8009613, 0, 1, 0, -0.8009613, 0, 0.59871614, 16.799698, 0.00015127711, -13.6475725)
+
+[node name="Stone_18" parent="Node" unique_id=1250046427 instance=ExtResource("8_lsd60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.052849, 0.00015223079, -13.98388)
 
 [connection signal="pressed" from="PhoneScreen/VBoxContainer/Button" to="PhoneScreen" method="_on_button_pressed"]
