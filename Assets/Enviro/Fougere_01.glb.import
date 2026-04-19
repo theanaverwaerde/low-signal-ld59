@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhx8sxbja0jmh"
+uid="uid://bjh3tgfwnk5c5"
 path="res://.godot/imported/Fougere_01.glb-9857baa3fd7a96c3c7c86311e3e45f99.scn"
 
 [deps]
@@ -37,6 +37,13 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"@MATERIAL:0": {
+"use_external/enabled": true,
+"use_external/path": "uid://dxy4spb1fwjed"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

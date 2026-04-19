@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dxy4spb1fwjed"]
+
+[ext_resource type="Shader" uid="uid://bvytp40jglymy" path="res://Shader/S_Tree.tres" id="1_yuky6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yuky6")
+shader_parameter/WindIntensy = 1.0

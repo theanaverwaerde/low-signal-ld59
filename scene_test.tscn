@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://ca444q1pbv1gq" path="res://Assets/Enviro/Stone_04.glb" id="11_kqxlm"]
 [ext_resource type="PackedScene" uid="uid://ckc74uxojqhn5" path="res://Assets/Enviro/Stone_06.glb" id="12_lsd60"]
 [ext_resource type="PackedScene" uid="uid://b3b7ohb0q1hug" path="res://Assets/Enviro/Souche_01.glb" id="13_aa3pj"]
+[ext_resource type="PackedScene" uid="uid://bjh3tgfwnk5c5" path="res://Assets/Enviro/Fougere_01.glb" id="18_8djgh"]
+[ext_resource type="Material" uid="uid://dxy4spb1fwjed" path="res://materials/M_Leaves.tres" id="19_slcrk"]
 
 [sub_resource type="Animation" id="Animation_aa3pj"]
 length = 0.001
@@ -203,6 +205,7 @@ font_color = Color(0, 0, 0, 1)
 viewport_path = NodePath("Helper/StaticBody3D/SubViewport")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0n4ab"]
+font_size = 48
 font_color = Color(0.7882353, 0.24705882, 0.22352941, 1)
 
 [node name="Node" type="Node" unique_id=726614676]
@@ -753,6 +756,12 @@ transform = Transform3D(0.59871614, 0, 0.8009613, 0, 1, 0, -0.8009613, 0, 0.5987
 [node name="Stone_18" parent="Node" unique_id=1250046427 instance=ExtResource("8_lsd60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.052849, 0.00015223079, -13.98388)
 
+[node name="Fougere_01" parent="Node" unique_id=10023718 instance=ExtResource("18_8djgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3904505, 0.004551404, 18.147537)
+
+[node name="Fougere" parent="Node/Fougere_01" index="0" unique_id=2021072864]
+surface_material_override/0 = ExtResource("19_slcrk")
+
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=626612472]
 
 [connection signal="awake" from="Awake" to="Player" method="_on_awake_awake"]
@@ -762,3 +771,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.052849, 0.00015223079, -13
 [connection signal="pressed" from="PhoneScreen/Screen/DefaultScreen/options" to="PhoneScreen" method="_on_options_pressed"]
 [connection signal="toggled" from="PhoneScreen/Screen/OptionsScreen/HourFormat" to="PhoneScreen" method="_on_hour_format_toggled"]
 [connection signal="pressed" from="PhoneScreen/Screen/OptionsScreen/back" to="PhoneScreen" method="_on_options_pressed"]
+
+[editable path="Node/Fougere_01"]
