@@ -7,7 +7,7 @@ const JUMP_VELOCITY = 4.5
 
 const MOUSE_SENSIBILITY = 1000
 
-var enable
+var enable = true
 
 func _input(event: InputEvent) -> void:
 	if !enable:
