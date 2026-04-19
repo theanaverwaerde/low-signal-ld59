@@ -37,7 +37,10 @@ material = SubResource("StandardMaterial3D_ycaat")
 size = Vector3(1, 6, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dplmw"]
+sky_top_color = Color(0.29740554, 0.47984064, 0.54012156, 1)
+sky_horizon_color = Color(0.8109906, 0.6067497, 0.4371607, 1)
 sky_curve = 0.12183792
+ground_horizon_color = Color(0.85122377, 0.59030986, 0.35329175, 1)
 
 [sub_resource type="Sky" id="Sky_oqoec"]
 sky_material = SubResource("ProceduralSkyMaterial_dplmw")
@@ -48,6 +51,12 @@ background_energy_multiplier = 1.41
 sky = SubResource("Sky_oqoec")
 ambient_light_source = 3
 reflected_light_source = 2
+ssao_enabled = true
+ssao_radius = 2.0
+fog_enabled = true
+fog_light_color = Color(0.63240147, 0.52542835, 0.47852385, 1)
+fog_light_energy = 1.59
+fog_sky_affect = 0.033
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0n4ab"]
 albedo_color = Color(0.5080529, 0.3834968, 0.20644057, 1)
@@ -158,7 +167,9 @@ margin = 0.001
 debug_color = Color(0.8980392, 0.29803923, 0.28235295, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=465365216]
-transform = Transform3D(0.8231117, -0.45519796, 0.33953235, 0.08669081, 0.69160795, 0.71705174, -0.56122375, -0.56077915, 0.608732, 9.824569, 5.666151, 8.025142)
+transform = Transform3D(-0.38738582, 0.39004126, -0.8353444, -0.05779574, 0.8940373, 0.44424883, 0.9201042, 0.22037505, -0.32379463, 9.824569, 5.666151, 8.025142)
+light_color = Color(0.9489384, 0.7219174, 0.48569685, 1)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1848073026]
 environment = SubResource("Environment_6v5sk")
@@ -526,5 +537,7 @@ transform = Transform3D(0.59871614, 0, 0.8009613, 0, 1, 0, -0.8009613, 0, 0.5987
 
 [node name="Stone_18" parent="Node" unique_id=1250046427 instance=ExtResource("8_lsd60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.052849, 0.00015223079, -13.98388)
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=626612472]
 
 [connection signal="pressed" from="PhoneScreen/VBoxContainer/Button" to="PhoneScreen" method="_on_button_pressed"]
