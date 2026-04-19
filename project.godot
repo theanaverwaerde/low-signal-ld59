@@ -77,3 +77,4 @@ jolt_physics_3d/queries/enable_ray_cast_face_index=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_environment="uid://ck53suvnurctl"

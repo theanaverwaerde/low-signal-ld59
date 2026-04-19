@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://clylocg08kwpl"]
+
+[ext_resource type="Script" uid="uid://ga6t7u7t32cj" path="res://addons/zylann.hterrain/hterrain.gd" id="1_svmbf"]
+[ext_resource type="Resource" uid="uid://cpyrdbicuarrs" path="res://terrains/data.hterrain" id="2_d3rpm"]
+[ext_resource type="Script" uid="uid://dv2rg7cb4mde3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_w8l5h"]
+[ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="4_anit4"]
+[ext_resource type="Texture2D" uid="uid://ctmjxxu5vxtif" path="res://pride-light-c.png" id="4_gbcjs"]
+[ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="5_5l7kg"]
+[ext_resource type="Texture2D" uid="uid://chmb4iyngfd2h" path="res://Assets/Props/Phone_T_Phone.png" id="5_enxok"]
+[ext_resource type="Script" uid="uid://c0g1at0tt1qc5" path="res://scripts/phone.gd" id="6_8n4hn"]
+[ext_resource type="Script" uid="uid://c0slynclpl5jx" path="res://scripts/phone_screen.gd" id="7_d5ggc"]
+[ext_resource type="AudioStream" uid="uid://qnc6adowrho2" path="res://sound/phone-fail.mp3" id="8_vk5rf"]
+[ext_resource type="Texture2D" uid="uid://d3ly61ahyfp1g" path="res://icon.svg" id="9_4sglh"]
+[ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="10_vk5rf"]
+
+[sub_resource type="Resource" id="Resource_anit4"]
+script = ExtResource("3_w8l5h")
+mode = 0
+textures = [[ExtResource("4_gbcjs"), ExtResource("5_enxok")], [null, null]]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5l7kg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5ggc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vk5rf"]
+
+[sub_resource type="Curve" id="Curve_4sglh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_gbcjs"]
+font_color = Color(0.7882353, 0.24705882, 0.22352941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycaat"]
+albedo_color = Color(0.20784314, 0.58431375, 0.19215687, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4sglh"]
+material = SubResource("StandardMaterial3D_ycaat")
+size = Vector3(1, 6, 1)
+
+[node name="Node" type="Node" unique_id=320231890]
+
+[node name="HTerrain" type="Node3D" parent="." unique_id=698242185]
+script = ExtResource("1_svmbf")
+_terrain_data = ExtResource("2_d3rpm")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_anit4")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://ga6t7u7t32cj"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=696456550]
+transform = Transform3D(-0.38738582, 0.39004126, -0.8353444, -0.05779574, 0.8940373, 0.44424883, 0.9201042, 0.22037505, -0.32379463, 9.824569, 5.666151, 8.025142)
+light_color = Color(0.9489384, 0.7219174, 0.48569685, 1)
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=770072688]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=563498664]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=681845851]
+shape = SubResource("WorldBoundaryShape3D_5l7kg")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1277393077]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.614305, 1.000001, 17.455276)
+script = ExtResource("4_anit4")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=173748843]
+shape = SubResource("CapsuleShape3D_d5ggc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1338228593]
+mesh = SubResource("CapsuleMesh_vk5rf")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1820886873]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70038366, 0)
+cull_mask = 1048573
+current = true
+
+[node name="Phone2" parent="Player/Camera3D" unique_id=996516936 instance=ExtResource("5_5l7kg")]
+transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 0, 0, 0)
+script = ExtResource("6_8n4hn")
+switch_curve = SubResource("Curve_4sglh")
+phone_physics_layer = 2
+
+[node name="fullPos" type="Node3D" parent="Player/Camera3D" unique_id=604941286]
+transform = Transform3D(-1.0823147, 0, 0.19645566, 0, 1.1, 0, -0.19645566, 0, -1.0823147, 0.6178875, 0.0004980564, -0.9099941)
+
+[node name="minPos" type="Node3D" parent="Player/Camera3D" unique_id=330840766]
+transform = Transform3D(-0.48558068, 0, 0.2582857, 0, 0.5500001, 0, -0.2582857, 0, -0.48558068, 0.9749336, -0.339638, -1.057188)
+
+[node name="PhoneScreen" type="SubViewport" parent="." unique_id=2001695449]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(149, 262)
+script = ExtResource("7_d5ggc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PhoneScreen" unique_id=1482765393]
+transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
+stream = ExtResource("8_vk5rf")
+
+[node name="TextureRect" type="TextureRect" parent="PhoneScreen" unique_id=1062844547]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_4sglh")
+stretch_mode = 4
+
+[node name="Screen" type="VBoxContainer" parent="PhoneScreen" unique_id=933498742]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="Label" parent="PhoneScreen/Screen" unique_id=2083952730]
+layout_mode = 2
+text = "00:00"
+
+[node name="SignalLabel" type="Label" parent="PhoneScreen/Screen" unique_id=1266113145]
+layout_mode = 2
+text = "SIGNAL: "
+
+[node name="DefaultScreen" type="VBoxContainer" parent="PhoneScreen/Screen" unique_id=404956606]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PhoneScreen/Screen/DefaultScreen" unique_id=890855601]
+layout_mode = 2
+text = "CALL"
+
+[node name="Result" type="Label" parent="PhoneScreen/Screen/DefaultScreen" unique_id=793758888]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_gbcjs")
+
+[node name="options" type="Button" parent="PhoneScreen/Screen/DefaultScreen" unique_id=214813794]
+layout_mode = 2
+text = "Options"
+
+[node name="OptionsScreen" type="VBoxContainer" parent="PhoneScreen/Screen" unique_id=940772244]
+visible = false
+layout_mode = 2
+
+[node name="HourFormat" type="CheckBox" parent="PhoneScreen/Screen/OptionsScreen" unique_id=1624613862]
+layout_mode = 2
+text = "12-hour format"
+
+[node name="back" type="Button" parent="PhoneScreen/Screen/OptionsScreen" unique_id=725990194]
+layout_mode = 2
+text = "Back"
+
+[node name="SignalSource" type="MeshInstance3D" parent="." unique_id=261396669]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.61393, 3, 56.759502)
+mesh = SubResource("BoxMesh_4sglh")
+script = ExtResource("10_vk5rf")
+
+[node name="FullZone" type="Area3D" parent="SignalSource" unique_id=359923572]
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/FullZone" unique_id=338084343]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 59.86
+polygon = PackedVector2Array(-0.9026623, -8.948346, 5.1011987, -5.0161676, 5.794135, 2.2219324, -0.97600746, 5.715393, -6.2480564, 2.1325483, -5.3605995, -5.2938128)
+debug_color = Color(0, 0.59607846, 0.12941177, 1)
+
+[node name="HalfZone" type="Area3D" parent="SignalSource" unique_id=1898248966]
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/HalfZone" unique_id=1646478482]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 12.21
+polygon = PackedVector2Array(0.87643814, -24.076958, 17.215294, -15.531304, 25.38472, 3.0648975, 20.440071, 20.47868, 7.2184978, 24.617142, -11.8614235, 25.315842, -23.255627, 18.866293, -25.297985, 4.838523, -21.858227, -12.360276, -10.19529, -18.809826)
+debug_color = Color(0.65882355, 0.5137255, 0.011764706, 1)
+
+[node name="LowZone" type="Area3D" parent="SignalSource" unique_id=183341079]
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/LowZone" unique_id=431965549]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+depth = 9.77
+polygon = PackedVector2Array(1.2370453, -46.26687, 14.377968, -34.755825, 34.751503, -13.567357, 35.158974, 6.8061757, 33.63096, 21.169518, 19.063896, 39.098225, -6.8104935, 41.441177, -29.32325, 37.162735, -40.630554, 21.475117, -47.048218, -5.723546, -36.148376, -31.801662, -15.367378, -38.728664)
+margin = 0.001
+debug_color = Color(0.8980392, 0.29803923, 0.28235295, 1)
+
+[connection signal="pressed" from="PhoneScreen/Screen/DefaultScreen/Button" to="PhoneScreen" method="_on_button_pressed"]
+[connection signal="pressed" from="PhoneScreen/Screen/DefaultScreen/options" to="PhoneScreen" method="_on_options_pressed"]
+[connection signal="toggled" from="PhoneScreen/Screen/OptionsScreen/HourFormat" to="PhoneScreen" method="_on_hour_format_toggled"]
+[connection signal="pressed" from="PhoneScreen/Screen/OptionsScreen/back" to="PhoneScreen" method="_on_options_pressed"]

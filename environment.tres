@@ -1,0 +1,23 @@
+[gd_resource type="Environment" format=3 uid="uid://ck53suvnurctl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dplmw"]
+sky_top_color = Color(0.29740554, 0.47984064, 0.54012156, 1)
+sky_horizon_color = Color(0.8109906, 0.6067497, 0.4371607, 1)
+sky_curve = 0.12183792
+ground_horizon_color = Color(0.85122377, 0.59030986, 0.35329175, 1)
+
+[sub_resource type="Sky" id="Sky_oqoec"]
+sky_material = SubResource("ProceduralSkyMaterial_dplmw")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.41
+sky = SubResource("Sky_oqoec")
+ambient_light_source = 3
+reflected_light_source = 2
+ssao_enabled = true
+ssao_radius = 2.0
+fog_enabled = true
+fog_light_color = Color(0.63240147, 0.52542835, 0.47852385, 1)
+fog_light_energy = 1.59
+fog_sky_affect = 0.033
