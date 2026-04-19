@@ -7,13 +7,21 @@ const JUMP_VELOCITY = 4.5
 
 const MOUSE_SENSIBILITY = 1000
 
+var enable
+
 func _input(event: InputEvent) -> void:
+	if !enable:
+		return
+	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x / MOUSE_SENSIBILITY)
 		camera_3d.rotate_x(-event.relative.y / MOUSE_SENSIBILITY)
 		camera_3d.rotation.x = clampf(camera_3d.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 
 func _physics_process(delta: float) -> void:
+	if !enable:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -34,3 +42,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_awake_awake() -> void:
+	enable = true

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://blnekb8kx40ly"]
 
 [ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="1_dplmw"]
+[ext_resource type="Script" uid="uid://c4ws5iuwj5kww" path="res://scripts/awake.gd" id="1_lsd60"]
 [ext_resource type="Script" uid="uid://c0g1at0tt1qc5" path="res://scripts/phone.gd" id="2_k8rpb"]
 [ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="4_0n4ab"]
 [ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="4_1cf3j"]
@@ -15,6 +16,95 @@
 [ext_resource type="PackedScene" uid="uid://ca444q1pbv1gq" path="res://Assets/Enviro/Stone_04.glb" id="11_kqxlm"]
 [ext_resource type="PackedScene" uid="uid://ckc74uxojqhn5" path="res://Assets/Enviro/Stone_06.glb" id="12_lsd60"]
 [ext_resource type="PackedScene" uid="uid://b3b7ohb0q1hug" path="res://Assets/Enviro/Souche_01.glb" id="13_aa3pj"]
+
+[sub_resource type="Animation" id="Animation_aa3pj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:anchor_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lsd60"]
+resource_name = "awakeAnimation"
+length = 5.9666667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:anchor_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 0.4, -0.16666667, 0.016666666, 0, 0, 0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0.2, -0.17333338, 0.05000001, 0, 0, 0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.17333338, 0.05000001, 0, 0),
+"times": PackedFloat32Array(1.3, 2.1, 3.33, 3.8999999, 4.46, 5.1, 5.366667, 5.966666)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.3, 2.1, 3.33, 3.8999999, 4.46, 5.1, 5.366667, 5.966666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.6, 0.5, 0.5, 0.8, 0.5, 0.5, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aa3pj"]
+_data = {
+&"RESET": SubResource("Animation_aa3pj"),
+&"awakeAnimation": SubResource("Animation_lsd60")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_lsd60"]
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_8djgh"]
+font_size = 49
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oxcob"]
 
@@ -91,6 +181,79 @@ viewport_path = NodePath("Helper/StaticBody3D/SubViewport")
 font_color = Color(0.7882353, 0.24705882, 0.22352941, 1)
 
 [node name="Node" type="Node" unique_id=726614676]
+
+[node name="Awake" type="Control" parent="." unique_id=289259680]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lsd60")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Awake" unique_id=698287839]
+libraries/ = SubResource("AnimationLibrary_aa3pj")
+
+[node name="Top" type="ColorRect" parent="Awake" unique_id=2127001034]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Bottom" type="ColorRect" parent="Awake" unique_id=1003532608]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Container" type="Control" parent="Awake" unique_id=1523235762]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Awake/Container" unique_id=415389302]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.07
+anchor_right = 0.5
+anchor_bottom = 0.07
+offset_left = -375.0
+offset_right = 375.0
+offset_bottom = 139.0
+grow_horizontal = 2
+text = "LowSignal
+by Lucie and Théana"
+label_settings = SubResource("LabelSettings_lsd60")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Awake/Container" unique_id=3670846]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -69.5
+offset_right = 375.0
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wake up...
+(Click on the screen to wake up)"
+label_settings = SubResource("LabelSettings_8djgh")
+horizontal_alignment = 1
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1243677146]
 metadata/_edit_group_ = true
@@ -563,6 +726,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.052849, 0.00015223079, -13
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=626612472]
 
+[connection signal="awake" from="Awake" to="Player" method="_on_awake_awake"]
+[connection signal="awake" from="Awake" to="Player/Camera3D/Phone2" method="_on_awake_awake"]
+[connection signal="animation_finished" from="Awake/AnimationPlayer" to="Awake" method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="PhoneScreen/Screen/DefaultScreen/Button" to="PhoneScreen" method="_on_button_pressed"]
 [connection signal="pressed" from="PhoneScreen/Screen/DefaultScreen/options" to="PhoneScreen" method="_on_options_pressed"]
 [connection signal="toggled" from="PhoneScreen/Screen/OptionsScreen/HourFormat" to="PhoneScreen" method="_on_hour_format_toggled"]

@@ -16,22 +16,23 @@ var show_phone : bool = false
 var current_time : float
 var need_click : bool
 
+var enable
+
 const RAY_LENGTH = 100
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-		need_click = true
-	else:
-		need_click = false
-	
 	set_mesh($Phone)
+	
+	process_phone_size(0)
 	
 	var vp_texture: ViewportTexture = phone_screen.get_texture()
 	
 	PHONE_SCREEN.set_texture(BaseMaterial3D.TextureParam.TEXTURE_ALBEDO, vp_texture)
 
 func _input(event: InputEvent) -> void:
+	if !enable:
+		return
+	
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		need_click = true
@@ -69,6 +70,9 @@ func _input(event: InputEvent) -> void:
 				phone_screen.push_input(event)
 
 func _process(delta: float) -> void:
+	if !enable:
+		return
+	
 	process_phone_size(delta)
 	
 func process_phone_size(delta: float) -> void:
@@ -83,6 +87,12 @@ func process_phone_size(delta: float) -> void:
 	global_position = lerp(min_size.global_position, full_size.global_position, weight)
 	global_rotation = lerp(min_size.global_rotation, full_size.global_rotation, weight)
 	scale = lerp(min_size.scale, full_size.scale, weight)
+
+func _on_awake_awake() -> void:
+	enable = true
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		need_click = true
 
 # Code from https://tmptesting.godotforums.randommomentania.com/d/30491-how-to-translate-a-world-coordinate-to-uv-coordinate/11
 var meshtool

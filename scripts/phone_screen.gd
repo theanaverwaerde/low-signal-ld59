@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	var hour = time.hour
 	var extra = ""
 	if use_12h_format:
-		hour = time.hour % 12
+		hour = time.hour % 13
 		extra = " AM" if time.hour < 12 else " PM"
 	time_label.text = ("%02d:%02d%s" % [hour, time.minute, extra])
 
