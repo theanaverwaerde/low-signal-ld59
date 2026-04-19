@@ -258,13 +258,13 @@ polygon = PackedVector2Array(1.2370453, -46.26687, 14.377968, -34.755825, 34.751
 margin = 0.001
 debug_color = Color(0.8980392, 0.29803923, 0.28235295, 1)
 
-[node name="Tree_01" parent="." unique_id=9462730 instance=ExtResource("13_enxok")]
+[node name="Tree_01" parent="." unique_id=1197214227 instance=ExtResource("13_enxok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 297.98227, 0, 351.97516)
 
-[node name="Tree_02" parent="." unique_id=1833031078 instance=ExtResource("13_enxok")]
+[node name="Tree_02" parent="." unique_id=853874372 instance=ExtResource("13_enxok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273.5701, 9.536743e-07, 144.41336)
 
-[node name="Tree_03" parent="." unique_id=1792446726 instance=ExtResource("13_enxok")]
+[node name="Tree_03" parent="." unique_id=2091001844 instance=ExtResource("13_enxok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.12747, 9.536743e-07, 150.0225)
 
 [node name="ProtonScatter" type="Node3D" parent="." unique_id=148666043]
@@ -300,10 +300,10 @@ metadata/_custom_type_script = "uid://cm67kxee70ckc"
 [node name="Panneau" parent="." unique_id=1744115426 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.34544563, 0, 0.9384388, 0, 1, 0, -0.9384388, 0, -0.34544563, 242.8374, -3.7418985, 149.72992)
 
-[node name="Souche_01" parent="." unique_id=1348031059 instance=ExtResource("27_8tj1m")]
+[node name="Souche_01" parent="." unique_id=1575014146 instance=ExtResource("27_8tj1m")]
 transform = Transform3D(0.36542925, 0, 0.9308392, 0, 1, 0, -0.9308392, 0, 0.36542925, 214.31935, -0.28630745, 211.87747)
 
-[node name="Souche_02" parent="." unique_id=79656956 instance=ExtResource("27_8tj1m")]
+[node name="Souche_02" parent="." unique_id=1194949773 instance=ExtResource("27_8tj1m")]
 transform = Transform3D(0.7680042, 0, -0.6404449, 0, 1, 0, 0.6404449, 0, 0.7680042, 249.62936, -1.3896791, 224.43777)
 
 [node name="Panneau2" parent="." unique_id=70999472 instance=ExtResource("26_ub1cd")]
