@@ -88,7 +88,6 @@ font_color = Color(0, 0, 0, 1)
 viewport_path = NodePath("Helper/StaticBody3D/SubViewport")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0n4ab"]
-font_size = 48
 font_color = Color(0.7882353, 0.24705882, 0.22352941, 1)
 
 [node name="Node" type="Node" unique_id=726614676]
@@ -419,7 +418,7 @@ texture = SubResource("ViewportTexture_0n4ab")
 [node name="PhoneScreen" type="SubViewport" parent="." unique_id=536857083]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(512, 856)
+size = Vector2i(149, 262)
 script = ExtResource("5_0n4ab")
 
 [node name="TextureRect" type="TextureRect" parent="PhoneScreen" unique_id=1770678230]
@@ -431,23 +430,47 @@ grow_vertical = 2
 texture = ExtResource("5_ycaat")
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PhoneScreen" unique_id=1620604586]
-anchors_preset = 10
+[node name="Screen" type="VBoxContainer" parent="PhoneScreen" unique_id=311520937]
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 296.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 
-[node name="SignalLabel" type="Label" parent="PhoneScreen/VBoxContainer" unique_id=1013091871]
+[node name="TimeLabel" type="Label" parent="PhoneScreen/Screen" unique_id=82331075]
+layout_mode = 2
+text = "00:00"
+
+[node name="SignalLabel" type="Label" parent="PhoneScreen/Screen" unique_id=1454909678]
 layout_mode = 2
 text = "SIGNAL: "
 
-[node name="Button" type="Button" parent="PhoneScreen/VBoxContainer" unique_id=1818924760]
+[node name="DefaultScreen" type="VBoxContainer" parent="PhoneScreen/Screen" unique_id=1620604586]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PhoneScreen/Screen/DefaultScreen" unique_id=1818924760]
 layout_mode = 2
 text = "CALL"
 
-[node name="Result" type="Label" parent="PhoneScreen/VBoxContainer" unique_id=2111289511]
+[node name="Result" type="Label" parent="PhoneScreen/Screen/DefaultScreen" unique_id=2111289511]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_0n4ab")
+
+[node name="options" type="Button" parent="PhoneScreen/Screen/DefaultScreen" unique_id=1069010446]
+layout_mode = 2
+text = "Options"
+
+[node name="OptionsScreen" type="VBoxContainer" parent="PhoneScreen/Screen" unique_id=1730453912]
+visible = false
+layout_mode = 2
+
+[node name="HourFormat" type="CheckBox" parent="PhoneScreen/Screen/OptionsScreen" unique_id=241981480]
+layout_mode = 2
+text = "12-hour format"
+
+[node name="back" type="Button" parent="PhoneScreen/Screen/OptionsScreen" unique_id=1925158905]
+layout_mode = 2
+text = "Back"
 
 [node name="Node" type="Node" parent="." unique_id=1488693816]
 
@@ -540,4 +563,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.052849, 0.00015223079, -13
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=626612472]
 
-[connection signal="pressed" from="PhoneScreen/VBoxContainer/Button" to="PhoneScreen" method="_on_button_pressed"]
+[connection signal="pressed" from="PhoneScreen/Screen/DefaultScreen/Button" to="PhoneScreen" method="_on_button_pressed"]
+[connection signal="pressed" from="PhoneScreen/Screen/DefaultScreen/options" to="PhoneScreen" method="_on_options_pressed"]
+[connection signal="toggled" from="PhoneScreen/Screen/OptionsScreen/HourFormat" to="PhoneScreen" method="_on_hour_format_toggled"]
+[connection signal="pressed" from="PhoneScreen/Screen/OptionsScreen/back" to="PhoneScreen" method="_on_options_pressed"]

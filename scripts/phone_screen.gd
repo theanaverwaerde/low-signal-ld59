@@ -3,13 +3,28 @@ extends SubViewport
 
 @onready var signal_source: SignalSource = %SignalSource
 
-@onready var signal_label: Label = $VBoxContainer/SignalLabel
-@onready var button: Button = $VBoxContainer/Button
-@onready var result: Label = $VBoxContainer/Result
+@onready var time_label: Label = $Screen/TimeLabel
+@onready var signal_label: Label = $Screen/SignalLabel
+@onready var result: Label = $Screen/DefaultScreen/Result
+
+@onready var default_screen: VBoxContainer = $Screen/DefaultScreen
+@onready var options_screen: VBoxContainer = $Screen/OptionsScreen
+
+var use_12h_format : bool
+var show_option : bool
 
 func _ready() -> void:
 	signal_source.power_changed.connect(process_signal)
 	process_signal(0)
+
+func _process(delta: float) -> void:
+	var time = Time.get_time_dict_from_system()
+	var hour = time.hour
+	var extra = ""
+	if use_12h_format:
+		hour = time.hour % 12
+		extra = " AM" if time.hour < 12 else " PM"
+	time_label.text = ("%02d:%02d%s" % [hour, time.minute, extra])
 
 func process_signal(power : int) -> void:
 	signal_label.text = "SIGNAL: " + str(power)
@@ -28,6 +43,13 @@ func _on_button_pressed() -> void:
 		await wait(1)
 		result.text = ""
 
-
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
+
+func _on_options_pressed() -> void:
+	show_option = !show_option
+	default_screen.visible = !show_option
+	options_screen.visible = show_option
+
+func _on_hour_format_toggled(toggled_on: bool) -> void:
+	use_12h_format = toggled_on
