@@ -10,6 +10,8 @@ extends SubViewport
 @onready var default_screen: VBoxContainer = $Screen/DefaultScreen
 @onready var options_screen: VBoxContainer = $Screen/OptionsScreen
 
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 var use_12h_format : bool
 var show_option : bool
 
@@ -22,7 +24,9 @@ func _process(delta: float) -> void:
 	var hour = time.hour
 	var extra = ""
 	if use_12h_format:
-		hour = time.hour % 13
+		hour = time.hour % 12
+		if hour == 0:
+			hour = 12
 		extra = " AM" if time.hour < 12 else " PM"
 	time_label.text = ("%02d:%02d%s" % [hour, time.minute, extra])
 
@@ -33,6 +37,7 @@ func _on_button_pressed() -> void:
 	if signal_source.get_signal() == SignalSource.MAX_POWER:
 		result.text = "\"We are coming!\""
 	else:
+		audio_stream_player_3d.play()
 		result.text = "No enough signal"
 		await wait(.4)
 		result.text = "No enough signal."

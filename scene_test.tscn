@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://blnekb8kx40ly"]
 
 [ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="1_dplmw"]
-[ext_resource type="Script" path="res://scripts/awake.gd" id="1_lsd60"]
+[ext_resource type="Script" uid="uid://c4ws5iuwj5kww" path="res://scripts/awake.gd" id="1_lsd60"]
 [ext_resource type="Script" uid="uid://c0g1at0tt1qc5" path="res://scripts/phone.gd" id="2_k8rpb"]
 [ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="4_0n4ab"]
 [ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="4_1cf3j"]
 [ext_resource type="Script" uid="uid://c0slynclpl5jx" path="res://scripts/phone_screen.gd" id="5_0n4ab"]
 [ext_resource type="PackedScene" uid="uid://bm7u7lq7fppw6" path="res://Assets/Enviro/Stone_03.glb" id="5_kqxlm"]
 [ext_resource type="Texture2D" uid="uid://d3ly61ahyfp1g" path="res://icon.svg" id="5_ycaat"]
+[ext_resource type="AudioStream" uid="uid://qnc6adowrho2" path="res://sound/phone-fail.mp3" id="7_aa3pj"]
 [ext_resource type="PackedScene" uid="uid://cxno3gmr1ye1f" path="res://Assets/Enviro/Tree_02.glb" id="7_cwa6w"]
 [ext_resource type="PackedScene" uid="uid://bhbqlkwc60ub" path="res://Assets/Enviro/Tree_01.glb" id="8_d33ho"]
 [ext_resource type="PackedScene" uid="uid://b0s5tw5w4m50q" path="res://Assets/Enviro/Stone_05.glb" id="8_lsd60"]
@@ -202,7 +203,6 @@ font_color = Color(0, 0, 0, 1)
 viewport_path = NodePath("Helper/StaticBody3D/SubViewport")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0n4ab"]
-font_size = 48
 font_color = Color(0.7882353, 0.24705882, 0.22352941, 1)
 
 [node name="Node" type="Node" unique_id=726614676]
@@ -608,6 +608,10 @@ unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(149, 262)
 script = ExtResource("5_0n4ab")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PhoneScreen" unique_id=1711432895]
+transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
+stream = ExtResource("7_aa3pj")
 
 [node name="TextureRect" type="TextureRect" parent="PhoneScreen" unique_id=1770678230]
 anchors_preset = 15
