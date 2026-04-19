@@ -28,7 +28,7 @@ project/assembly_name="LowSignal"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 
 [gui]
 
