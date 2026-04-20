@@ -56,6 +56,7 @@
 [ext_resource type="Material" path="res://materials/M_Sign_150.tres" id="40_jxd1f"]
 [ext_resource type="Material" path="res://materials/M_Sign_100.tres" id="41_paivk"]
 [ext_resource type="Material" path="res://materials/M_Sign_50.tres" id="42_sy0l1"]
+[ext_resource type="PackedScene" uid="uid://1agd2r2a5ujy" path="res://Assets/Props/Antenna.glb" id="55_8j2x3"]
 
 [sub_resource type="Animation" id="Animation_aa3pj"]
 length = 0.001
@@ -209,13 +210,6 @@ textures = [[ExtResource("11_idn73"), ExtResource("12_12qn1"), ExtResource("13_x
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5l7kg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycaat"]
-albedo_color = Color(0.20784314, 0.58431375, 0.19215687, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4sglh"]
-material = SubResource("StandardMaterial3D_ycaat")
-size = Vector3(1, 6, 1)
-
 [sub_resource type="Resource" id="Resource_peoj1"]
 script = ExtResource("28_e1es2")
 amount = 1000
@@ -328,9 +322,9 @@ closed = false
 thickness = 14.96
 curve = SubResource("Curve3D_7dy26")
 
-[sub_resource type="QuadMesh" id="QuadMesh_idn73"]
-material = ExtResource("36_12qn1")
-size = Vector2(5.97, 7.04)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3xgyl"]
+radius = 0.16
+height = 0.6
 
 [node name="Node" type="Node" unique_id=320231890]
 
@@ -592,10 +586,9 @@ shadow_enabled = true
 shape = SubResource("WorldBoundaryShape3D_5l7kg")
 disabled = true
 
-[node name="SignalSource" type="MeshInstance3D" parent="." unique_id=261396669 node_paths=PackedStringArray("zones")]
+[node name="SignalSource" type="Node3D" parent="." unique_id=570941896 node_paths=PackedStringArray("zones")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 272.7391, 14.877058, 349.57898)
-mesh = SubResource("BoxMesh_4sglh")
 script = ExtResource("10_vk5rf")
 zones = [NodePath("FullZone"), NodePath("HalfZone"), NodePath("LowZone"), NodePath("Area3D"), NodePath("Area3D2"), NodePath("Area3D3")]
 
@@ -1113,17 +1106,7 @@ transform = Transform3D(0.032300413, 0, 0.9994782, -0.936878, -0.348343, 0.03027
 transform = Transform3D(0.16423935, -0.29390788, -0.94161755, 0.87294763, 0.48781395, 0, 0.4593342, -0.8219828, 0.33668447, 250.74042, 2.0798593, 239.95222)
 
 [node name="Final" type="Node3D" parent="Objectif" unique_id=914192120]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 272.63837, 21.704218, 350.1297)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Objectif/Final" unique_id=1848446862]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7304688, 0, -4.054657)
-light_color = Color(1, 0, 0, 1)
-script = ExtResource("35_idn73")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Objectif/Final" unique_id=1902030134]
-transform = Transform3D(0.9799456, 0, -0.19926532, -1.7420327e-08, -1, -8.566956e-08, -0.19926532, 8.742278e-08, -0.9799456, 1.7279935, 0.03165023, -3.533456)
-material_override = ExtResource("36_12qn1")
-mesh = SubResource("QuadMesh_idn73")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266.92096, 21.347452, 350.3069)
 
 [node name="Stone_012" parent="." unique_id=1860186591 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.78545, 1.7682263, 239.88028)
@@ -1133,6 +1116,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266.9726, 1.3309066, 245.6939
 
 [node name="Souche_01" parent="." unique_id=1172551196 instance=ExtResource("27_8tj1m")]
 transform = Transform3D(0.048950616, 0.040999196, 0.9979594, 0.99144936, 0.11901094, -0.053520605, -0.12096242, 0.9920462, -0.034822933, 266.54422, 5.421812, 325.32397)
+
+[node name="Antenna" parent="." unique_id=1318258551 instance=ExtResource("55_8j2x3")]
+transform = Transform3D(1.5813231, -1.2729167, 0, 1.2729167, 1.5813231, 0, 0, 0, 2.03, 272.86072, 16.673016, 348.66022)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Antenna" unique_id=1902030134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17447556e-07, 2.9909275, 0)
+material_override = ExtResource("36_12qn1")
+mesh = SubResource("CapsuleMesh_3xgyl")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Antenna" unique_id=1848446862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1744757e-07, 3.0895793, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 12.37
+omni_range = 20.634
+omni_attenuation = 0.775
+script = ExtResource("35_idn73")
+speed = 0.5
+
+[node name="Stone_05" parent="." unique_id=223013670 instance=ExtResource("35_vfges")]
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 274.27356, 12.000152, 348.69138)
 
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player" method="_on_awake_awake"]
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player/Camera3D/Phone2" method="_on_awake_awake"]

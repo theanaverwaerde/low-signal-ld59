@@ -1,5 +1,5 @@
 class_name SignalSource
-extends MeshInstance3D
+extends Node3D
 
 @onready var player: CharacterBody3D = %Player
 
