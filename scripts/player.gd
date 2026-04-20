@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.5
 
 const MOUSE_SENSIBILITY = 1000
 
-const STEP_TIME = .25
+const STEP_TIME = .35
 var current_step_time = 0
 
 var camera_base_height = 0
@@ -30,6 +30,9 @@ func _input(event: InputEvent) -> void:
 		camera_3d.rotation.x = clampf(camera_3d.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 
 func _process(delta: float) -> void:
+	if not enable:
+		return
+	
 	if is_on_floor():
 			current_step_time -= delta
 			if current_step_time <= 0:
@@ -68,3 +71,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_awake_awake() -> void:
 	enable = true
+	
+func _on_end() -> void:
+	enable = false

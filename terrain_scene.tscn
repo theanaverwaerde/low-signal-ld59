@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://clylocg08kwpl"]
 
 [ext_resource type="Script" uid="uid://ga6t7u7t32cj" path="res://addons/zylann.hterrain/hterrain.gd" id="1_svmbf"]
+[ext_resource type="Script" uid="uid://c143jdyrypebw" path="res://scripts/end.gd" id="2_3xgyl"]
 [ext_resource type="Resource" uid="uid://cpyrdbicuarrs" path="res://terrains/data.hterrain" id="2_d3rpm"]
+[ext_resource type="AudioStream" uid="uid://b0fcgd7c3i1bc" path="res://sound/helicopter.mp3" id="3_2c4wi"]
 [ext_resource type="Texture2D" uid="uid://dovo8sx4y054u" path="res://UI/Reseau__0001_Reseau_0.png" id="3_qypp0"]
 [ext_resource type="Script" uid="uid://dv2rg7cb4mde3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_w8l5h"]
 [ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="4_anit4"]
@@ -171,6 +173,67 @@ font_size = 34
 [sub_resource type="LabelSettings" id="LabelSettings_8djgh"]
 font_size = 49
 
+[sub_resource type="Animation" id="Animation_3xgyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8j2x3"]
+resource_name = "end_anim"
+length = 7.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.233333, 6.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2999997, 1.5666667, 7.0333333),
+"transitions": PackedFloat32Array(0.3298769, 2.639016, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.26703537, 0, 0), Vector3(0.82030475, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xgyl"]
+_data = {
+&"RESET": SubResource("Animation_3xgyl"),
+&"end_anim": SubResource("Animation_8j2x3")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvdmk"]
 atlas = ExtResource("5_enam7")
 region = Rect2(0, 0, 35, 53)
@@ -331,6 +394,7 @@ height = 0.6
 [node name="PlayerFull" type="Node" parent="." unique_id=1009289711]
 
 [node name="Awake" type="Control" parent="PlayerFull" unique_id=1732957086]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -381,7 +445,7 @@ offset_right = 375.0
 offset_bottom = 139.0
 grow_horizontal = 2
 text = "LowSignal
-by Lucie and Théana"
+by Sooda and Twaerd"
 label_settings = SubResource("LabelSettings_lsd60")
 horizontal_alignment = 1
 
@@ -402,6 +466,72 @@ text = "Wake up...
 (Click on the screen to wake up)"
 label_settings = SubResource("LabelSettings_8djgh")
 horizontal_alignment = 1
+
+[node name="End" type="Control" parent="PlayerFull" unique_id=1164981217]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_3xgyl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerFull/End" unique_id=812888127]
+libraries/ = SubResource("AnimationLibrary_3xgyl")
+
+[node name="Container" type="Control" parent="PlayerFull/End" unique_id=488350299]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="ColorRect" parent="PlayerFull/End/Container" unique_id=2138805985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="PlayerFull/End/Container" unique_id=1036843487]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -375.0
+offset_top = -153.0
+offset_right = 375.0
+text = "It was LowSignal for LudumDare59
+by Sooda and Twaerd"
+label_settings = SubResource("LabelSettings_lsd60")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="PlayerFull/End/Container" unique_id=1853235082]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -69.5
+offset_right = 375.0
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congrats!"
+label_settings = SubResource("LabelSettings_8djgh")
+horizontal_alignment = 1
+
+[node name="endsound" type="AudioStreamPlayer" parent="PlayerFull/End" unique_id=811927414]
+stream = ExtResource("3_2c4wi")
 
 [node name="PhoneScreen" type="SubViewport" parent="PlayerFull" unique_id=2001695449]
 unique_name_in_owner = true
@@ -1140,6 +1270,9 @@ transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 274.27356, 12.000152, 3
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player" method="_on_awake_awake"]
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player/Camera3D/Phone2" method="_on_awake_awake"]
 [connection signal="animation_finished" from="PlayerFull/Awake/AnimationPlayer" to="PlayerFull/Awake" method="_on_animation_player_animation_finished"]
+[connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player" method="_on_end"]
+[connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player/Camera3D/Phone2" method="_on_end"]
+[connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/End" method="_end"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_on_button_pressed"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_click_sound"]

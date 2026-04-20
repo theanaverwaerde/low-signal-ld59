@@ -22,6 +22,8 @@ var show_option : bool
 
 @export var signal_icons : Array[Texture2D]
 
+signal finish
+
 func _ready() -> void:
 	signal_source.power_changed.connect(process_signal)
 	process_signal(0)
@@ -49,6 +51,7 @@ func process_signal(power : int) -> void:
 func _on_button_pressed() -> void:
 	if signal_source.get_signal() == signal_source.zones.size():
 		result.text = "\"We are coming!\""
+		finish.emit()
 	else:
 		call_fail_sound.play()
 		result.text = "No enough signal"

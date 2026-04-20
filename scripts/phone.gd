@@ -97,6 +97,10 @@ func _on_awake_awake() -> void:
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		need_click = true
 
+func _on_end() -> void:
+	enable = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 # Code from https://tmptesting.godotforums.randommomentania.com/d/30491-how-to-translate-a-world-coordinate-to-uv-coordinate/11
 var meshtool
 var mesh
