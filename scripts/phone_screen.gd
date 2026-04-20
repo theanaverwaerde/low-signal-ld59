@@ -15,6 +15,8 @@ extends SubViewport
 @onready var call_fail_sound: AudioStreamPlayer = $CallFailSound
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 
+@onready var animation_player: AnimationPlayer = $Startup/AnimationPlayer
+
 var use_12h_format : bool
 var show_option : bool
 
@@ -24,11 +26,17 @@ var show_option : bool
 
 signal finish
 
+var first_focus = false
+
 func _ready() -> void:
 	signal_source.power_changed.connect(process_signal)
 	process_signal(0)
 
 func change_focus() -> void:
+	if !first_focus:
+		animation_player.play("phone_startup")
+		first_focus = true
+	
 	if show_option:
 		_on_options_pressed()
 

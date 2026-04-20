@@ -56,9 +56,9 @@
 [ext_resource type="Material" uid="uid://c25x6ipnmlb0q" path="res://materials/lightblink.tres" id="36_12qn1"]
 [ext_resource type="Material" uid="uid://8n40011icldj" path="res://materials/M_Sign_250.tres" id="38_enam7"]
 [ext_resource type="Material" uid="uid://5o4k2h1ficso" path="res://materials/M_Sign_200.tres" id="39_mvdmk"]
-[ext_resource type="Material" uid="uid://dmxv4vkfuywvd" path="res://materials/M_Sign_150.tres" id="40_jxd1f"]
-[ext_resource type="Material" uid="uid://b5fkkrcak316h" path="res://materials/M_Sign_100.tres" id="41_paivk"]
-[ext_resource type="Material" uid="uid://et3hlqli0llm" path="res://materials/M_Sign_50.tres" id="42_sy0l1"]
+[ext_resource type="Material" path="res://materials/M_Sign_150.tres" id="40_jxd1f"]
+[ext_resource type="Material" path="res://materials/M_Sign_100.tres" id="41_paivk"]
+[ext_resource type="Material" path="res://materials/M_Sign_50.tres" id="42_sy0l1"]
 [ext_resource type="PackedScene" uid="uid://1agd2r2a5ujy" path="res://Assets/Props/Antenna.glb" id="55_8j2x3"]
 [ext_resource type="PackedScene" uid="uid://d33pmvyxy0ccm" path="res://Assets/Props/SHelter.glb" id="58_3xgyl"]
 [ext_resource type="PackedScene" uid="uid://bjh3tgfwnk5c5" path="res://Assets/Enviro/Fougere_01.glb" id="62_7o8dv"]
@@ -254,6 +254,91 @@ region = Rect2(35, 0, 35, 0)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy0l1"]
 atlas = ExtResource("5_enam7")
 region = Rect2(70, 0, 35, 0)
+
+[sub_resource type="Animation" id="Animation_j764x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fe3jn"]
+resource_name = "phone_startup"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.18333337, 0.23333335, 0.28333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.67481464, 0.67481464, 0.6748146, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j764x"]
+_data = {
+&"RESET": SubResource("Animation_j764x"),
+&"phone_startup": SubResource("Animation_fe3jn")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5ggc"]
 
@@ -630,6 +715,41 @@ grow_vertical = 0
 size_flags_vertical = 10
 text = "Options"
 
+[node name="Startup" type="Control" parent="PlayerFull/PhoneScreen" unique_id=1904152684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerFull/PhoneScreen/Startup" unique_id=104651107]
+libraries/ = SubResource("AnimationLibrary_j764x")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerFull/PhoneScreen/Startup" unique_id=1079549953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="PlayerFull/PhoneScreen/Startup" unique_id=1756456598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Press
+F or TAB
+to focus
+on phone"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Player" type="CharacterBody3D" parent="PlayerFull" unique_id=1277393077]
 unique_name_in_owner = true
 transform = Transform3D(-0.65178084, 0, 0.75840735, 0, 1, 0, -0.75840735, 0, -0.65178084, 257.49304, -2.298155, 142.26175)
@@ -885,31 +1005,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.70016, 4.5059724, 192.580
 [node name="Panneau250" parent="Objectif/Panneaux" unique_id=732188197 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.65842676, 0, 0.7526448, 0, 1, 0, -0.7526448, 0, -0.65842676, 243.01843, -2.9856389, 152.67757)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau250" index="0" unique_id=467540524]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau250" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("38_enam7")
 
 [node name="Panneau200" parent="Objectif/Panneaux" unique_id=566022292 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.63552594, 0, 0.7720796, 0, 1, 0, -0.7720796, 0, -0.63552594, 192.5238, 3.994462, 190.97482)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau200" index="0" unique_id=467540524]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau200" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("39_mvdmk")
 
 [node name="Panneau150" parent="Objectif/Panneaux" unique_id=1782982148 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.107860535, 0, -0.994166, 0, 1, 0, 0.994166, 0, -0.107860535, 209.14714, -0.32831848, 207.58702)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau150" index="0" unique_id=467540524]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau150" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("40_jxd1f")
 
 [node name="Panneau100" parent="Objectif/Panneaux" unique_id=1518288830 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.97907037, 0, 0.20352203, 0, 1, 0, -0.20352203, 0, -0.97907037, 244.98418, 1.8365636, 241.48737)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau100" index="0" unique_id=467540524]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau100" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("41_paivk")
 
 [node name="Panneau50" parent="Objectif/Panneaux" unique_id=683883435 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.8293108, 0, -0.5587876, 0, 1, 0, 0.5587876, 0, -0.8293108, 252.46814, 1.3806219, 293.4913)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau50" index="0" unique_id=467540524]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau50" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("42_sy0l1")
 
 [node name="Souche_01" parent="Objectif" unique_id=2043883251 instance=ExtResource("27_8tj1m")]
@@ -1673,8 +1793,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 242.30424, 9.281071, 357.1543
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/End" method="_end"]
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player" method="_on_end"]
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player/Camera3D/Phone2" method="_on_end"]
-[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_on_button_pressed"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_on_button_pressed"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="toggled" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_on_hour_format_toggled"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
@@ -1683,8 +1803,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 242.30424, 9.281071, 357.1543
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button2" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [1]]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [2]]
-[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="change_focus" from="PlayerFull/Player/Camera3D/Phone2" to="PlayerFull/PhoneScreen" method="change_focus"]
 
 [editable path="Objectif/Panneaux/Panneau250"]
