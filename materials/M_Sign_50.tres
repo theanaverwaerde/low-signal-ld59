@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://et3hlqli0llm"]
+
+[ext_resource type="Texture2D" uid="uid://wdw7y4w6ouxo" path="res://Textures/Panneau_M_Sign_BaseColor50.png" id="1_umx50"]
+
+[resource]
+albedo_texture = ExtResource("1_umx50")
+roughness = 0.75
