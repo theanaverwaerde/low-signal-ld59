@@ -1,13 +1,24 @@
 extends CharacterBody3D
 
 @onready var camera_3d: Camera3D = %Camera3D
+@onready var footstep_sound: AudioStreamPlayer3D = $FootstepSound
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 const MOUSE_SENSIBILITY = 1000
 
-var enable = true
+const STEP_TIME = .25
+var current_step_time = 0
+
+var camera_base_height = 0
+var camera_max_height = 0
+
+var enable
+
+func _ready() -> void:
+	camera_base_height = camera_3d.position.y
+	camera_max_height = camera_base_height + .06
 
 func _input(event: InputEvent) -> void:
 	if !enable:
@@ -25,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		current_step_time = 0
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -37,9 +49,17 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if is_on_floor():
+			current_step_time -= delta
+			if current_step_time <= 0:
+				footstep_sound.play()
+				current_step_time = STEP_TIME
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		current_step_time = 0
+
+	camera_3d.position.y = lerp(camera_base_height, camera_max_height, current_step_time / STEP_TIME)
 
 	move_and_slide()
 

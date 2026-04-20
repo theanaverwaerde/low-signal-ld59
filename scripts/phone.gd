@@ -16,7 +16,7 @@ var show_phone : bool = false
 var current_time : float
 var need_click : bool
 
-var enable = true
+var enable
 
 const RAY_LENGTH = 100
 

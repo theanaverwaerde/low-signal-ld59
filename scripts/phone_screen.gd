@@ -10,7 +10,10 @@ extends SubViewport
 @onready var default_screen: VBoxContainer = $Screen/DefaultScreen
 @onready var options_screen: VBoxContainer = $Screen/OptionsScreen
 
+@onready var options: Button = $options
+
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var click: AudioStreamPlayer3D = $click
 
 var use_12h_format : bool
 var show_option : bool
@@ -55,6 +58,10 @@ func _on_options_pressed() -> void:
 	show_option = !show_option
 	default_screen.visible = !show_option
 	options_screen.visible = show_option
+	options.text = "Back" if show_option else "Options"
 
 func _on_hour_format_toggled(toggled_on: bool) -> void:
 	use_12h_format = toggled_on
+	
+func _click_sound() -> void:
+	click.play()
