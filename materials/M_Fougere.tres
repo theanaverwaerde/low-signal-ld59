@@ -1,10 +1,14 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://i5v3keahvol1"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://i5v3keahvol1"]
 
 [ext_resource type="Texture2D" uid="uid://867utehkrspg" path="res://Textures/T_Fern.png" id="1_57qi3"]
+[ext_resource type="Shader" uid="uid://bvytp40jglymy" path="res://Shader/S_Tree.tres" id="1_omtw4"]
 
 [resource]
-transparency = 2
-alpha_scissor_threshold = 0.003
-alpha_antialiasing_mode = 0
-cull_mode = 2
-albedo_texture = ExtResource("1_57qi3")
+render_priority = 0
+shader = ExtResource("1_omtw4")
+shader_parameter/NoiseScale = 20.0
+shader_parameter/InvertUV = false
+shader_parameter/useShaderColor = false
+shader_parameter/Albedo = ExtResource("1_57qi3")
+shader_parameter/ShiftRange = 0.162000007695
+shader_parameter/AlphaThreshold = 0.0150000007125

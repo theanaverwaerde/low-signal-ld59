@@ -41,8 +41,8 @@ _subresources={
 "materials": {
 "M_Feuilles": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/M_Tree_02.tres",
-"use_external/path": "uid://cmx8k3rftfn4y"
+"use_external/fallback_path": "res://materials/M_Tree_Leaves.tres",
+"use_external/path": "uid://dd7a8bhj6lr6t"
 },
 "M_Tronc": {
 "use_external/enabled": true,
