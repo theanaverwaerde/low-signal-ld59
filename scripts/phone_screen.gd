@@ -3,8 +3,8 @@ extends SubViewport
 
 @onready var signal_source: SignalSource = %SignalSource
 
-@onready var time_label: Label = $Screen/TimeLabel
-@onready var signal_label: Label = $Screen/SignalLabel
+@onready var time_label: Label = $Screen/HSplitContainer/TimeLabel
+@onready var signal_texture: TextureRect = $Screen/HSplitContainer/SignalTextureRect
 @onready var result: Label = $Screen/DefaultScreen/Result
 
 @onready var default_screen: VBoxContainer = $Screen/DefaultScreen
@@ -20,10 +20,15 @@ var show_option : bool
 
 @onready var wall_paper: TextureRect = $WallPaper
 
+@export var signal_icons : Array[Texture2D]
 
 func _ready() -> void:
 	signal_source.power_changed.connect(process_signal)
 	process_signal(0)
+
+func change_focus() -> void:
+	if show_option:
+		_on_options_pressed()
 
 func _process(delta: float) -> void:
 	var time = Time.get_time_dict_from_system()
@@ -37,7 +42,9 @@ func _process(delta: float) -> void:
 	time_label.text = ("%02d:%02d%s" % [hour, time.minute, extra])
 
 func process_signal(power : int) -> void:
-	signal_label.text = "SIGNAL: " + str(power) + "/" + str(signal_source.zones.size())
+	signal_texture.texture = signal_icons[power]
+	
+	# signal_label.text = "SIGNAL: " + str(power) + "/" + str(signal_source.zones.size())
 
 func _on_button_pressed() -> void:
 	if signal_source.get_signal() == signal_source.zones.size():

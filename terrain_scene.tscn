@@ -2,16 +2,23 @@
 
 [ext_resource type="Script" uid="uid://ga6t7u7t32cj" path="res://addons/zylann.hterrain/hterrain.gd" id="1_svmbf"]
 [ext_resource type="Resource" uid="uid://cpyrdbicuarrs" path="res://terrains/data.hterrain" id="2_d3rpm"]
+[ext_resource type="Texture2D" uid="uid://dovo8sx4y054u" path="res://UI/Reseau__0001_Reseau_0.png" id="3_qypp0"]
 [ext_resource type="Script" uid="uid://dv2rg7cb4mde3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_w8l5h"]
 [ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="4_anit4"]
 [ext_resource type="AudioStream" uid="uid://bh6upjg3j7hir" path="res://sound/toggle_002.ogg" id="4_dwq0a"]
+[ext_resource type="Texture2D" uid="uid://b3w1vlao4uqdw" path="res://UI/Reseau__0000_Reseau_1.png" id="4_e4t3l"]
 [ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="5_5l7kg"]
+[ext_resource type="Texture2D" uid="uid://cx8ceyfbqnxih" path="res://UI/Reseau__0006_Reseau_2.png" id="5_8j2x3"]
 [ext_resource type="Texture2D" uid="uid://grt66c3b287u" path="res://phone_walpapers.png" id="5_enam7"]
+[ext_resource type="Texture2D" uid="uid://ctrmtq5ruug6x" path="res://UI/Reseau__0005_Reseau_3.png" id="6_3xgyl"]
 [ext_resource type="Script" uid="uid://c0g1at0tt1qc5" path="res://scripts/phone.gd" id="6_8n4hn"]
+[ext_resource type="Texture2D" uid="uid://b0rejyvgn0ufj" path="res://UI/Reseau__0004_Reseau_4.png" id="7_2c4wi"]
 [ext_resource type="Script" uid="uid://c0slynclpl5jx" path="res://scripts/phone_screen.gd" id="7_d5ggc"]
+[ext_resource type="Texture2D" uid="uid://ijop14i5phbx" path="res://UI/Reseau__0003_Reseau_5.png" id="8_fe3jn"]
 [ext_resource type="AudioStream" uid="uid://e46wa7bgng2w" path="res://sound/footstep_grass_000.ogg" id="8_peoj1"]
 [ext_resource type="AudioStream" uid="uid://qnc6adowrho2" path="res://sound/phone-fail.mp3" id="8_vk5rf"]
 [ext_resource type="AudioStream" uid="uid://v8k4b8mr5sq2" path="res://sound/footstep_grass_001.ogg" id="9_dwq0a"]
+[ext_resource type="Texture2D" uid="uid://bmgngiip47o3b" path="res://UI/Reseau__0002_Reseau_6.png" id="9_j764x"]
 [ext_resource type="AudioStream" uid="uid://cfti0b6rv5llj" path="res://sound/footstep_grass_002.ogg" id="10_l4t2y"]
 [ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="10_vk5rf"]
 [ext_resource type="Texture2D" uid="uid://y6g0jhpp0qri" path="res://Textures/T_Grass_Mix_BaseColor.png" id="11_idn73"]
@@ -43,8 +50,8 @@
 [ext_resource type="Script" uid="uid://bwouyr1dxuh5x" path="res://scripts/blink_light.gd" id="35_idn73"]
 [ext_resource type="PackedScene" uid="uid://ca444q1pbv1gq" path="res://Assets/Enviro/Stone_04.glb" id="35_vfges"]
 [ext_resource type="Material" uid="uid://c25x6ipnmlb0q" path="res://materials/lightblink.tres" id="36_12qn1"]
-[ext_resource type="Material" path="res://materials/M_Sign_250.tres" id="38_enam7"]
-[ext_resource type="Material" path="res://materials/M_Sign_200.tres" id="39_mvdmk"]
+[ext_resource type="Material" uid="uid://8n40011icldj" path="res://materials/M_Sign_250.tres" id="38_enam7"]
+[ext_resource type="Material" uid="uid://5o4k2h1ficso" path="res://materials/M_Sign_200.tres" id="39_mvdmk"]
 [ext_resource type="Material" path="res://materials/M_Sign_150.tres" id="40_jxd1f"]
 [ext_resource type="Material" path="res://materials/M_Sign_100.tres" id="41_paivk"]
 [ext_resource type="Material" path="res://materials/M_Sign_50.tres" id="42_sy0l1"]
@@ -408,6 +415,7 @@ unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(149, 262)
 script = ExtResource("7_d5ggc")
+signal_icons = Array[Texture2D]([ExtResource("3_qypp0"), ExtResource("4_e4t3l"), ExtResource("5_8j2x3"), ExtResource("6_3xgyl"), ExtResource("7_2c4wi"), ExtResource("8_fe3jn"), ExtResource("9_j764x")])
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PlayerFull/PhoneScreen" unique_id=1482765393]
 transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
@@ -433,13 +441,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimeLabel" type="Label" parent="PlayerFull/PhoneScreen/Screen" unique_id=2083952730]
+[node name="HSplitContainer" type="HSplitContainer" parent="PlayerFull/PhoneScreen/Screen" unique_id=959944979]
+layout_mode = 2
+split_offsets = PackedInt32Array(42)
+split_offset = 42
+
+[node name="TimeLabel" type="Label" parent="PlayerFull/PhoneScreen/Screen/HSplitContainer" unique_id=2083952730]
 layout_mode = 2
 text = "00:00"
 
-[node name="SignalLabel" type="Label" parent="PlayerFull/PhoneScreen/Screen" unique_id=1266113145]
+[node name="SignalTextureRect" type="TextureRect" parent="PlayerFull/PhoneScreen/Screen/HSplitContainer" unique_id=354128008]
 layout_mode = 2
-text = "SIGNAL: "
+texture = ExtResource("3_qypp0")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="DefaultScreen" type="VBoxContainer" parent="PlayerFull/PhoneScreen/Screen" unique_id=404956606]
 layout_mode = 2
@@ -522,6 +537,7 @@ transform = Transform3D(-0.48558068, 0, 0.2582857, 0, 0.5500001, 0, -0.2582857, 
 
 [node name="FootstepSound" type="AudioStreamPlayer3D" parent="PlayerFull/Player" unique_id=1108618214]
 stream = SubResource("AudioStreamRandomizer_ifqqw")
+pitch_scale = 2.06
 
 [node name="HTerrain" type="Node3D" parent="." unique_id=698242185]
 script = ExtResource("1_svmbf")
@@ -1115,6 +1131,7 @@ transform = Transform3D(0.048950616, 0.040999196, 0.9979594, 0.99144936, 0.11901
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [2]]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
+[connection signal="change_focus" from="PlayerFull/Player/Camera3D/Phone2" to="PlayerFull/PhoneScreen" method="change_focus"]
 
 [editable path="Objectif/Panneaux/Panneau250"]
 [editable path="Objectif/Panneaux/Panneau200"]

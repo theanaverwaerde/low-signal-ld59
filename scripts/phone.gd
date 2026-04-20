@@ -18,6 +18,8 @@ var need_click : bool
 
 var enable
 
+signal change_focus
+
 const RAY_LENGTH = 100
 
 func _ready():
@@ -45,6 +47,7 @@ func _input(event: InputEvent) -> void:
 #		if helper_text.visible:
 #			helper_text.visible = false
 		show_phone = !show_phone
+		change_focus.emit()
 		if show_phone:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
