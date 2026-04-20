@@ -39,9 +39,10 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"@MATERIAL:0": {
+"M_Forn": {
 "use_external/enabled": true,
-"use_external/path": "uid://dxy4spb1fwjed"
+"use_external/fallback_path": "res://materials/M_Fougere.tres",
+"use_external/path": "uid://i5v3keahvol1"
 }
 }
 }

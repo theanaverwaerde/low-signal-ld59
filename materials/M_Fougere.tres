@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://i5v3keahvol1"]
+
+[ext_resource type="Texture2D" uid="uid://867utehkrspg" path="res://Textures/T_Fern.png" id="1_57qi3"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.003
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_57qi3")
