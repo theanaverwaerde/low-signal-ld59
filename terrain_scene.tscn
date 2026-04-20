@@ -6,11 +6,11 @@
 [ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="4_anit4"]
 [ext_resource type="AudioStream" uid="uid://bh6upjg3j7hir" path="res://sound/toggle_002.ogg" id="4_dwq0a"]
 [ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="5_5l7kg"]
+[ext_resource type="Texture2D" uid="uid://grt66c3b287u" path="res://phone_walpapers.png" id="5_enam7"]
 [ext_resource type="Script" uid="uid://c0g1at0tt1qc5" path="res://scripts/phone.gd" id="6_8n4hn"]
 [ext_resource type="Script" uid="uid://c0slynclpl5jx" path="res://scripts/phone_screen.gd" id="7_d5ggc"]
 [ext_resource type="AudioStream" uid="uid://e46wa7bgng2w" path="res://sound/footstep_grass_000.ogg" id="8_peoj1"]
 [ext_resource type="AudioStream" uid="uid://qnc6adowrho2" path="res://sound/phone-fail.mp3" id="8_vk5rf"]
-[ext_resource type="Texture2D" uid="uid://d3ly61ahyfp1g" path="res://icon.svg" id="9_4sglh"]
 [ext_resource type="AudioStream" uid="uid://v8k4b8mr5sq2" path="res://sound/footstep_grass_001.ogg" id="9_dwq0a"]
 [ext_resource type="AudioStream" uid="uid://cfti0b6rv5llj" path="res://sound/footstep_grass_002.ogg" id="10_l4t2y"]
 [ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="10_vk5rf"]
@@ -162,8 +162,25 @@ font_size = 34
 [sub_resource type="LabelSettings" id="LabelSettings_8djgh"]
 font_size = 49
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvdmk"]
+atlas = ExtResource("5_enam7")
+region = Rect2(0, 0, 35, 53)
+filter_clip = true
+
 [sub_resource type="LabelSettings" id="LabelSettings_gbcjs"]
 font_color = Color(0.7882353, 0.24705882, 0.22352941, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxd1f"]
+atlas = ExtResource("5_enam7")
+region = Rect2(0, 0, 35, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paivk"]
+atlas = ExtResource("5_enam7")
+region = Rect2(35, 0, 35, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy0l1"]
+atlas = ExtResource("5_enam7")
+region = Rect2(70, 0, 35, 0)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5ggc"]
 
@@ -400,14 +417,14 @@ stream = ExtResource("8_vk5rf")
 transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
 stream = ExtResource("4_dwq0a")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerFull/PhoneScreen" unique_id=1062844547]
+[node name="WallPaper" type="TextureRect" parent="PlayerFull/PhoneScreen" unique_id=1062844547]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_4sglh")
-stretch_mode = 4
+texture = SubResource("AtlasTexture_mvdmk")
 
 [node name="Screen" type="VBoxContainer" parent="PlayerFull/PhoneScreen" unique_id=933498742]
 anchors_preset = 15
@@ -442,6 +459,28 @@ layout_mode = 2
 [node name="HourFormat" type="CheckBox" parent="PlayerFull/PhoneScreen/Screen/OptionsScreen" unique_id=1624613862]
 layout_mode = 2
 text = "12-hour format"
+
+[node name="Wallpaperlabel" type="Label" parent="PlayerFull/PhoneScreen/Screen/OptionsScreen" unique_id=1096351213]
+layout_mode = 2
+text = "Wallpaper:"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerFull/PhoneScreen/Screen/OptionsScreen" unique_id=2144032969]
+texture_filter = 1
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer" unique_id=492026068]
+layout_mode = 2
+icon = SubResource("AtlasTexture_jxd1f")
+
+[node name="Button2" type="Button" parent="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer" unique_id=174805200]
+layout_mode = 2
+icon = SubResource("AtlasTexture_paivk")
+
+[node name="Button3" type="Button" parent="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer" unique_id=998596221]
+layout_mode = 2
+icon = SubResource("AtlasTexture_sy0l1")
 
 [node name="options" type="Button" parent="PlayerFull/PhoneScreen" unique_id=214813794]
 anchors_preset = 12
@@ -667,34 +706,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.70016, 4.5059724, 192.580
 
 [node name="Panneaux" type="Node" parent="Objectif" unique_id=1169246098]
 
-[node name="Panneau250" parent="Objectif/Panneaux" unique_id=1346234055 instance=ExtResource("26_ub1cd")]
+[node name="Panneau250" parent="Objectif/Panneaux" unique_id=732188197 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.65842676, 0, 0.7526448, 0, 1, 0, -0.7526448, 0, -0.65842676, 243.01843, -2.9856389, 152.67757)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau250" index="0" unique_id=1476763512]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau250" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("38_enam7")
 
-[node name="Panneau200" parent="Objectif/Panneaux" unique_id=1067574681 instance=ExtResource("26_ub1cd")]
+[node name="Panneau200" parent="Objectif/Panneaux" unique_id=566022292 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.63552594, 0, 0.7720796, 0, 1, 0, -0.7720796, 0, -0.63552594, 192.5238, 3.994462, 190.97482)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau200" index="0" unique_id=1476763512]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau200" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("39_mvdmk")
 
-[node name="Panneau150" parent="Objectif/Panneaux" unique_id=1043038629 instance=ExtResource("26_ub1cd")]
+[node name="Panneau150" parent="Objectif/Panneaux" unique_id=1782982148 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.107860535, 0, -0.994166, 0, 1, 0, 0.994166, 0, -0.107860535, 209.14714, -0.32831848, 207.58702)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau150" index="0" unique_id=1476763512]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau150" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("40_jxd1f")
 
-[node name="Panneau100" parent="Objectif/Panneaux" unique_id=902218326 instance=ExtResource("26_ub1cd")]
+[node name="Panneau100" parent="Objectif/Panneaux" unique_id=1518288830 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.97907037, 0, 0.20352203, 0, 1, 0, -0.20352203, 0, -0.97907037, 244.98418, 1.8365636, 241.48737)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau100" index="0" unique_id=1476763512]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau100" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("41_paivk")
 
-[node name="Panneau50" parent="Objectif/Panneaux" unique_id=1806493770 instance=ExtResource("26_ub1cd")]
+[node name="Panneau50" parent="Objectif/Panneaux" unique_id=683883435 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.8293108, 0, -0.5587876, 0, 1, 0, 0.5587876, 0, -0.8293108, 252.46814, 1.3806219, 293.4913)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau50" index="0" unique_id=1476763512]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau50" index="0" unique_id=1879178494]
 surface_material_override/0 = ExtResource("42_sy0l1")
 
 [node name="Souche_01" parent="Objectif" unique_id=2043883251 instance=ExtResource("27_8tj1m")]
@@ -1068,6 +1107,12 @@ transform = Transform3D(0.048950616, 0.040999196, 0.9979594, 0.99144936, 0.11901
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_on_button_pressed"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="toggled" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_on_hour_format_toggled"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [0]]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button2" to="PlayerFull/PhoneScreen" method="_click_sound"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button2" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [1]]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="_click_sound"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [2]]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
 

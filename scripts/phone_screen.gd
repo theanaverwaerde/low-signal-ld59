@@ -18,6 +18,9 @@ extends SubViewport
 var use_12h_format : bool
 var show_option : bool
 
+@onready var wall_paper: TextureRect = $WallPaper
+
+
 func _ready() -> void:
 	signal_source.power_changed.connect(process_signal)
 	process_signal(0)
@@ -65,3 +68,7 @@ func _on_hour_format_toggled(toggled_on: bool) -> void:
 	
 func _click_sound() -> void:
 	click.play()
+
+func set_wallpaper(i : int) -> void:
+	var atlas = wall_paper.texture as AtlasTexture
+	atlas.region.position.x = atlas.region.size.x * i
