@@ -54,13 +54,13 @@ func _on_button_pressed() -> void:
 		finish.emit()
 	else:
 		call_fail_sound.play()
-		result.text = "No enough signal"
+		result.text = "Not enough signal"
 		await wait(.4)
-		result.text = "No enough signal."
+		result.text = "Not enough signal."
 		await wait(.4)
-		result.text = "No enough signal.."
+		result.text = "Not enough signal.."
 		await wait(.4)
-		result.text = "No enough signal..."
+		result.text = "Not enough signal..."
 		await wait(1)
 		result.text = ""
 

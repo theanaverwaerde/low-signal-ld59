@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	if not enable:
 		return
 	
-	if is_on_floor():
+	if is_on_floor() and velocity.x != 0 and velocity.z != 0:
 			current_step_time -= delta
 			if current_step_time <= 0:
 				footstep_sound.play()
