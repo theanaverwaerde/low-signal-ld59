@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://clylocg08kwpl"]
 
 [ext_resource type="Script" uid="uid://ga6t7u7t32cj" path="res://addons/zylann.hterrain/hterrain.gd" id="1_svmbf"]
-[ext_resource type="Script" uid="uid://c143jdyrypebw" path="res://scripts/end.gd" id="2_3xgyl"]
+[ext_resource type="Script" path="res://scripts/end.gd" id="2_3xgyl"]
 [ext_resource type="Resource" uid="uid://cpyrdbicuarrs" path="res://terrains/data.hterrain" id="2_d3rpm"]
 [ext_resource type="AudioStream" uid="uid://b0fcgd7c3i1bc" path="res://sound/helicopter.mp3" id="3_2c4wi"]
 [ext_resource type="Texture2D" uid="uid://dovo8sx4y054u" path="res://UI/Reseau__0001_Reseau_0.png" id="3_qypp0"]
@@ -48,6 +48,7 @@
 [ext_resource type="Script" uid="uid://cfrbdkbafu3q3" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="28_e1es2"]
 [ext_resource type="Script" uid="uid://c4ws5iuwj5kww" path="res://scripts/awake.gd" id="28_kw330"]
 [ext_resource type="PackedScene" uid="uid://30axgxowd4g5" path="res://Assets/Enviro/Stone_01.glb" id="30_e1es2"]
+[ext_resource type="Texture2D" uid="uid://kdgv3t5aijn" path="res://Textures/Grass_BaseColor2.png" id="30_j764x"]
 [ext_resource type="PackedScene" uid="uid://cxno3gmr1ye1f" path="res://Assets/Enviro/Tree_02.glb" id="31_ey61y"]
 [ext_resource type="PackedScene" uid="uid://bm7u7lq7fppw6" path="res://Assets/Enviro/Stone_03.glb" id="33_idn73"]
 [ext_resource type="Script" uid="uid://bwouyr1dxuh5x" path="res://scripts/blink_light.gd" id="35_idn73"]
@@ -704,6 +705,19 @@ shader_params/u_instance_scale = null
 shader_params/u_roughness = null
 metadata/_editor_icon = ExtResource("27_2c4wi")
 
+[node name="@Node3D@33917" type="Node3D" parent="HTerrain" unique_id=592364305]
+script = ExtResource("24_e4t3l")
+layer_index = 1
+texture = ExtResource("30_j764x")
+density = 0.683
+instance_mesh = ExtResource("26_3xgyl")
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = null
+shader_params/u_roughness = null
+metadata/_editor_icon = ExtResource("27_2c4wi")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=696456550]
 transform = Transform3D(-0.38738582, 0.39004126, -0.8353444, -0.05779574, 0.8940373, 0.44424883, 0.9201042, 0.22037505, -0.32379463, 9.824569, 5.666151, 8.025142)
 light_color = Color(0.9489384, 0.7219174, 0.48569685, 1)
@@ -1274,9 +1288,9 @@ transform = Transform3D(1.299738, 0, -0.026090898, 0, 1.2999998, 0, 0.026090898,
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player" method="_on_awake_awake"]
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player/Camera3D/Phone2" method="_on_awake_awake"]
 [connection signal="animation_finished" from="PlayerFull/Awake/AnimationPlayer" to="PlayerFull/Awake" method="_on_animation_player_animation_finished"]
+[connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/End" method="_end"]
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player" method="_on_end"]
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player/Camera3D/Phone2" method="_on_end"]
-[connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/End" method="_end"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_on_button_pressed"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_click_sound"]
