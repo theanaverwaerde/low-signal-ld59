@@ -97,9 +97,9 @@ WindDirection={
 }
 WindSpeed={
 "type": "float",
-"value": 0.061
+"value": 0.121
 }
 WindStrength={
 "type": "float",
-"value": 0.091
+"value": 0.381
 }

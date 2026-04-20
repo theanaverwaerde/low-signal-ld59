@@ -11,4 +11,4 @@ shader_parameter/InvertUV = true
 shader_parameter/useShaderColor = false
 shader_parameter/Albedo = ExtResource("2_b1yyr")
 shader_parameter/ShiftRange = 0.15600000741
-shader_parameter/AlphaThreshold = 0.0030000001425
+shader_parameter/AlphaThreshold = 0.01600000076

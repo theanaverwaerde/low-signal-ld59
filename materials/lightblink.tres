@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c25x6ipnmlb0q"]
+
+[ext_resource type="Shader" uid="uid://j2uwu3agpgkk" path="res://Shader/light_blink.tres" id="1_6uavh"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6uavh")
+shader_parameter/Color = Color(1, 0, 0, 1)
+shader_parameter/Speed = 0.5

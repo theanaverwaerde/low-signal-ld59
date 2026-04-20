@@ -1,6 +1,15 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://2s3xwyfxhssf"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cyk8bsyqlpy4i"]
 
+[ext_resource type="Shader" uid="uid://cns13tnhmtyok" path="res://Shader/RandomTexture.tres" id="1_e4u14"]
 [ext_resource type="Texture2D" uid="uid://olou1cs8t0eg" path="res://Textures/Stone_01_M_Stone_BaseColor.png" id="1_ywh8t"]
+[ext_resource type="Texture2D" uid="uid://c7fh8hfx1g7h6" path="res://Textures/Stone_01_M_Stone_BaseColorV2.png" id="3_cc3cg"]
 
 [resource]
-albedo_texture = ExtResource("1_ywh8t")
+render_priority = 0
+shader = ExtResource("1_e4u14")
+shader_parameter/TextureOne = ExtResource("1_ywh8t")
+shader_parameter/TextureTwo = ExtResource("3_cc3cg")
+shader_parameter/Proportion = 0.642000030495
+shader_parameter/Metallic = 0.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Specular = 0.5

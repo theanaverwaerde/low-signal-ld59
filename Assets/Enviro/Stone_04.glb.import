@@ -42,7 +42,7 @@ _subresources={
 "M_Stone": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://materials/M_Stone_04.tres",
-"use_external/path": "uid://ca7ye4qbn0wxa"
+"use_external/path": "uid://cwoikrkj0mliq"
 }
 }
 }

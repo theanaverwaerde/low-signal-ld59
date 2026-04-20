@@ -4,14 +4,22 @@
 [ext_resource type="Resource" uid="uid://cpyrdbicuarrs" path="res://terrains/data.hterrain" id="2_d3rpm"]
 [ext_resource type="Script" uid="uid://dv2rg7cb4mde3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_w8l5h"]
 [ext_resource type="Script" uid="uid://d18eccgaksmu1" path="res://scripts/player.gd" id="4_anit4"]
+[ext_resource type="AudioStream" uid="uid://bh6upjg3j7hir" path="res://sound/toggle_002.ogg" id="4_dwq0a"]
 [ext_resource type="PackedScene" uid="uid://d3pnjw7tqycwq" path="res://scenes/phone.tscn" id="5_5l7kg"]
-[ext_resource type="Texture2D" uid="uid://chmb4iyngfd2h" path="res://Assets/Props/Phone_T_Phone.png" id="5_enxok"]
 [ext_resource type="Script" uid="uid://c0g1at0tt1qc5" path="res://scripts/phone.gd" id="6_8n4hn"]
 [ext_resource type="Script" uid="uid://c0slynclpl5jx" path="res://scripts/phone_screen.gd" id="7_d5ggc"]
+[ext_resource type="AudioStream" uid="uid://e46wa7bgng2w" path="res://sound/footstep_grass_000.ogg" id="8_peoj1"]
 [ext_resource type="AudioStream" uid="uid://qnc6adowrho2" path="res://sound/phone-fail.mp3" id="8_vk5rf"]
 [ext_resource type="Texture2D" uid="uid://d3ly61ahyfp1g" path="res://icon.svg" id="9_4sglh"]
+[ext_resource type="AudioStream" uid="uid://v8k4b8mr5sq2" path="res://sound/footstep_grass_001.ogg" id="9_dwq0a"]
+[ext_resource type="AudioStream" uid="uid://cfti0b6rv5llj" path="res://sound/footstep_grass_002.ogg" id="10_l4t2y"]
 [ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="10_vk5rf"]
+[ext_resource type="Texture2D" uid="uid://y6g0jhpp0qri" path="res://Textures/T_Grass_Mix_BaseColor.png" id="11_idn73"]
+[ext_resource type="AudioStream" uid="uid://cmsiyvfefv7jv" path="res://sound/footstep_grass_003.ogg" id="11_y387o"]
+[ext_resource type="Texture2D" uid="uid://5vk5kp8etds" path="res://Textures/T_Dirt_BaseColor.png" id="12_12qn1"]
+[ext_resource type="AudioStream" uid="uid://dmw16wdcwsxqy" path="res://sound/footstep_grass_004.ogg" id="12_lm5tk"]
 [ext_resource type="PackedScene" uid="uid://bhbqlkwc60ub" path="res://Assets/Enviro/Tree_01.glb" id="13_enxok"]
+[ext_resource type="Texture2D" uid="uid://d0mpv8ui2cewg" path="res://Textures/T_Stone_BaseColor.png" id="13_xeulx"]
 [ext_resource type="Script" uid="uid://bkutncv24oite" path="res://addons/proton_scatter/src/scatter.gd" id="16_d1u3w"]
 [ext_resource type="Script" uid="uid://c84hivfj02rm0" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="17_ub1cd"]
 [ext_resource type="Script" uid="uid://cu4ebo2xmhgom" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="18_8tj1m"]
@@ -31,9 +39,10 @@
 [ext_resource type="Script" uid="uid://c4ws5iuwj5kww" path="res://scripts/awake.gd" id="28_kw330"]
 [ext_resource type="PackedScene" uid="uid://30axgxowd4g5" path="res://Assets/Enviro/Stone_01.glb" id="30_e1es2"]
 [ext_resource type="PackedScene" uid="uid://cxno3gmr1ye1f" path="res://Assets/Enviro/Tree_02.glb" id="31_ey61y"]
-[ext_resource type="PackedScene" uid="uid://cq631fpladr18" path="res://Assets/Enviro/Stone_02.glb" id="32_vfges"]
 [ext_resource type="PackedScene" uid="uid://bm7u7lq7fppw6" path="res://Assets/Enviro/Stone_03.glb" id="33_idn73"]
-[ext_resource type="PackedScene" uid="uid://b0s5tw5w4m50q" path="res://Assets/Enviro/Stone_05.glb" id="34_12qn1"]
+[ext_resource type="Script" uid="uid://bwouyr1dxuh5x" path="res://scripts/blink_light.gd" id="35_idn73"]
+[ext_resource type="PackedScene" uid="uid://ca444q1pbv1gq" path="res://Assets/Enviro/Stone_04.glb" id="35_vfges"]
+[ext_resource type="Material" uid="uid://c25x6ipnmlb0q" path="res://materials/lightblink.tres" id="36_12qn1"]
 
 [sub_resource type="Animation" id="Animation_aa3pj"]
 length = 0.001
@@ -157,10 +166,18 @@ font_color = Color(0.7882353, 0.24705882, 0.22352941, 1)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ifqqw"]
+streams_count = 5
+stream_0/stream = ExtResource("8_peoj1")
+stream_1/stream = ExtResource("9_dwq0a")
+stream_2/stream = ExtResource("10_l4t2y")
+stream_3/stream = ExtResource("11_y387o")
+stream_4/stream = ExtResource("12_lm5tk")
+
 [sub_resource type="Resource" id="Resource_anit4"]
 script = ExtResource("3_w8l5h")
 mode = 0
-textures = [[null, ExtResource("5_enxok")], [null, null]]
+textures = [[ExtResource("11_idn73"), ExtResource("12_12qn1"), ExtResource("13_xeulx")], [null, null, null]]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5l7kg"]
 
@@ -233,6 +250,8 @@ metadata/_custom_type_script = "uid://b7m6mkia048re"
 [sub_resource type="Resource" id="Resource_ey61y"]
 script = ExtResource("28_e1es2")
 amount = 500
+override_global_seed = true
+custom_seed = 3
 restrict_height = true
 reference_frame = 1
 
@@ -254,6 +273,7 @@ restrict_height = true
 script = ExtResource("22_ghyij")
 ray_length = 16.230000000000004
 ray_offset = 5.0
+remove_points_on_miss = false
 align_with_collision_normal = true
 collision_mask = 4
 
@@ -279,6 +299,10 @@ script = ExtResource("25_kw330")
 closed = false
 thickness = 14.96
 curve = SubResource("Curve3D_7dy26")
+
+[sub_resource type="QuadMesh" id="QuadMesh_idn73"]
+material = ExtResource("36_12qn1")
+size = Vector2(5.97, 7.04)
 
 [node name="Node" type="Node" unique_id=320231890]
 
@@ -367,6 +391,10 @@ script = ExtResource("7_d5ggc")
 transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
 stream = ExtResource("8_vk5rf")
 
+[node name="click" type="AudioStreamPlayer3D" parent="PlayerFull/PhoneScreen" unique_id=1706121074]
+transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
+stream = ExtResource("4_dwq0a")
+
 [node name="TextureRect" type="TextureRect" parent="PlayerFull/PhoneScreen" unique_id=1062844547]
 anchors_preset = 15
 anchor_right = 1.0
@@ -402,10 +430,6 @@ text = "CALL"
 layout_mode = 2
 label_settings = SubResource("LabelSettings_gbcjs")
 
-[node name="options" type="Button" parent="PlayerFull/PhoneScreen/Screen/DefaultScreen" unique_id=214813794]
-layout_mode = 2
-text = "Options"
-
 [node name="OptionsScreen" type="VBoxContainer" parent="PlayerFull/PhoneScreen/Screen" unique_id=940772244]
 visible = false
 layout_mode = 2
@@ -414,9 +438,16 @@ layout_mode = 2
 layout_mode = 2
 text = "12-hour format"
 
-[node name="back" type="Button" parent="PlayerFull/PhoneScreen/Screen/OptionsScreen" unique_id=725990194]
-layout_mode = 2
-text = "Back"
+[node name="options" type="Button" parent="PlayerFull/PhoneScreen" unique_id=214813794]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 10
+text = "Options"
 
 [node name="Player" type="CharacterBody3D" parent="PlayerFull" unique_id=1277393077]
 unique_name_in_owner = true
@@ -444,6 +475,9 @@ transform = Transform3D(-1.0823147, 0, 0.19645566, 0, 1.1, 0, -0.19645566, 0, -1
 
 [node name="minPos" type="Node3D" parent="PlayerFull/Player/Camera3D" unique_id=330840766]
 transform = Transform3D(-0.48558068, 0, 0.2582857, 0, 0.5500001, 0, -0.2582857, 0, -0.48558068, 0.9749336, -0.339638, -1.057188)
+
+[node name="FootstepSound" type="AudioStreamPlayer3D" parent="PlayerFull/Player" unique_id=1108618214]
+stream = SubResource("AudioStreamRandomizer_ifqqw")
 
 [node name="HTerrain" type="Node3D" parent="." unique_id=698242185]
 script = ExtResource("1_svmbf")
@@ -502,7 +536,7 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/HalfZone" unique_id=1646478482]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 depth = 58.99
-polygon = PackedVector2Array(-19.937424, -58.56732, -10.273407, -51.337738, 5.3020325, -24.5466, 13.17215, -10.921997, 15.28775, 6.341461, -1.2140503, 14.550049, -13.230774, 10.657318, -19.916138, 0.92544556, -27.193863, -12.783752, -33.80638, -28.173615, -35.798203, -45.8049, -32.183426, -57.16568)
+polygon = PackedVector2Array(-19.937424, -58.56732, -10.273407, -51.337738, 5.3020325, -24.5466, 13.17215, -10.921997, 15.28775, 6.341461, -1.2140503, 14.550049, -15.635559, 13.288422, -33.147232, 7.268799, -34.085358, -12.119141, -30.880096, -24.86203, -35.798203, -45.8049, -32.183426, -57.16568)
 debug_color = Color(0.65882355, 0.5137255, 0.011764706, 1)
 
 [node name="LowZone" type="Area3D" parent="SignalSource" unique_id=183341079]
@@ -511,7 +545,7 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/LowZone" unique_id=431965549]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 depth = 56.58
-polygon = PackedVector2Array(9.234009, 19.91681, -17.611023, 13.495056, -32.77057, -8.61261, -34.139145, -37.878967, -37.086838, -53.249054, -28.349045, -69.461334, -25.717178, -70.72464, -27.085754, -75.14618, -33.29695, -77.14639, -32.03366, -81.56793, -28.349045, -83.04178, -23.611694, -82.199585, -20.664001, -88.937164, -14.9791565, -88.72659, -13.505341, -97.35913, -23.822235, -93.674515, -26.980469, -86.93692, -36.87628, -87.35803, -43.929688, -91.35846, -48.0354, -92.72705, -44.56134, -103.78087, -40.66617, -106.93912, -35.928818, -113.36087, -25.611908, -113.88724, -22.769485, -105.359985, -10.347076, -104.30725, -7.188843, -97.148575, -9.399628, -72.72485, -15.294983, -73.46179, -19.821808, -73.56705, -19.821808, -66.93475, -14.558075, -59.776093, -2.6620178, -46.300934, 11.655304, -28.404236, 15.550476, -19.561188, 20.708923, 7.5996704)
+polygon = PackedVector2Array(9.234009, 19.91681, -34.867126, 15.164673, -39.401398, -12.040955, -36.821564, -37.21402, -37.086838, -53.249054, -28.349045, -69.461334, -25.717178, -70.72464, -27.085754, -75.14618, -33.29695, -77.14639, -32.03366, -81.56793, -28.349045, -83.04178, -23.611694, -82.199585, -20.664001, -88.937164, -14.9791565, -88.72659, -13.505341, -97.35913, -23.822235, -93.674515, -26.980469, -86.93692, -36.87628, -87.35803, -43.929688, -91.35846, -48.0354, -92.72705, -44.56134, -103.78087, -40.66617, -106.93912, -35.928818, -113.36087, -25.611908, -113.88724, -22.769485, -105.359985, -10.347076, -104.30725, -7.188843, -97.148575, -9.399628, -72.72485, -15.294983, -73.46179, -19.821808, -73.56705, -19.821808, -66.93475, -14.558075, -59.776093, -2.6620178, -46.300934, 11.655304, -28.404236, 15.550476, -19.561188, 20.708923, 7.5996704)
 margin = 0.001
 debug_color = Color(0.8980392, 0.29803923, 0.28235295, 1)
 
@@ -521,7 +555,7 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/Area3D" unique_id=1825326389]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 depth = 51.8
-polygon = PackedVector2Array(11.815033, 22.88974, -20.105179, 22.24356, -39.231476, 0.27420044, -50.733078, -50.643036, -56.419266, -107.3757, -44.271484, -119.13579, -56.548492, -130.50816, -52.02539, -144.85287, -8.345123, -145.88672, 2.7687988, -127.40662, 12.848877, -99.75105, 7.162689, -55.553833, 8.196533, -35.65219, 24.221252, -11.098175, 22.412018, 14.618927)
+polygon = PackedVector2Array(11.815033, 22.88974, -39.0887, 21.184326, -39.231476, 0.27420044, -50.733078, -50.643036, -56.419266, -107.3757, -44.271484, -119.13579, -56.548492, -130.50816, -52.02539, -144.85287, -8.345123, -145.88672, 2.7687988, -127.40662, 12.848877, -99.75105, 7.162689, -55.553833, 8.196533, -35.65219, 24.221252, -11.098175, 22.412018, 14.618927)
 
 [node name="Area3D2" type="Area3D" parent="SignalSource" unique_id=990905600]
 metadata/_edit_group_ = true
@@ -529,7 +563,7 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/Area3D2" unique_id=166079482]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 depth = 46.27
-polygon = PackedVector2Array(15.667297, 26.892609, -25.422455, 26.082977, -59.630188, -22.29364, -66.714615, -118.439606, -101.12477, -142.72913, -96.67169, -165.19691, -54.367462, -165.39932, -3.5618896, -148.8015, 14.048004, -132.20366, 27.60965, -44.963837, 34.896484, 8.27066)
+polygon = PackedVector2Array(15.667297, 26.892609, -44.013855, 24.076874, -59.630188, -22.29364, -66.714615, -118.439606, -101.12477, -142.72913, -96.67169, -165.19691, -54.367462, -165.39932, -3.5618896, -148.8015, 14.048004, -132.20366, 27.60965, -44.963837, 34.896484, 8.27066)
 
 [node name="Area3D3" type="Area3D" parent="SignalSource" unique_id=698692541]
 metadata/_edit_group_ = true
@@ -537,7 +571,7 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="SignalSource/Area3D3" unique_id=1331230570]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 depth = 42.1
-polygon = PackedVector2Array(21.339111, 34.140167, -29.975433, 39.069916, -87.11606, -31.291473, -79.94548, -111.512436, -105.49071, -145.57272, -91.37361, -190.83708, -38.042343, -206.07458, -13.169342, -196.4391, 19.098297, -153.19148, 23.803986, -108.375305, 39.937836, -33.084106, 43.07495, 12.180237)
+polygon = PackedVector2Array(21.339111, 34.140167, -51.049805, 34.943512, -87.11606, -31.291473, -79.94548, -111.512436, -105.49071, -145.57272, -91.37361, -190.83708, -38.042343, -206.07458, -13.169342, -196.4391, 19.098297, -153.19148, 23.803986, -108.375305, 39.937836, -33.084106, 43.07495, 12.180237)
 
 [node name="Environment" type="Node" parent="." unique_id=2035402699]
 
@@ -589,7 +623,7 @@ metadata/_custom_type_script = "uid://bkutncv24oite"
 
 [node name="ScatterItem" type="Node3D" parent="Environment/VegetationScatter" unique_id=438531644]
 script = ExtResource("23_c3mii")
-path = "uid://6ru2brmvuhsq"
+path = "uid://bjh3tgfwnk5c5"
 
 [node name="ScatterItem2" type="Node3D" parent="Environment/VegetationScatter" unique_id=892084631]
 script = ExtResource("23_c3mii")
@@ -626,8 +660,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.70016, 4.5059724, 192.580
 
 [node name="Objectif" type="Node" parent="." unique_id=721679306]
 
-[node name="Panneau" parent="Objectif" unique_id=1744115426 instance=ExtResource("26_ub1cd")]
-transform = Transform3D(-0.34544563, 0, 0.9384388, 0, 1, 0, -0.9384388, 0, -0.34544563, 242.8374, -3.7418985, 149.72992)
+[node name="Panneaux" type="Node" parent="Objectif" unique_id=1169246098]
+
+[node name="Panneau250" parent="Objectif/Panneaux" unique_id=1516195781 instance=ExtResource("26_ub1cd")]
+transform = Transform3D(-0.65842676, 0, 0.7526448, 0, 1, 0, -0.7526448, 0, -0.65842676, 243.01843, -2.9856389, 152.67757)
+
+[node name="Panneau200" parent="Objectif/Panneaux" unique_id=1756587820 instance=ExtResource("26_ub1cd")]
+transform = Transform3D(-0.63552594, 0, 0.7720796, 0, 1, 0, -0.7720796, 0, -0.63552594, 192.5238, 3.994462, 190.97482)
+
+[node name="Panneau150" parent="Objectif/Panneaux" unique_id=1909984011 instance=ExtResource("26_ub1cd")]
+transform = Transform3D(-0.107860535, 0, -0.994166, 0, 1, 0, 0.994166, 0, -0.107860535, 209.14714, -0.32831848, 207.58702)
+
+[node name="Panneau100" parent="Objectif/Panneaux" unique_id=400958926 instance=ExtResource("26_ub1cd")]
+transform = Transform3D(-0.97907037, 0, 0.20352203, 0, 1, 0, -0.20352203, 0, -0.97907037, 244.98418, 1.8365636, 241.48737)
+
+[node name="Panneau50" parent="Objectif/Panneaux" unique_id=1422336792 instance=ExtResource("26_ub1cd")]
+transform = Transform3D(-0.8293108, 0, -0.5587876, 0, 1, 0, 0.5587876, 0, -0.8293108, 252.46814, 1.3806219, 293.4913)
 
 [node name="Souche_01" parent="Objectif" unique_id=2043883251 instance=ExtResource("27_8tj1m")]
 transform = Transform3D(0.36542925, 0, 1.4481196, 0, 1, 0, -0.9308392, 0, 0.56850344, 213.80643, -0.17162383, 211.6761)
@@ -635,223 +683,220 @@ transform = Transform3D(0.36542925, 0, 1.4481196, 0, 1, 0, -0.9308392, 0, 0.5685
 [node name="Souche_02" parent="Objectif" unique_id=1271241782 instance=ExtResource("27_8tj1m")]
 transform = Transform3D(0.98418325, 0, -0.2996182, 0, 1, 0, 0.17715347, 0, 1.6645411, 250.95222, 1.7290437, 228.27692)
 
-[node name="Panneau2" parent="Objectif" unique_id=70999472 instance=ExtResource("26_ub1cd")]
-transform = Transform3D(-0.29645824, 0, 0.9550458, 0, 1, 0, -0.9550458, 0, -0.29645824, 190.92822, 3.994462, 188.52658)
-
 [node name="Maze" type="Node3D" parent="Objectif" unique_id=1461806777]
 transform = Transform3D(0.9886019, 0, -0.15055344, 0, 1, 0, 0.15055344, 0, 0.9886019, 238.76225, 1.6291691, 244.0281)
 
-[node name="Stone_012" parent="Objectif/Maze" unique_id=1598456390 instance=ExtResource("30_e1es2")]
+[node name="Stone_012" parent="Objectif/Maze" unique_id=183673576 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Stone_082" parent="Objectif/Maze" unique_id=599579550 instance=ExtResource("30_e1es2")]
+[node name="Stone_082" parent="Objectif/Maze" unique_id=42865599 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, -10.746216, -0.73014, -12.219864)
 
-[node name="Stone_021" parent="Objectif/Maze" unique_id=365723657 instance=ExtResource("30_e1es2")]
+[node name="Stone_021" parent="Objectif/Maze" unique_id=218578949 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 2.3035808, 0, 1, 0, -4.371139e-08, -10.089674, 0, 10.305681)
 
-[node name="Stone_014" parent="Objectif/Maze" unique_id=2010563996 instance=ExtResource("30_e1es2")]
+[node name="Stone_014" parent="Objectif/Maze" unique_id=443847711 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 0.5106053, 0, 5.2997055)
 
-[node name="Stone_080" parent="Objectif/Maze" unique_id=1419892337 instance=ExtResource("30_e1es2")]
+[node name="Stone_080" parent="Objectif/Maze" unique_id=677974185 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 26.602234, -9.536744e-07, -0.33077836)
 
-[node name="Stone_081" parent="Objectif/Maze" unique_id=689034162 instance=ExtResource("30_e1es2")]
+[node name="Stone_081" parent="Objectif/Maze" unique_id=1082871503 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.2584748, 0.1969216, 0, -0.4536248, 0.9804192, 33.56499, -0.28989312, -11.9634495)
 
-[node name="Stone_055" parent="Objectif/Maze" unique_id=966515904 instance=ExtResource("30_e1es2")]
+[node name="Stone_055" parent="Objectif/Maze" unique_id=1294074243 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.25881907, 0, -0.9659258, 0, 2.3035808, 0, 0.9659258, 0, 0.25881907, 17.169538, 0, 37.211346)
 
-[node name="Stone_056" parent="Objectif/Maze" unique_id=989718654 instance=ExtResource("30_e1es2")]
+[node name="Stone_056" parent="Objectif/Maze" unique_id=1885396025 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.87350893, 0, 0.48680812, 0, 2.3035808, 0, -0.48680812, 0, -0.87350893, 8.588134, 0, 35.902805)
 
-[node name="Stone_078" parent="Objectif/Maze" unique_id=712749637 instance=ExtResource("30_e1es2")]
+[node name="Stone_078" parent="Objectif/Maze" unique_id=1206713511 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 2.3035808, 0, 0.70710677, 0, -0.7071068, 17.153387, 0, 27.847635)
 
-[node name="Stone_077" parent="Objectif/Maze" unique_id=339989374 instance=ExtResource("30_e1es2")]
+[node name="Stone_077" parent="Objectif/Maze" unique_id=363407377 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 2.3035808, 0, 0.70710677, 0, -0.7071068, -5.391782, 0, 36.168243)
 
-[node name="Stone_040" parent="Objectif/Maze" unique_id=734438959 instance=ExtResource("30_e1es2")]
+[node name="Stone_040" parent="Objectif/Maze" unique_id=2093700491 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 21.50658, 0, 11.293301)
 
-[node name="Stone_041" parent="Objectif/Maze" unique_id=666420479 instance=ExtResource("30_e1es2")]
+[node name="Stone_041" parent="Objectif/Maze" unique_id=703447873 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 15.275711, 0, 12.102159)
 
-[node name="Stone_053" parent="Objectif/Maze" unique_id=447544126 instance=ExtResource("30_e1es2")]
+[node name="Stone_053" parent="Objectif/Maze" unique_id=2086941097 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 28.90657, 0, 30.98291)
 
-[node name="Stone_028" parent="Objectif/Maze" unique_id=1253563391 instance=ExtResource("30_e1es2")]
+[node name="Stone_028" parent="Objectif/Maze" unique_id=966482057 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 0.7991622, 0, 11.604801)
 
-[node name="Stone_070" parent="Objectif/Maze" unique_id=1431847715 instance=ExtResource("30_e1es2")]
+[node name="Stone_070" parent="Objectif/Maze" unique_id=656933018 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, -11.363657, 0, 18.268047)
 
-[node name="Stone_064" parent="Objectif/Maze" unique_id=1487871517 instance=ExtResource("30_e1es2")]
+[node name="Stone_064" parent="Objectif/Maze" unique_id=383786277 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 3.9771755, 0, 29.800587)
 
-[node name="Stone_076" parent="Objectif/Maze" unique_id=916770463 instance=ExtResource("30_e1es2")]
+[node name="Stone_076" parent="Objectif/Maze" unique_id=481014130 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 1, 3.9771755, 0, 29.800587)
 
-[node name="Stone_015" parent="Objectif/Maze" unique_id=59762457 instance=ExtResource("30_e1es2")]
+[node name="Stone_015" parent="Objectif/Maze" unique_id=877975610 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, 0, 0, 2.3035808, 0, 0, 0, 2.050841, -1.1128249, 0, 2.7164962)
 
-[node name="Stone_033" parent="Objectif/Maze" unique_id=2010876121 instance=ExtResource("30_e1es2")]
+[node name="Stone_033" parent="Objectif/Maze" unique_id=126637642 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, 0, 0, 2.3035808, 0, 0, 0, 2.050841, 21.953125, 0, 6.8655577)
 
-[node name="Stone_037" parent="Objectif/Maze" unique_id=1319993616 instance=ExtResource("30_e1es2")]
+[node name="Stone_037" parent="Objectif/Maze" unique_id=708972323 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, 0, 0, 2.3035808, 0, 0, 0, 2.050841, 26.938019, 0, 5.2619634)
 
-[node name="Stone_038" parent="Objectif/Maze" unique_id=1539730794 instance=ExtResource("30_e1es2")]
+[node name="Stone_038" parent="Objectif/Maze" unique_id=1199229464 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, 0, 0, 2.3035808, 0, 0, 0, 2.050841, 27.825285, 0, 10.596392)
 
-[node name="Stone_043" parent="Objectif/Maze" unique_id=1491116737 instance=ExtResource("30_e1es2")]
+[node name="Stone_043" parent="Objectif/Maze" unique_id=2046592523 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, 0, 0, 2.3035808, 0, 0, 0, 2.050841, 26.929157, 0, 15.6061535)
 
-[node name="Stone_044" parent="Objectif/Maze" unique_id=39667777 instance=ExtResource("30_e1es2")]
+[node name="Stone_044" parent="Objectif/Maze" unique_id=1367952092 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, 0, 0, 2.3035808, 0, 0, 0, 2.050841, 28.233664, 0, 20.746479)
 
-[node name="Stone_057" parent="Objectif/Maze" unique_id=388681820 instance=ExtResource("30_e1es2")]
+[node name="Stone_057" parent="Objectif/Maze" unique_id=1335157897 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.021677583, 0, -2.0503592, 0, 2.3035808, 0, 0.99987316, 0, 0.04445249, 13.687909, 0, 33.118984)
 
-[node name="Stone_047" parent="Objectif/Maze" unique_id=365316995 instance=ExtResource("30_e1es2")]
+[node name="Stone_047" parent="Objectif/Maze" unique_id=1508949776 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, 0, 0, 2.3035808, 0, 0, 0, 2.050841, 28.332989, 0, 26.428505)
 
-[node name="Stone_048" parent="Objectif/Maze" unique_id=2080748532 instance=ExtResource("30_e1es2")]
+[node name="Stone_048" parent="Objectif/Maze" unique_id=715233661 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, -5.9604645e-08, 0, 2.3035808, 0, 0, 0, 2.050841, 19.372894, 0, 30.262848)
 
-[node name="Stone_058" parent="Objectif/Maze" unique_id=184859087 instance=ExtResource("30_e1es2")]
+[node name="Stone_058" parent="Objectif/Maze" unique_id=1390903720 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.92930406, 0, 0.75792587, 0, 2.3035808, 0, -0.3696083, 0, 1.9056488, 12.203537, 0, 29.185879)
 
-[node name="Stone_062" parent="Objectif/Maze" unique_id=1580556427 instance=ExtResource("30_e1es2")]
+[node name="Stone_062" parent="Objectif/Maze" unique_id=1613360350 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.3871874, 0, 1.8909137, 0, 2.3035808, 0, -0.9221183, 0, 0.7939739, 6.7241964, 0, 32.191742)
 
-[node name="Stone_063" parent="Objectif/Maze" unique_id=223914874 instance=ExtResource("30_e1es2")]
+[node name="Stone_063" parent="Objectif/Maze" unique_id=1311235606 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.29322112, 0, 1.9607157, 0, 2.3035808, 0, -0.9561578, 0, -0.6012849, 4.350271, 0, 27.24181)
 
-[node name="Stone_071" parent="Objectif/Maze" unique_id=518349012 instance=ExtResource("30_e1es2")]
+[node name="Stone_071" parent="Objectif/Maze" unique_id=639561841 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.012881532, 0, 2.050671, 0, 2.3035808, 0, -1.0000253, 0, -0.02641514, 4.3966994, 0, 37.210957)
 
-[node name="Stone_072" parent="Objectif/Maze" unique_id=1786390220 instance=ExtResource("30_e1es2")]
+[node name="Stone_072" parent="Objectif/Maze" unique_id=470055210 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.88899344, 0, 0.93950385, 0, 2.3035808, 0, -0.45815617, 0, 1.8229871, 0.20247674, 0, 34.27135)
 
-[node name="Stone_079" parent="Objectif/Maze" unique_id=691888508 instance=ExtResource("30_e1es2")]
+[node name="Stone_079" parent="Objectif/Maze" unique_id=1463849055 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.99897814, 0, 0.09746587, 0, 2.3035808, 0, -0.047529995, 0, 2.048524, -0.7879863, 0, 30.82803)
 
-[node name="Stone_073" parent="Objectif/Maze" unique_id=1124372280 instance=ExtResource("30_e1es2")]
+[node name="Stone_073" parent="Objectif/Maze" unique_id=644853519 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.9779476, 0, 0.42933428, 0, 2.3035808, 0, -0.2093681, 0, 2.005398, -6.499744, 0, 27.446184)
 
-[node name="Stone_075" parent="Objectif/Maze" unique_id=1315684854 instance=ExtResource("30_e1es2")]
+[node name="Stone_075" parent="Objectif/Maze" unique_id=685030654 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.97434187, 0, -0.46252468, 0, 2.3035808, 0, 0.2255537, 0, 1.9980041, -6.2676992, 0, 31.183264)
 
-[node name="Stone_074" parent="Objectif/Maze" unique_id=431679948 instance=ExtResource("30_e1es2")]
+[node name="Stone_074" parent="Objectif/Maze" unique_id=1856670584 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.19591594, 0, 2.0111058, 0, 2.3035808, 0, -0.98073107, 0, -0.40174904, -2.6979017, 0, 37.182213)
 
-[node name="Stone_065" parent="Objectif/Maze" unique_id=47767712 instance=ExtResource("30_e1es2")]
+[node name="Stone_065" parent="Objectif/Maze" unique_id=1623251636 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.29322112, 0, 1.9607157, 0, 2.3035808, 0, -0.9561578, 0, -0.6012849, 6.4016657, 0, 21.998169)
 
-[node name="Stone_066" parent="Objectif/Maze" unique_id=1982798021 instance=ExtResource("30_e1es2")]
+[node name="Stone_066" parent="Objectif/Maze" unique_id=1129084275 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.08187783, 0, 2.0439568, 0, 2.3035808, 0, -0.9967509, 0, 0.16790026, 1.3205482, 0, 23.182043)
 
-[node name="Stone_067" parent="Objectif/Maze" unique_id=1727352989 instance=ExtResource("30_e1es2")]
+[node name="Stone_067" parent="Objectif/Maze" unique_id=173051501 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.99184346, 0, 0.26310974, 0, 2.3035808, 0, -0.12830743, 0, 2.0338936, -5.467318, 0, 17.99895)
 
-[node name="Stone_059" parent="Objectif/Maze" unique_id=1389570949 instance=ExtResource("30_e1es2")]
+[node name="Stone_059" parent="Objectif/Maze" unique_id=854287945 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1.0001081, 0, -5.9604645e-08, 0, 2.3035808, 0, 0, 0, 2.050841, 16.249548, 0, 19.891596)
 
-[node name="Stone_054" parent="Objectif/Maze" unique_id=772646986 instance=ExtResource("30_e1es2")]
+[node name="Stone_054" parent="Objectif/Maze" unique_id=469250198 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.7922155, 0, 1.2517362, 0, 2.3035808, 0, -0.61041856, 0, 1.6245325, 19.998703, 0, 35.101925)
 
-[node name="Stone_050" parent="Objectif/Maze" unique_id=508897570 instance=ExtResource("30_e1es2")]
+[node name="Stone_050" parent="Objectif/Maze" unique_id=1529850224 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.971712, 0, 0.48523048, 0, 2.3035808, 0, -0.23662633, 0, 1.9926115, 23.919142, 0, 29.992962)
 
-[node name="Stone_019" parent="Objectif/Maze" unique_id=415118850 instance=ExtResource("30_e1es2")]
+[node name="Stone_019" parent="Objectif/Maze" unique_id=965251369 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.3716113e-08, 0, -2.3414614, 0, 2.3035808, 0, 1.0001081, 0, -1.0234853e-07, -3.079813, 0, -1.24089)
 
-[node name="Stone_013" parent="Objectif/Maze" unique_id=2003341342 instance=ExtResource("30_e1es2")]
+[node name="Stone_013" parent="Objectif/Maze" unique_id=1435791229 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 2.2913764, 5.718012, 0, 1.5945902)
 
-[node name="Stone_018" parent="Objectif/Maze" unique_id=707805859 instance=ExtResource("30_e1es2")]
+[node name="Stone_018" parent="Objectif/Maze" unique_id=388578060 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 2.2913764, 6.747775, 0, 6.6580906)
 
-[node name="Stone_042" parent="Objectif/Maze" unique_id=525494214 instance=ExtResource("30_e1es2")]
+[node name="Stone_042" parent="Objectif/Maze" unique_id=1270023654 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 2.2913764, 10.910614, 0, 12.2257)
 
-[node name="Stone_020" parent="Objectif/Maze" unique_id=694479634 instance=ExtResource("30_e1es2")]
+[node name="Stone_020" parent="Objectif/Maze" unique_id=1630590643 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 2.2913764, -5.0836, 0, 6.192092)
 
-[node name="Stone_022" parent="Objectif/Maze" unique_id=1672821432 instance=ExtResource("30_e1es2")]
+[node name="Stone_022" parent="Objectif/Maze" unique_id=1625591466 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 2.2913764, -11.552721, 0, 13.121778)
 
-[node name="Stone_023" parent="Objectif/Maze" unique_id=754633290 instance=ExtResource("30_e1es2")]
+[node name="Stone_023" parent="Objectif/Maze" unique_id=1836227225 instance=ExtResource("30_e1es2")]
 transform = Transform3D(1, 0, 0, 0, 2.3035808, 0, 0, 0, 2.2913764, -9.807625, 0, 5.7053213)
 
-[node name="Stone_024" parent="Objectif/Maze" unique_id=1563394644 instance=ExtResource("30_e1es2")]
+[node name="Stone_024" parent="Objectif/Maze" unique_id=778256626 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.7056861, 0, -1.6234967, 0, 2.3035808, 0, 0.70852464, 0, 1.6169925, -7.7356806, 0, 0.45199156)
 
-[node name="Stone_016" parent="Objectif/Maze" unique_id=1638842681 instance=ExtResource("30_e1es2")]
+[node name="Stone_016" parent="Objectif/Maze" unique_id=968159551 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 3.6389925, 0, 10.233998)
 
-[node name="Stone_029" parent="Objectif/Maze" unique_id=1189746532 instance=ExtResource("30_e1es2")]
+[node name="Stone_029" parent="Objectif/Maze" unique_id=2006035030 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 15.812573, 0, 9.923725)
 
-[node name="Stone_039" parent="Objectif/Maze" unique_id=2118449334 instance=ExtResource("30_e1es2")]
+[node name="Stone_039" parent="Objectif/Maze" unique_id=526939004 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 19.81491, 0, 14.144754)
 
-[node name="Stone_060" parent="Objectif/Maze" unique_id=1710438589 instance=ExtResource("30_e1es2")]
+[node name="Stone_060" parent="Objectif/Maze" unique_id=2080975548 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 13.506941, 0, 21.770525)
 
-[node name="Stone_061" parent="Objectif/Maze" unique_id=797519827 instance=ExtResource("30_e1es2")]
+[node name="Stone_061" parent="Objectif/Maze" unique_id=194640120 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.99951744, 0, 0.07779102, 0, 2.3035808, 0, -0.031061865, 0, -2.5031812, 9.515385, 0, 18.716679)
 
-[node name="Stone_045" parent="Objectif/Maze" unique_id=193302276 instance=ExtResource("30_e1es2")]
+[node name="Stone_045" parent="Objectif/Maze" unique_id=397892614 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 25.11192, 0, 18.54545)
 
-[node name="Stone_046" parent="Objectif/Maze" unique_id=1743218374 instance=ExtResource("30_e1es2")]
+[node name="Stone_046" parent="Objectif/Maze" unique_id=356512546 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 25.861095, 0, 24.369146)
 
-[node name="Stone_049" parent="Objectif/Maze" unique_id=367129471 instance=ExtResource("30_e1es2")]
+[node name="Stone_049" parent="Objectif/Maze" unique_id=93012973 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 21.640205, 0, 28.458082)
 
-[node name="Stone_051" parent="Objectif/Maze" unique_id=392634488 instance=ExtResource("30_e1es2")]
+[node name="Stone_051" parent="Objectif/Maze" unique_id=91317837 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 22.818365, 0, 37.52228)
 
-[node name="Stone_052" parent="Objectif/Maze" unique_id=216461078 instance=ExtResource("30_e1es2")]
+[node name="Stone_052" parent="Objectif/Maze" unique_id=108196766 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.7071067, 0, -1.770871, 0, 2.3035808, 0, 0.7071068, 0, 1.7708708, 28.324747, 0, 34.91136)
 
-[node name="Stone_030" parent="Objectif/Maze" unique_id=58182212 instance=ExtResource("30_e1es2")]
+[node name="Stone_030" parent="Objectif/Maze" unique_id=1914836095 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 15.591902, 0, 4.3011484)
 
-[node name="Stone_034" parent="Objectif/Maze" unique_id=1938847663 instance=ExtResource("30_e1es2")]
+[node name="Stone_034" parent="Objectif/Maze" unique_id=1091690566 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 20.403116, 0, 4.8834395)
 
-[node name="Stone_035" parent="Objectif/Maze" unique_id=1224917724 instance=ExtResource("30_e1es2")]
+[node name="Stone_035" parent="Objectif/Maze" unique_id=62022054 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 21.559824, 0, -1.4310107)
 
-[node name="Stone_036" parent="Objectif/Maze" unique_id=273705629 instance=ExtResource("30_e1es2")]
+[node name="Stone_036" parent="Objectif/Maze" unique_id=644602715 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.7071068, 0, -1.7708708, 0, 2.3035808, 0, 0.7071067, 0, -1.770871, 26.66494, 0, 1.5691228)
 
-[node name="Stone_031" parent="Objectif/Maze" unique_id=78487518 instance=ExtResource("30_e1es2")]
+[node name="Stone_031" parent="Objectif/Maze" unique_id=1193773138 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 15.680655, 0, -0.15631771)
 
-[node name="Stone_032" parent="Objectif/Maze" unique_id=1200714236 instance=ExtResource("30_e1es2")]
+[node name="Stone_032" parent="Objectif/Maze" unique_id=1614003131 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, 10.2835455, 0, -1.0423186)
 
-[node name="Stone_017" parent="Objectif/Maze" unique_id=99255688 instance=ExtResource("30_e1es2")]
+[node name="Stone_017" parent="Objectif/Maze" unique_id=1085641798 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, -1.4494674, 0, 10.233998)
 
-[node name="Stone_025" parent="Objectif/Maze" unique_id=2131358363 instance=ExtResource("30_e1es2")]
+[node name="Stone_025" parent="Objectif/Maze" unique_id=1612923651 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.50000006, 0, -2.1688652, 0, 2.3035808, 0, 0.8660254, 0, -1.252195, -1.3562541, 0, 17.554169)
 
-[node name="Stone_068" parent="Objectif/Maze" unique_id=1839987612 instance=ExtResource("30_e1es2")]
+[node name="Stone_068" parent="Objectif/Maze" unique_id=1286086869 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.26898703, 0, -2.4120874, 0, 2.3035808, 0, 0.9631438, 0, 0.6736484, -2.8622735, 0, 24.402857)
 
-[node name="Stone_069" parent="Objectif/Maze" unique_id=2086167058 instance=ExtResource("30_e1es2")]
+[node name="Stone_069" parent="Objectif/Maze" unique_id=1851806909 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-0.8243832, 0, -1.4175652, 0, 2.3035808, 0, 0.5660322, 0, -2.0645769, -8.458078, 0, 23.590574)
 
-[node name="Stone_026" parent="Objectif/Maze" unique_id=1252881220 instance=ExtResource("30_e1es2")]
+[node name="Stone_026" parent="Objectif/Maze" unique_id=1472750508 instance=ExtResource("30_e1es2")]
 transform = Transform3D(-4.371139e-08, 0, -2.5043898, 0, 2.3035808, 0, 1, 0, -1.09470356e-07, -6.4075327, 0, 15.159827)
 
-[node name="Stone_027" parent="Objectif/Maze" unique_id=1521752344 instance=ExtResource("30_e1es2")]
+[node name="Stone_027" parent="Objectif/Maze" unique_id=1112167842 instance=ExtResource("30_e1es2")]
 transform = Transform3D(0.5545975, 0, -2.0839496, 0, 2.3035808, 0, 0.8321187, 0, 1.3889283, 4.084478, 0, 15.503664)
 
 [node name="Tree_01" parent="Objectif/Maze" unique_id=1953023525 instance=ExtResource("13_enxok")]
@@ -932,52 +977,78 @@ transform = Transform3D(0.9886018, 0, 0.15055342, 0, 1, 0, -0.15055342, 0, 0.988
 [node name="Tree_19" parent="Objectif/Maze" unique_id=1244851498 instance=ExtResource("31_ey61y")]
 transform = Transform3D(0.9886018, 0, 0.15055342, 0, 1, 0, -0.15055342, 0, 0.9886018, -9.597725, 0.12729442, 2.9144745)
 
-[node name="Stone_03" parent="Objectif/Maze" unique_id=1100811951 instance=ExtResource("33_idn73")]
+[node name="Stone_03" parent="Objectif/Maze" unique_id=1887800055 instance=ExtResource("33_idn73")]
 transform = Transform3D(0.9886018, 0, 0.15055342, 0, 1, 0, -0.15055342, 0, 0.9886018, -9.540519, -0.7113272, -7.9930015)
 
-[node name="Stone_05" parent="Objectif/Maze" unique_id=2057500589 instance=ExtResource("34_12qn1")]
-transform = Transform3D(0.9886018, 0, 0.15055342, 0, 1, 0, -0.15055342, 0, 0.9886018, -9.019197, -0.116743565, -3.1810474)
-
-[node name="Stone_04" parent="Objectif/Maze" unique_id=258313516 instance=ExtResource("33_idn73")]
+[node name="Stone_04" parent="Objectif/Maze" unique_id=651263694 instance=ExtResource("33_idn73")]
 transform = Transform3D(0.9886018, 0, 0.15055342, 0, 1, 0, -0.15055342, 0, 0.9886018, 30.306536, -0.2812792, -5.7721395)
-
-[node name="Stone_06" parent="Objectif/Maze" unique_id=1493360525 instance=ExtResource("32_vfges")]
-transform = Transform3D(0.9886018, 0, 0.15055342, 0, 1, 0, -0.15055342, 0, 0.9886018, 28.390568, 0.30280387, -2.5579367)
 
 [node name="EndJump" type="Node3D" parent="Objectif" unique_id=102838807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.13539, 0, 297.24243)
 
-[node name="Stone_012" parent="Objectif/EndJump" unique_id=794975739 instance=ExtResource("33_idn73")]
+[node name="Stone_012" parent="Objectif/EndJump" unique_id=1465761548 instance=ExtResource("33_idn73")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6189575, 0, -0.16708374)
 
-[node name="Stone_013" parent="Objectif/EndJump" unique_id=31924463 instance=ExtResource("33_idn73")]
+[node name="Stone_013" parent="Objectif/EndJump" unique_id=736589503 instance=ExtResource("33_idn73")]
 transform = Transform3D(-0.96170306, 0, -0.27409345, 0, 1, 0, 0.27409345, 0, -0.96170306, 4.7520294, 0.422055, 1.9734802)
 
-[node name="Stone_014" parent="Objectif/EndJump" unique_id=779350313 instance=ExtResource("33_idn73")]
+[node name="Stone_014" parent="Objectif/EndJump" unique_id=1282797467 instance=ExtResource("33_idn73")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.784256, 0, 7.446991)
 
-[node name="Stone_022" parent="Objectif/EndJump" unique_id=2012022271 instance=ExtResource("33_idn73")]
+[node name="Stone_022" parent="Objectif/EndJump" unique_id=1764425764 instance=ExtResource("33_idn73")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.784256, -0.71140146, 7.446991)
 
-[node name="Stone_015" parent="Objectif/EndJump" unique_id=1301078769 instance=ExtResource("33_idn73")]
+[node name="Stone_015" parent="Objectif/EndJump" unique_id=1127850097 instance=ExtResource("33_idn73")]
 transform = Transform3D(0.9928305, 0, 0.11953035, 0, 1, 0, -0.11953035, 0, 0.9928305, 5.626816, 1.3336296, 9.908722)
 
-[node name="Stone_020" parent="Objectif/EndJump" unique_id=23181879 instance=ExtResource("33_idn73")]
+[node name="Stone_020" parent="Objectif/EndJump" unique_id=1973072510 instance=ExtResource("33_idn73")]
 transform = Transform3D(0.9928305, 0, 0.11953035, 0, 1.8658874, 0, -0.11953035, 0, 0.9928305, 5.626816, -0.43293428, 9.908722)
 
-[node name="Stone_016" parent="Objectif/EndJump" unique_id=1287513821 instance=ExtResource("33_idn73")]
+[node name="Stone_016" parent="Objectif/EndJump" unique_id=1453295398 instance=ExtResource("33_idn73")]
 transform = Transform3D(0.43406793, 0, 0.90088016, 0, 1, 0, -0.90088016, 0, 0.43406793, 9.510178, 2.2203097, 11.292328)
 
-[node name="Stone_018" parent="Objectif/EndJump" unique_id=594507269 instance=ExtResource("33_idn73")]
+[node name="Stone_018" parent="Objectif/EndJump" unique_id=888702691 instance=ExtResource("33_idn73")]
 transform = Transform3D(0.43406793, 0, 0.90088016, 0, 1.9756645, 0, -0.90088016, 0, 0.43406793, 9.510178, -0.10497117, 11.292328)
 
-[node name="Stone_017" parent="Objectif/EndJump" unique_id=1379999915 instance=ExtResource("33_idn73")]
+[node name="Stone_017" parent="Objectif/EndJump" unique_id=1310858006 instance=ExtResource("33_idn73")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999998, 11.323044, 3.1973002, 17.2872)
+
+[node name="Souche_03" parent="Objectif" unique_id=1737115481 instance=ExtResource("27_8tj1m")]
+transform = Transform3D(0.032300413, 0, 0.9994782, -0.936878, -0.348343, 0.030277345, 0.34816125, -0.93736714, -0.011251623, 248.26445, 1.5977147, 209.68907)
+
+[node name="Souche_04" parent="Objectif" unique_id=1067403597 instance=ExtResource("27_8tj1m")]
+transform = Transform3D(0.16423935, -0.29390788, -0.94161755, 0.87294763, 0.48781395, 0, 0.4593342, -0.8219828, 0.33668447, 250.74042, 2.0798593, 239.95222)
+
+[node name="Final" type="Node3D" parent="Objectif" unique_id=914192120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 272.63837, 21.704218, 350.1297)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Objectif/Final" unique_id=1848446862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7304688, 0, -4.054657)
+light_color = Color(1, 0, 0, 1)
+script = ExtResource("35_idn73")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objectif/Final" unique_id=1902030134]
+transform = Transform3D(0.9799456, 0, -0.19926532, -1.7420327e-08, -1, -8.566956e-08, -0.19926532, 8.742278e-08, -0.9799456, 1.7279935, 0.03165023, -3.533456)
+material_override = ExtResource("36_12qn1")
+mesh = SubResource("QuadMesh_idn73")
+
+[node name="Stone_012" parent="." unique_id=1860186591 instance=ExtResource("30_e1es2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.78545, 1.7682263, 239.88028)
+
+[node name="Stone_04" parent="." unique_id=2024239271 instance=ExtResource("35_vfges")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266.9726, 1.3309066, 245.69392)
+
+[node name="Souche_01" parent="." unique_id=1172551196 instance=ExtResource("27_8tj1m")]
+transform = Transform3D(0.048950616, 0.040999196, 0.9979594, 0.99144936, 0.11901094, -0.053520605, -0.12096242, 0.9920462, -0.034822933, 266.54422, 5.421812, 325.32397)
 
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player" method="_on_awake_awake"]
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player/Camera3D/Phone2" method="_on_awake_awake"]
 [connection signal="animation_finished" from="PlayerFull/Awake/AnimationPlayer" to="PlayerFull/Awake" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_on_button_pressed"]
-[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="toggled" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_on_hour_format_toggled"]
-[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/back" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
+
+[editable path="Objectif/Maze/Stone_045"]

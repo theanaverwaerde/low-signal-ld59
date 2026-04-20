@@ -1,0 +1,52 @@
+[gd_resource type="VisualShader" format=3 uid="uid://j2uwu3agpgkk"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_juj6n"]
+parameter_name = "Color"
+default_value_enabled = true
+default_value = Color(1, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_75dk2"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, 0.5]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_8egaw"]
+parameter_name = "Speed"
+default_value_enabled = true
+default_value = 0.25
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_juj6n"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_75dk2"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 1.0]
+operator = 4
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_8egaw"]
+output_port_for_preview = 0
+default_input_values = [0, 0.5, 1, 0.0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_tkvs6"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_ut4mk"]
+constant = Color(0, 0, 0, 1)
+
+[resource]
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_juj6n")
+nodes/fragment/2/position = Vector2(-290, 130)
+nodes/fragment/3/node = SubResource("VisualShaderNodeMix_75dk2")
+nodes/fragment/3/position = Vector2(100, 250)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_8egaw")
+nodes/fragment/4/position = Vector2(-980, 500)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_juj6n")
+nodes/fragment/5/position = Vector2(-890, 310)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatOp_75dk2")
+nodes/fragment/6/position = Vector2(-380, 420)
+nodes/fragment/7/node = SubResource("VisualShaderNodeStep_8egaw")
+nodes/fragment/7/position = Vector2(-160, 520)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_tkvs6")
+nodes/fragment/8/position = Vector2(-580, 350)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorConstant_ut4mk")
+nodes/fragment/9/position = Vector2(-170, 380)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 6, 0, 7, 1, 5, 0, 8, 0, 4, 0, 8, 1, 8, 0, 6, 0, 7, 0, 3, 2, 9, 0, 3, 1, 3, 0, 0, 0, 3, 0, 0, 5)

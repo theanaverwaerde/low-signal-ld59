@@ -41,8 +41,8 @@ _subresources={
 "materials": {
 "M_Stone": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/M_Stone_01V2.tres",
-"use_external/path": "uid://dbdomeq41p0u4"
+"use_external/fallback_path": "res://materials/M_Stone_01.tres",
+"use_external/path": "uid://cyk8bsyqlpy4i"
 }
 },
 "nodes": {
