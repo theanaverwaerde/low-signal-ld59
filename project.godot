@@ -12,7 +12,7 @@ config_version=5
 
 config/name="LowSignal"
 config/version="1.0"
-run/main_scene="uid://blnekb8kx40ly"
+run/main_scene="uid://clylocg08kwpl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0.9411765, 0.9843137, 1, 1)
 boot_splash/image="uid://ctmjxxu5vxtif"
@@ -81,4 +81,20 @@ jolt_physics_3d/queries/enable_ray_cast_face_index=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+occlusion_culling/use_occlusion_culling=true
 environment/defaults/default_environment="uid://ck53suvnurctl"
+
+[shader_globals]
+
+WindDirection={
+"type": "vec2",
+"value": Vector2(1, -0.5)
+}
+WindSpeed={
+"type": "float",
+"value": 0.061
+}
+WindStrength={
+"type": "float",
+"value": 0.091
+}

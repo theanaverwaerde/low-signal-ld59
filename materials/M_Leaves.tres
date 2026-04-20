@@ -2,7 +2,19 @@
 
 [ext_resource type="Shader" uid="uid://bvytp40jglymy" path="res://Shader/S_Tree.tres" id="1_yuky6"]
 
+[sub_resource type="Gradient" id="Gradient_yuky6"]
+offsets = PackedFloat32Array(0, 0.9897959)
+colors = PackedColorArray(0, 0.21960784, 0, 1, 0.02745098, 0.59607846, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pu22v"]
+gradient = SubResource("Gradient_yuky6")
+
 [resource]
 render_priority = 0
 shader = ExtResource("1_yuky6")
-shader_parameter/WindIntensy = 1.0
+shader_parameter/NoiseScale = 16.8610008008975
+shader_parameter/InvertUV = false
+shader_parameter/useShaderColor = true
+shader_parameter/ColorGratient = SubResource("GradientTexture1D_pu22v")
+shader_parameter/ShiftRange = 0.1
+shader_parameter/AlphaThreshold = 0.0

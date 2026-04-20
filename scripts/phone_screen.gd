@@ -31,10 +31,10 @@ func _process(delta: float) -> void:
 	time_label.text = ("%02d:%02d%s" % [hour, time.minute, extra])
 
 func process_signal(power : int) -> void:
-	signal_label.text = "SIGNAL: " + str(power)
+	signal_label.text = "SIGNAL: " + str(power) + "/" + str(signal_source.zones.size())
 
 func _on_button_pressed() -> void:
-	if signal_source.get_signal() == SignalSource.MAX_POWER:
+	if signal_source.get_signal() == signal_source.zones.size():
 		result.text = "\"We are coming!\""
 	else:
 		audio_stream_player_3d.play()

@@ -1,6 +1,14 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://dd7a8bhj6lr6t"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dd7a8bhj6lr6t"]
 
-[ext_resource type="Texture2D" uid="uid://bepmt671j6a83" path="res://Textures/Tree_01_M_Tronc_BaseColor.png" id="1_05wua"]
+[ext_resource type="Shader" uid="uid://bvytp40jglymy" path="res://Shader/S_Tree.tres" id="1_05wua"]
+[ext_resource type="Texture2D" uid="uid://blhr0qg6mmwk4" path="res://Textures/T_Leaves.png" id="2_b1yyr"]
 
 [resource]
-albedo_texture = ExtResource("1_05wua")
+render_priority = 0
+shader = ExtResource("1_05wua")
+shader_parameter/NoiseScale = 20.0
+shader_parameter/InvertUV = true
+shader_parameter/useShaderColor = false
+shader_parameter/Albedo = ExtResource("2_b1yyr")
+shader_parameter/ShiftRange = 0.15600000741
+shader_parameter/AlphaThreshold = 0.0030000001425

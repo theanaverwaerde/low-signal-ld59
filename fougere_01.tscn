@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://6ru2brmvuhsq"]
+
+[ext_resource type="PackedScene" uid="uid://bjh3tgfwnk5c5" path="res://Assets/Enviro/Fougere_01.glb" id="1_gkxks"]
+[ext_resource type="Material" uid="uid://dxy4spb1fwjed" path="res://materials/M_Leaves.tres" id="2_6g5s2"]
+
+[node name="Fougere_01" unique_id=2037847464 instance=ExtResource("1_gkxks")]
+
+[node name="Fougere" parent="." index="0" unique_id=1271306023]
+surface_material_override/0 = ExtResource("2_6g5s2")

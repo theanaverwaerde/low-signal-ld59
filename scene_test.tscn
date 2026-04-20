@@ -669,28 +669,28 @@ text = "Back"
 
 [node name="Node" type="Node" parent="." unique_id=1488693816]
 
-[node name="Tree_02" parent="Node" unique_id=83394640 instance=ExtResource("7_cwa6w")]
+[node name="Tree_02" parent="Node" unique_id=839521202 instance=ExtResource("7_cwa6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.061046, 0, 15.604618)
 
-[node name="Tree_01" parent="Node" unique_id=32524198 instance=ExtResource("8_d33ho")]
+[node name="Tree_01" parent="Node" unique_id=1938895242 instance=ExtResource("8_d33ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.667209, 0, 11.190495)
 
-[node name="Tree_08" parent="Node" unique_id=1465940801 instance=ExtResource("8_d33ho")]
+[node name="Tree_08" parent="Node" unique_id=1741528762 instance=ExtResource("8_d33ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.660124, 0, 6.1674166)
 
-[node name="Tree_06" parent="Node" unique_id=676961317 instance=ExtResource("8_d33ho")]
+[node name="Tree_06" parent="Node" unique_id=1755907475 instance=ExtResource("8_d33ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.955462, -9.536743e-07, 11.735474)
 
-[node name="Tree_07" parent="Node" unique_id=1775520669 instance=ExtResource("8_d33ho")]
+[node name="Tree_07" parent="Node" unique_id=663728558 instance=ExtResource("8_d33ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.077947, -9.536743e-07, 12.224099)
 
-[node name="Tree_04" parent="Node" unique_id=398594689 instance=ExtResource("8_d33ho")]
+[node name="Tree_04" parent="Node" unique_id=524222997 instance=ExtResource("8_d33ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.117515, 0, 16.23536)
 
-[node name="Tree_05" parent="Node" unique_id=991684509 instance=ExtResource("8_d33ho")]
+[node name="Tree_05" parent="Node" unique_id=976670230 instance=ExtResource("8_d33ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.974497, 0, 0.84124947)
 
-[node name="Tree_03" parent="Node" unique_id=787247229 instance=ExtResource("8_d33ho")]
+[node name="Tree_03" parent="Node" unique_id=941609334 instance=ExtResource("8_d33ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.814102, 0, 12.858579)
 
 [node name="Stone_012" parent="Node" unique_id=136082794 instance=ExtResource("9_ybi10")]
@@ -714,7 +714,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054670334, 0.00015175389, 
 [node name="Souche_01" parent="Node" unique_id=1183864134 instance=ExtResource("13_aa3pj")]
 transform = Transform3D(0.90039474, -0.19710663, -0.3878638, 0, 0.8914894, -0.45304167, 0.43507397, 0.4079163, 0.80269235, 3.637018, 1.3798684, 3.502429)
 
-[node name="Tree_09" parent="Node" unique_id=1830964106 instance=ExtResource("7_cwa6w")]
+[node name="Tree_09" parent="Node" unique_id=1980671016 instance=ExtResource("7_cwa6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36354876, 0, 19.74485)
 
 [node name="Stone_07" parent="Node" unique_id=1666753016 instance=ExtResource("12_lsd60")]
@@ -759,7 +759,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.052849, 0.00015223079, -13
 [node name="Fougere_01" parent="Node" unique_id=10023718 instance=ExtResource("18_8djgh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3904505, 0.004551404, 18.147537)
 
-[node name="Fougere" parent="Node/Fougere_01" index="0" unique_id=2021072864]
+[node name="Fougere" parent="Node/Fougere_01" index="0" unique_id=1271306023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016693115, 0, -0.81105995)
 surface_material_override/0 = ExtResource("19_slcrk")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=626612472]

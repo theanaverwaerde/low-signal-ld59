@@ -44,6 +44,11 @@ _subresources={
 "use_external/fallback_path": "res://materials/M_Souche_01.tres",
 "use_external/path": "uid://bai0uyyvihdc6"
 }
+},
+"nodes": {
+"PATH:Cylinder_088": {
+"generate/physics": true
+}
 }
 }
 gltf/naming_version=2

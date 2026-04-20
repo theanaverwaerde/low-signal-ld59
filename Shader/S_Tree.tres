@@ -1,138 +1,318 @@
 [gd_resource type="VisualShader" format=3 uid="uid://bvytp40jglymy"]
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_nga5s"]
-expanded_output_ports = [0]
-input_name = "color"
+[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_nga5s"]
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_nga5s"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7whvd"]
-noise_type = 3
-seed = 1
-fractal_gain = 5.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r7mup"]
-height = 1
-noise = SubResource("FastNoiseLite_7whvd")
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7whvd"]
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_7whvd"]
 output_port_for_preview = 0
-expanded_output_ports = [0]
-texture = SubResource("NoiseTexture2D_r7mup")
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
+op_type = 5
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ha024"]
-default_input_values = [0, 0.0, 1, 0.5]
-operator = 1
+[sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_r7mup"]
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_yfpln"]
-expanded_output_ports = [0]
-input_name = "color"
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_yfpln"]
+parameter_name = "AlphaThreshold"
+hint = 1
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3tf5y"]
-output_port_for_preview = 0
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_3tf5y"]
+size = Vector2(1600, 880)
+expression = "// From https://godotshaders.com/shader/hue-shift/
+
+// The unit gray vector in RGB color space.
+vec3 gray = vec3(0.57735);
+// Project color onto gray axis.
+vec3 projection = gray * dot(gray, color.rgb);
+// Vector from gray axis to original color.
+vec3 U = color.rgb - projection;
+// Vector perpendicular to gray axis and U.
+vec3 V = cross(gray, U);
+// Rotate U and V around the gray axis.
+vec3 shifted = U * cos(shift * 2.0 * PI) + V * sin(shift * 2.0 * PI) + projection;
+color_shifted = vec4(shifted, color.a);
+"
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_r7mup"]
+parameter_name = "useShaderColor"
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_a8krn"]
+default_input_values = [0, false, 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0, 0, 0, 0)]
 expanded_output_ports = [0]
-texture = SubResource("NoiseTexture2D_r7mup")
+op_type = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wg4j2"]
+input_name = "node_position_world"
+
+[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_ha024"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_3tf5y"]
+parameter_name = "ShiftRange"
+hint = 1
+max = 0.5
+default_value_enabled = true
+default_value = 0.1
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_eixgn"]
 default_input_values = [0, 0.0, 1, 0.5]
-operator = 1
+operator = 2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_nni8h"]
+default_input_values = [0, 0.0, 1, -1.0]
 operator = 2
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_17ccb"]
-operator = 2
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_17ccb"]
+parameter_name = "Albedo"
 
-[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_n333o"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_n333o"]
+source = 5
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_e8wmn"]
-expanded_output_ports = [0]
-input_name = "color"
+[sub_resource type="VisualShaderNodeVaryingGetter" id="VisualShaderNodeVaryingGetter_nga5s"]
+varying_name = "UVY"
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_r7mup"]
-parameter_name = "WindIntensy"
-min = 1.0
-max = 5.0
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_nga5s"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_nga5s"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_7whvd"]
+parameter_name = "ColorGratient"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_r7mup"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_a8krn"]
+parameter_name = "ColorGratient2"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_r7mup"]
+input_name = "node_position_world"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_nga5s"]
+parameter_name = "NoiseScale"
+hint = 1
+min = 0.001
+max = 50.0
+default_value_enabled = true
+default_value = 20.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7whvd"]
+parameter_name = "WindSpeed"
+qualifier = 1
+hint = 1
+min = 0.001
+max = 10.0
 default_value_enabled = true
 default_value = 1.0
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_148wk"]
-operator = 2
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_ha024"]
+parameter_name = "WindDirection"
+qualifier = 1
+default_value_enabled = true
+default_value = Vector2(1, -0.5)
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_7whvd"]
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_wg4j2"]
+size = Vector2(1100, 800)
+expression = "vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+vec2 uv = world_pos.xz / (NoiseScale + 1e-2);
+PanningUV = uv + fract(TIME * WindDirection * WindSpeed);"
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_r7mup"]
-input_name = "vertex"
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nga5s"]
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_a8krn"]
-default_input_values = [0, 0.0, 1, 2.0]
-operator = 2
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7whvd"]
+noise = SubResource("FastNoiseLite_nga5s")
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_wg4j2"]
-operator = 2
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yfpln"]
+expanded_output_ports = [0]
+texture = SubResource("NoiseTexture2D_7whvd")
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ha024"]
-input_name = "time"
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_a8krn"]
+parameter_name = "WindStrength"
+qualifier = 1
+hint = 1
+min = 0.001
+max = 10.0
+default_value_enabled = true
+default_value = 2.0
 
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_yfpln"]
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_nga5s"]
+size = Vector2(1780, 1300)
+expression = "float height = VERTEX.y;
+vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+float influence = smoothstep(0, 1, height / 2.0);
+float wind = WindRaw * 2.0 - 0.4;
+vec2 wind_offset = -WindDirection * WindStrength * influence * wind;
+world_pos.xz += wind_offset;
+world_pos.y -= wind * influence;
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_3tf5y"]
-input_name = "vertex"
+//Push the top vertex away from the camera to bend the grass clump
+float ndotv = 1.0 - dot(vec3(0.0, 1.0, 0.0), normalize(INV_VIEW_MATRIX[1].xyz));
+world_pos.xz += INV_VIEW_MATRIX[1].xz * CameraBendStrength * height * ndotv;
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_eixgn"]
-constant = 0.1
+vec4 local_pos = inverse(MODEL_MATRIX) * world_pos;
+local_pos.x += WindStrength * influence * cos(TIME * 1.0) / 8.0;
+local_pos.z += WindStrength * influence * sin(TIME * 1.5) / 8.0;
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_nni8h"]
-constant = 0.1
+Vertex = local_pos.xyz;"
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_7whvd"]
+size = Vector2(1780, 1300)
+expression = "vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+float wind = WindRaw * 2.0 - 0.4;
+float wind_influence = smoothstep(0, 1, UVY);
+vec2 wind_offset = -WindDirection * WindStrength * wind_influence * wind;
+world_pos.xz += wind_offset;
+world_pos.y -= wind * wind_influence * WindStrength * 0.45;
+
+vec4 local_pos = inverse(MODEL_MATRIX) * world_pos;
+
+Vertex = local_pos.xyz;"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_7whvd"]
+output_port_for_preview = 2
+expanded_output_ports = [0]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_nga5s"]
+parameter_name = "InvertUV"
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_7whvd"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_r7mup"]
+output_port_for_preview = 0
+function = 31
+
+[sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_7whvd"]
+varying_name = "UVY"
 
 [resource]
 modes/cull = 2
-nodes/vertex/0/position = Vector2(1680, 180)
-nodes/vertex/2/node = SubResource("VisualShaderNodeFloatParameter_r7mup")
-nodes/vertex/2/position = Vector2(-1400, 220)
-nodes/vertex/3/node = SubResource("VisualShaderNodeFloatOp_a8krn")
-nodes/vertex/3/position = Vector2(-1080, 620)
-nodes/vertex/4/node = SubResource("VisualShaderNodeFloatOp_wg4j2")
-nodes/vertex/4/position = Vector2(-840, 520)
-nodes/vertex/5/node = SubResource("VisualShaderNodeInput_ha024")
-nodes/vertex/5/position = Vector2(-1120, 480)
-nodes/vertex/6/node = SubResource("VisualShaderNodeUVFunc_yfpln")
-nodes/vertex/6/position = Vector2(-580, 400)
-nodes/vertex/7/node = SubResource("VisualShaderNodeInput_3tf5y")
-nodes/vertex/7/position = Vector2(-920, 300)
-nodes/vertex/8/node = SubResource("VisualShaderNodeFloatConstant_eixgn")
-nodes/vertex/8/position = Vector2(-820, 400)
-nodes/vertex/9/node = SubResource("VisualShaderNodeFloatConstant_nni8h")
-nodes/vertex/9/position = Vector2(-500, 600)
-nodes/vertex/10/node = SubResource("VisualShaderNodeVectorOp_nga5s")
-nodes/vertex/10/position = Vector2(-280, 400)
-nodes/vertex/11/node = SubResource("VisualShaderNodeTexture_7whvd")
-nodes/vertex/11/position = Vector2(-60, 260)
-nodes/vertex/12/node = SubResource("VisualShaderNodeFloatOp_ha024")
-nodes/vertex/12/position = Vector2(420, 500)
-nodes/vertex/13/node = SubResource("VisualShaderNodeInput_yfpln")
-nodes/vertex/13/position = Vector2(120, 640)
-nodes/vertex/14/node = SubResource("VisualShaderNodeTexture_3tf5y")
-nodes/vertex/14/position = Vector2(-60, 780)
-nodes/vertex/15/node = SubResource("VisualShaderNodeFloatOp_eixgn")
-nodes/vertex/15/position = Vector2(440, 820)
-nodes/vertex/16/node = SubResource("VisualShaderNodeFloatOp_nni8h")
-nodes/vertex/16/position = Vector2(640, 520)
-nodes/vertex/17/node = SubResource("VisualShaderNodeFloatOp_17ccb")
-nodes/vertex/17/position = Vector2(640, 780)
-nodes/vertex/18/node = SubResource("VisualShaderNodeVectorCompose_n333o")
-nodes/vertex/18/position = Vector2(922.76227, 673.7934)
-nodes/vertex/19/node = SubResource("VisualShaderNodeInput_e8wmn")
-nodes/vertex/19/position = Vector2(720, 260)
-nodes/vertex/20/node = SubResource("VisualShaderNodeVectorOp_148wk")
-nodes/vertex/20/position = Vector2(1180, 400)
-nodes/vertex/21/node = SubResource("VisualShaderNodeVectorOp_7whvd")
-nodes/vertex/21/position = Vector2(1280, -220)
-nodes/vertex/22/node = SubResource("VisualShaderNodeInput_r7mup")
-nodes/vertex/22/position = Vector2(820, -260)
-nodes/vertex/connections = PackedInt32Array(2, 0, 3, 0, 3, 0, 4, 1, 5, 0, 4, 0, 4, 0, 6, 2, 7, 0, 6, 0, 8, 0, 6, 1, 6, 0, 10, 0, 9, 0, 10, 1, 10, 0, 11, 0, 10, 0, 14, 0, 14, 1, 15, 0, 11, 1, 12, 0, 12, 0, 16, 0, 13, 2, 17, 0, 13, 2, 16, 1, 15, 0, 17, 1, 16, 0, 18, 0, 17, 0, 18, 2, 19, 1, 20, 0, 18, 0, 20, 1, 20, 0, 21, 1, 22, 0, 21, 0, 21, 0, 0, 0)
-nodes/fragment/2/node = SubResource("VisualShaderNodeInput_nga5s")
-nodes/fragment/2/position = Vector2(-180, 200)
+varyings/UVY = "0,0"
+nodes/vertex/0/position = Vector2(2550, 720)
+nodes/vertex/10/node = SubResource("VisualShaderNodeFloatParameter_nga5s")
+nodes/vertex/10/position = Vector2(60, 220)
+nodes/vertex/15/node = SubResource("VisualShaderNodeFloatParameter_7whvd")
+nodes/vertex/15/position = Vector2(70, 930)
+nodes/vertex/19/node = SubResource("VisualShaderNodeVec2Parameter_ha024")
+nodes/vertex/19/position = Vector2(50, 610)
+nodes/vertex/25/node = SubResource("VisualShaderNodeExpression_wg4j2")
+nodes/vertex/25/position = Vector2(660, 340)
+nodes/vertex/25/size = Vector2(1100, 800)
+nodes/vertex/25/input_ports = "0,0,NoiseScale;1,3,WindDirection;2,0,WindSpeed;"
+nodes/vertex/25/output_ports = "0,3,PanningUV;"
+nodes/vertex/25/expression = "vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+vec2 uv = world_pos.xz / (NoiseScale + 1e-2);
+PanningUV = uv + fract(TIME * WindDirection * WindSpeed);"
+nodes/vertex/27/node = SubResource("VisualShaderNodeTexture_yfpln")
+nodes/vertex/27/position = Vector2(1260, 410)
+nodes/vertex/29/node = SubResource("VisualShaderNodeFloatParameter_a8krn")
+nodes/vertex/29/position = Vector2(1130, 850)
+nodes/vertex/30/node = SubResource("VisualShaderNodeExpression_nga5s")
+nodes/vertex/30/position = Vector2(3575.649, 1343.3265)
+nodes/vertex/30/size = Vector2(1780, 1300)
+nodes/vertex/30/input_ports = "0,0,WindRaw;1,3,WindDirection;2,0,WindStrength;3,0,CameraBendStrength;"
+nodes/vertex/30/output_ports = "0,4,Vertex;"
+nodes/vertex/30/expression = "float height = VERTEX.y;
+vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+float influence = smoothstep(0, 1, height / 2.0);
+float wind = WindRaw * 2.0 - 0.4;
+vec2 wind_offset = -WindDirection * WindStrength * influence * wind;
+world_pos.xz += wind_offset;
+world_pos.y -= wind * influence;
+
+//Push the top vertex away from the camera to bend the grass clump
+float ndotv = 1.0 - dot(vec3(0.0, 1.0, 0.0), normalize(INV_VIEW_MATRIX[1].xyz));
+world_pos.xz += INV_VIEW_MATRIX[1].xz * CameraBendStrength * height * ndotv;
+
+vec4 local_pos = inverse(MODEL_MATRIX) * world_pos;
+local_pos.x += WindStrength * influence * cos(TIME * 1.0) / 8.0;
+local_pos.z += WindStrength * influence * sin(TIME * 1.5) / 8.0;
+
+Vertex = local_pos.xyz;"
+nodes/vertex/31/node = SubResource("VisualShaderNodeExpression_7whvd")
+nodes/vertex/31/position = Vector2(1590, 680)
+nodes/vertex/31/size = Vector2(1780, 1300)
+nodes/vertex/31/input_ports = "0,0,WindRaw;1,3,WindDirection;2,0,WindStrength;3,0,UVY;"
+nodes/vertex/31/output_ports = "0,4,Vertex;"
+nodes/vertex/31/expression = "vec4 world_pos = MODEL_MATRIX * vec4(VERTEX, 1.0);
+float wind = WindRaw * 2.0 - 0.4;
+float wind_influence = smoothstep(0, 1, UVY);
+vec2 wind_offset = -WindDirection * WindStrength * wind_influence * wind;
+world_pos.xz += wind_offset;
+world_pos.y -= wind * wind_influence * WindStrength * 0.45;
+
+vec4 local_pos = inverse(MODEL_MATRIX) * world_pos;
+
+Vertex = local_pos.xyz;"
+nodes/vertex/32/node = SubResource("VisualShaderNodeInput_7whvd")
+nodes/vertex/32/position = Vector2(570, 1290)
+nodes/vertex/33/node = SubResource("VisualShaderNodeBooleanParameter_nga5s")
+nodes/vertex/33/position = Vector2(790, 1110)
+nodes/vertex/34/node = SubResource("VisualShaderNodeSwitch_7whvd")
+nodes/vertex/34/position = Vector2(1176.7695, 1240.9412)
+nodes/vertex/35/node = SubResource("VisualShaderNodeFloatFunc_r7mup")
+nodes/vertex/35/position = Vector2(940, 1490)
+nodes/vertex/36/node = SubResource("VisualShaderNodeVaryingSetter_7whvd")
+nodes/vertex/36/position = Vector2(1430.3862, 1399.3774)
+nodes/vertex/connections = PackedInt32Array(19, 0, 25, 1, 10, 0, 25, 0, 15, 0, 25, 2, 25, 0, 27, 0, 27, 1, 31, 0, 19, 0, 31, 1, 29, 0, 31, 2, 31, 0, 0, 0, 33, 0, 34, 0, 35, 0, 34, 1, 34, 0, 31, 3, 34, 0, 36, 0, 32, 2, 35, 0, 32, 2, 34, 2)
+nodes/fragment/0/position = Vector2(-1660, 1290)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_nga5s")
+nodes/fragment/5/position = Vector2(-4320, 0)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture2DParameter_7whvd")
+nodes/fragment/6/position = Vector2(-4900, -100)
+nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_r7mup")
+nodes/fragment/7/position = Vector2(-4670, -600)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture2DParameter_a8krn")
+nodes/fragment/8/position = Vector2(-5110, -540)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_r7mup")
+nodes/fragment/9/position = Vector2(-4770, -1410)
+nodes/fragment/10/node = SubResource("VisualShaderNodeRandomRange_nga5s")
+nodes/fragment/10/position = Vector2(-4450, -1340)
+nodes/fragment/12/node = SubResource("VisualShaderNodeMix_7whvd")
+nodes/fragment/12/position = Vector2(-4020, -930)
+nodes/fragment/15/node = SubResource("VisualShaderNodeReroute_r7mup")
+nodes/fragment/15/position = Vector2(-4790, -740)
+nodes/fragment/20/node = SubResource("VisualShaderNodeFloatParameter_yfpln")
+nodes/fragment/20/position = Vector2(-2030, 1990)
+nodes/fragment/21/node = SubResource("VisualShaderNodeExpression_3tf5y")
+nodes/fragment/21/position = Vector2(-3010, 1570)
+nodes/fragment/21/size = Vector2(1600, 880)
+nodes/fragment/21/input_ports = "0,5,color;1,0,shift;"
+nodes/fragment/21/output_ports = "0,5,color_shifted;"
+nodes/fragment/21/expression = "// From https://godotshaders.com/shader/hue-shift/
+
+// The unit gray vector in RGB color space.
+vec3 gray = vec3(0.57735);
+// Project color onto gray axis.
+vec3 projection = gray * dot(gray, color.rgb);
+// Vector from gray axis to original color.
+vec3 U = color.rgb - projection;
+// Vector perpendicular to gray axis and U.
+vec3 V = cross(gray, U);
+// Rotate U and V around the gray axis.
+vec3 shifted = U * cos(shift * 2.0 * PI) + V * sin(shift * 2.0 * PI) + projection;
+color_shifted = vec4(shifted, color.a);
+"
+nodes/fragment/22/node = SubResource("VisualShaderNodeBooleanParameter_r7mup")
+nodes/fragment/22/position = Vector2(-3300, 910)
+nodes/fragment/23/node = SubResource("VisualShaderNodeSwitch_a8krn")
+nodes/fragment/23/position = Vector2(-3010, 1100)
+nodes/fragment/24/node = SubResource("VisualShaderNodeInput_wg4j2")
+nodes/fragment/24/position = Vector2(-3730, 1590)
+nodes/fragment/25/node = SubResource("VisualShaderNodeRandomRange_ha024")
+nodes/fragment/25/position = Vector2(-3430, 1730)
+nodes/fragment/26/node = SubResource("VisualShaderNodeFloatParameter_3tf5y")
+nodes/fragment/26/position = Vector2(-4290, 1860)
+nodes/fragment/27/node = SubResource("VisualShaderNodeFloatOp_eixgn")
+nodes/fragment/27/position = Vector2(-3990, 1870)
+nodes/fragment/28/node = SubResource("VisualShaderNodeFloatOp_nni8h")
+nodes/fragment/28/position = Vector2(-3780, 1710)
+nodes/fragment/29/node = SubResource("VisualShaderNodeTexture2DParameter_17ccb")
+nodes/fragment/29/position = Vector2(-4200, 1000)
+nodes/fragment/30/node = SubResource("VisualShaderNodeTexture_n333o")
+nodes/fragment/30/position = Vector2(-3670, 1230)
+nodes/fragment/31/node = SubResource("VisualShaderNodeVaryingGetter_nga5s")
+nodes/fragment/31/position = Vector2(-5080, -780)
+nodes/fragment/32/node = SubResource("VisualShaderNodeVectorDecompose_nga5s")
+nodes/fragment/32/position = Vector2(-2100, 1670)
+nodes/fragment/connections = PackedInt32Array(9, 0, 10, 0, 5, 0, 12, 0, 7, 0, 12, 1, 10, 0, 12, 2, 6, 0, 5, 2, 8, 0, 7, 2, 15, 0, 7, 0, 15, 0, 5, 0, 20, 0, 0, 19, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 27, 0, 27, 0, 28, 0, 28, 0, 25, 1, 27, 0, 25, 2, 25, 0, 21, 1, 29, 0, 30, 2, 31, 0, 15, 0, 5, 0, 23, 1, 30, 0, 23, 2, 21, 0, 32, 0, 21, 0, 0, 0, 32, 3, 0, 1, 23, 0, 21, 0)
