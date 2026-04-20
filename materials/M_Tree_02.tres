@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cmx8k3rftfn4y"]
+
+[ext_resource type="Texture2D" uid="uid://7hu64btgb3uw" path="res://Textures/Tree_02_M_Tronc_BaseColor.png" id="1_x2jr5"]
+
+[resource]
+albedo_texture = ExtResource("1_x2jr5")
