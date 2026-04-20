@@ -43,6 +43,11 @@
 [ext_resource type="Script" uid="uid://bwouyr1dxuh5x" path="res://scripts/blink_light.gd" id="35_idn73"]
 [ext_resource type="PackedScene" uid="uid://ca444q1pbv1gq" path="res://Assets/Enviro/Stone_04.glb" id="35_vfges"]
 [ext_resource type="Material" uid="uid://c25x6ipnmlb0q" path="res://materials/lightblink.tres" id="36_12qn1"]
+[ext_resource type="Material" path="res://materials/M_Sign_250.tres" id="38_enam7"]
+[ext_resource type="Material" path="res://materials/M_Sign_200.tres" id="39_mvdmk"]
+[ext_resource type="Material" path="res://materials/M_Sign_150.tres" id="40_jxd1f"]
+[ext_resource type="Material" path="res://materials/M_Sign_100.tres" id="41_paivk"]
+[ext_resource type="Material" path="res://materials/M_Sign_50.tres" id="42_sy0l1"]
 
 [sub_resource type="Animation" id="Animation_aa3pj"]
 length = 0.001
@@ -662,20 +667,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.70016, 4.5059724, 192.580
 
 [node name="Panneaux" type="Node" parent="Objectif" unique_id=1169246098]
 
-[node name="Panneau250" parent="Objectif/Panneaux" unique_id=1516195781 instance=ExtResource("26_ub1cd")]
+[node name="Panneau250" parent="Objectif/Panneaux" unique_id=1346234055 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.65842676, 0, 0.7526448, 0, 1, 0, -0.7526448, 0, -0.65842676, 243.01843, -2.9856389, 152.67757)
 
-[node name="Panneau200" parent="Objectif/Panneaux" unique_id=1756587820 instance=ExtResource("26_ub1cd")]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau250" index="0" unique_id=1476763512]
+surface_material_override/0 = ExtResource("38_enam7")
+
+[node name="Panneau200" parent="Objectif/Panneaux" unique_id=1067574681 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.63552594, 0, 0.7720796, 0, 1, 0, -0.7720796, 0, -0.63552594, 192.5238, 3.994462, 190.97482)
 
-[node name="Panneau150" parent="Objectif/Panneaux" unique_id=1909984011 instance=ExtResource("26_ub1cd")]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau200" index="0" unique_id=1476763512]
+surface_material_override/0 = ExtResource("39_mvdmk")
+
+[node name="Panneau150" parent="Objectif/Panneaux" unique_id=1043038629 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.107860535, 0, -0.994166, 0, 1, 0, 0.994166, 0, -0.107860535, 209.14714, -0.32831848, 207.58702)
 
-[node name="Panneau100" parent="Objectif/Panneaux" unique_id=400958926 instance=ExtResource("26_ub1cd")]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau150" index="0" unique_id=1476763512]
+surface_material_override/0 = ExtResource("40_jxd1f")
+
+[node name="Panneau100" parent="Objectif/Panneaux" unique_id=902218326 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.97907037, 0, 0.20352203, 0, 1, 0, -0.20352203, 0, -0.97907037, 244.98418, 1.8365636, 241.48737)
 
-[node name="Panneau50" parent="Objectif/Panneaux" unique_id=1422336792 instance=ExtResource("26_ub1cd")]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau100" index="0" unique_id=1476763512]
+surface_material_override/0 = ExtResource("41_paivk")
+
+[node name="Panneau50" parent="Objectif/Panneaux" unique_id=1806493770 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.8293108, 0, -0.5587876, 0, 1, 0, 0.5587876, 0, -0.8293108, 252.46814, 1.3806219, 293.4913)
+
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau50" index="0" unique_id=1476763512]
+surface_material_override/0 = ExtResource("42_sy0l1")
 
 [node name="Souche_01" parent="Objectif" unique_id=2043883251 instance=ExtResource("27_8tj1m")]
 transform = Transform3D(0.36542925, 0, 1.4481196, 0, 1, 0, -0.9308392, 0, 0.56850344, 213.80643, -0.17162383, 211.6761)
@@ -1051,4 +1071,9 @@ transform = Transform3D(0.048950616, 0.040999196, 0.9979594, 0.99144936, 0.11901
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
 
+[editable path="Objectif/Panneaux/Panneau250"]
+[editable path="Objectif/Panneaux/Panneau200"]
+[editable path="Objectif/Panneaux/Panneau150"]
+[editable path="Objectif/Panneaux/Panneau100"]
+[editable path="Objectif/Panneaux/Panneau50"]
 [editable path="Objectif/Maze/Stone_045"]
