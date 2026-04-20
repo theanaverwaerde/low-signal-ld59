@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dqpxagix7xi3k" path="res://materials/M_Grass_Wind.tres" id="1_cokhp"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_cokhp"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0skta"]
 _surfaces = [{
 "aabb": AABB(-0.41725025, 0.0002779484, -3.129244e-08, 0.8345005, 0.8345005, 1e-05),
 "format": 34359742465,
@@ -32,4 +32,4 @@ _surfaces = [{
 "vertex_data": PackedByteArray("0aHVPgq0VT9nZgYz0aHVvpq5kTlnZgaz06HVPjTDkTlnZgYz06HVvgm0VT9nZgaz/////wAA/7//////AAD/v/////8AAP+//////wAA/78=")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_cokhp")
+shadow_mesh = SubResource("ArrayMesh_0skta")

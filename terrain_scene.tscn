@@ -33,11 +33,15 @@
 [ext_resource type="Script" uid="uid://brpxo7d8bi2su" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="22_ghyij"]
 [ext_resource type="Script" uid="uid://df0280sjrtp2a" path="res://addons/proton_scatter/src/scatter_item.gd" id="23_c3mii"]
 [ext_resource type="Script" uid="uid://2opouy0l3f00" path="res://addons/proton_scatter/src/scatter_shape.gd" id="24_e1wcx"]
+[ext_resource type="Script" uid="uid://qsgkkwmwb1aj" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="24_e4t3l"]
 [ext_resource type="Curve3D" uid="uid://dth4feiajk3nw" path="res://player_path.tres" id="25_7dy26"]
+[ext_resource type="Texture2D" uid="uid://625y6l841ljw" path="res://Textures/Grass_BaseColor.png" id="25_8j2x3"]
 [ext_resource type="Script" uid="uid://dr8ppbet6nre6" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="25_ey61y"]
 [ext_resource type="Script" uid="uid://b7m6mkia048re" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="25_kw330"]
+[ext_resource type="ArrayMesh" uid="uid://d1hq0co1n1f0f" path="res://Assets/Enviro/Grass.tres" id="26_3xgyl"]
 [ext_resource type="Script" uid="uid://cm67kxee70ckc" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="26_8tj1m"]
 [ext_resource type="PackedScene" uid="uid://pqpwb2agwcvc" path="res://Assets/Props/Panneau.glb" id="26_ub1cd"]
+[ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="27_2c4wi"]
 [ext_resource type="PackedScene" uid="uid://b3b7ohb0q1hug" path="res://Assets/Enviro/Souche_01.glb" id="27_8tj1m"]
 [ext_resource type="Script" uid="uid://cfrbdkbafu3q3" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="28_e1es2"]
 [ext_resource type="Script" uid="uid://c4ws5iuwj5kww" path="res://scripts/awake.gd" id="28_kw330"]
@@ -555,13 +559,25 @@ texture_set = SubResource("Resource_anit4")
 render_layers = 1
 cast_shadow = 1
 shader_params/u_ground_uv_scale_per_texture = null
-shader_params/u_depth_blending = true
+shader_params/u_depth_blending = false
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 shader_params/u_globalmap_blend_start = null
 shader_params/u_globalmap_blend_distance = null
 shader_params/u_colormap_opacity_per_texture = null
 metadata/_custom_type_script = "uid://ga6t7u7t32cj"
+
+[node name="HTerrainDetailLayer" type="Node3D" parent="HTerrain" unique_id=860219871]
+script = ExtResource("24_e4t3l")
+texture = ExtResource("25_8j2x3")
+view_distance = 67.425
+instance_mesh = ExtResource("26_3xgyl")
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = null
+shader_params/u_roughness = null
+metadata/_editor_icon = ExtResource("27_2c4wi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=696456550]
 transform = Transform3D(-0.38738582, 0.39004126, -0.8353444, -0.05779574, 0.8940373, 0.44424883, 0.9201042, 0.22037505, -0.32379463, 9.824569, 5.666151, 8.025142)
