@@ -12,8 +12,8 @@ extends SubViewport
 
 @onready var options: Button = $options
 
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
-@onready var click: AudioStreamPlayer3D = $click
+@onready var call_fail_sound: AudioStreamPlayer = $CallFailSound
+@onready var click_sound: AudioStreamPlayer = $ClickSound
 
 var use_12h_format : bool
 var show_option : bool
@@ -50,7 +50,7 @@ func _on_button_pressed() -> void:
 	if signal_source.get_signal() == signal_source.zones.size():
 		result.text = "\"We are coming!\""
 	else:
-		audio_stream_player_3d.play()
+		call_fail_sound.play()
 		result.text = "No enough signal"
 		await wait(.4)
 		result.text = "No enough signal."
@@ -74,7 +74,7 @@ func _on_hour_format_toggled(toggled_on: bool) -> void:
 	use_12h_format = toggled_on
 	
 func _click_sound() -> void:
-	click.play()
+	click_sound.play()
 
 func set_wallpaper(i : int) -> void:
 	var atlas = wall_paper.texture as AtlasTexture

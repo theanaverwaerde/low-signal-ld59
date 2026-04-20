@@ -15,24 +15,21 @@
 [ext_resource type="Texture2D" uid="uid://b0rejyvgn0ufj" path="res://UI/Reseau__0004_Reseau_4.png" id="7_2c4wi"]
 [ext_resource type="Script" uid="uid://c0slynclpl5jx" path="res://scripts/phone_screen.gd" id="7_d5ggc"]
 [ext_resource type="Texture2D" uid="uid://ijop14i5phbx" path="res://UI/Reseau__0003_Reseau_5.png" id="8_fe3jn"]
-[ext_resource type="AudioStream" uid="uid://e46wa7bgng2w" path="res://sound/footstep_grass_000.ogg" id="8_peoj1"]
 [ext_resource type="AudioStream" uid="uid://qnc6adowrho2" path="res://sound/phone-fail.mp3" id="8_vk5rf"]
-[ext_resource type="AudioStream" uid="uid://v8k4b8mr5sq2" path="res://sound/footstep_grass_001.ogg" id="9_dwq0a"]
 [ext_resource type="Texture2D" uid="uid://bmgngiip47o3b" path="res://UI/Reseau__0002_Reseau_6.png" id="9_j764x"]
-[ext_resource type="AudioStream" uid="uid://cfti0b6rv5llj" path="res://sound/footstep_grass_002.ogg" id="10_l4t2y"]
 [ext_resource type="Script" uid="uid://dnx6s11q7o5ve" path="res://scripts/signal_source.gd" id="10_vk5rf"]
 [ext_resource type="Texture2D" uid="uid://y6g0jhpp0qri" path="res://Textures/T_Grass_Mix_BaseColor.png" id="11_idn73"]
-[ext_resource type="AudioStream" uid="uid://cmsiyvfefv7jv" path="res://sound/footstep_grass_003.ogg" id="11_y387o"]
 [ext_resource type="Texture2D" uid="uid://5vk5kp8etds" path="res://Textures/T_Dirt_BaseColor.png" id="12_12qn1"]
-[ext_resource type="AudioStream" uid="uid://dmw16wdcwsxqy" path="res://sound/footstep_grass_004.ogg" id="12_lm5tk"]
 [ext_resource type="PackedScene" uid="uid://bhbqlkwc60ub" path="res://Assets/Enviro/Tree_01.glb" id="13_enxok"]
 [ext_resource type="Texture2D" uid="uid://d0mpv8ui2cewg" path="res://Textures/T_Stone_BaseColor.png" id="13_xeulx"]
 [ext_resource type="Script" uid="uid://bkutncv24oite" path="res://addons/proton_scatter/src/scatter.gd" id="16_d1u3w"]
+[ext_resource type="AudioStream" uid="uid://cuet8aor4cnjx" path="res://sound/nature.mp3" id="17_sy0l1"]
 [ext_resource type="Script" uid="uid://c84hivfj02rm0" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="17_ub1cd"]
 [ext_resource type="Script" uid="uid://cu4ebo2xmhgom" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="18_8tj1m"]
 [ext_resource type="Script" uid="uid://dny7nwbu4crvh" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="20_7dy26"]
 [ext_resource type="Script" uid="uid://cailgb3shucrs" path="res://addons/proton_scatter/src/modifiers/offset_position.gd" id="20_ey61y"]
 [ext_resource type="Script" uid="uid://djno11tgvm6p7" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="21_e1es2"]
+[ext_resource type="AudioStream" uid="uid://5pe80f7mctqr" path="res://sound/footstep-grass.ogg" id="21_e4t3l"]
 [ext_resource type="Script" uid="uid://brpxo7d8bi2su" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="22_ghyij"]
 [ext_resource type="Script" uid="uid://df0280sjrtp2a" path="res://addons/proton_scatter/src/scatter_item.gd" id="23_c3mii"]
 [ext_resource type="Script" uid="uid://2opouy0l3f00" path="res://addons/proton_scatter/src/scatter_shape.gd" id="24_e1wcx"]
@@ -195,13 +192,11 @@ region = Rect2(70, 0, 35, 0)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ifqqw"]
-streams_count = 5
-stream_0/stream = ExtResource("8_peoj1")
-stream_1/stream = ExtResource("9_dwq0a")
-stream_2/stream = ExtResource("10_l4t2y")
-stream_3/stream = ExtResource("11_y387o")
-stream_4/stream = ExtResource("12_lm5tk")
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_paivk"]
+random_pitch = 1.0594631
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("21_e4t3l")
 
 [sub_resource type="Resource" id="Resource_anit4"]
 script = ExtResource("3_w8l5h")
@@ -417,13 +412,12 @@ size = Vector2i(149, 262)
 script = ExtResource("7_d5ggc")
 signal_icons = Array[Texture2D]([ExtResource("3_qypp0"), ExtResource("4_e4t3l"), ExtResource("5_8j2x3"), ExtResource("6_3xgyl"), ExtResource("7_2c4wi"), ExtResource("8_fe3jn"), ExtResource("9_j764x")])
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PlayerFull/PhoneScreen" unique_id=1482765393]
-transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
+[node name="CallFailSound" type="AudioStreamPlayer" parent="PlayerFull/PhoneScreen" unique_id=1451598111]
 stream = ExtResource("8_vk5rf")
 
-[node name="click" type="AudioStreamPlayer3D" parent="PlayerFull/PhoneScreen" unique_id=1706121074]
-transform = Transform3D(-0.92237633, 0, 0.3862926, 0, 1, 0, -0.3862926, 0, -0.92237633, 17.614305, 1.7003846, 17.455276)
+[node name="ClickSound" type="AudioStreamPlayer" parent="PlayerFull/PhoneScreen" unique_id=888077704]
 stream = ExtResource("4_dwq0a")
+volume_db = -20.0
 
 [node name="WallPaper" type="TextureRect" parent="PlayerFull/PhoneScreen" unique_id=1062844547]
 texture_filter = 1
@@ -535,12 +529,20 @@ transform = Transform3D(-1.0823147, 0, 0.19645566, 0, 1.1, 0, -0.19645566, 0, -1
 [node name="minPos" type="Node3D" parent="PlayerFull/Player/Camera3D" unique_id=330840766]
 transform = Transform3D(-0.48558068, 0, 0.2582857, 0, 0.5500001, 0, -0.2582857, 0, -0.48558068, 0.9749336, -0.339638, -1.057188)
 
-[node name="FootstepSound" type="AudioStreamPlayer3D" parent="PlayerFull/Player" unique_id=1108618214]
-stream = SubResource("AudioStreamRandomizer_ifqqw")
-pitch_scale = 2.06
+[node name="FootstepSound" type="AudioStreamPlayer" parent="PlayerFull/Player" unique_id=330653748]
+stream = SubResource("AudioStreamRandomizer_paivk")
+volume_db = -20.0
+pitch_scale = 1.1
+max_polyphony = 4
+
+[node name="ambiance" type="AudioStreamPlayer" parent="PlayerFull" unique_id=749553997]
+stream = ExtResource("17_sy0l1")
+volume_db = -15.0
+autoplay = true
 
 [node name="HTerrain" type="Node3D" parent="." unique_id=698242185]
 script = ExtResource("1_svmbf")
+ambient_wind = 0.334
 _terrain_data = ExtResource("2_d3rpm")
 chunk_size = 32
 collision_enabled = true
@@ -1129,8 +1131,8 @@ transform = Transform3D(0.048950616, 0.040999196, 0.9979594, 0.99144936, 0.11901
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button2" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [1]]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [2]]
-[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="change_focus" from="PlayerFull/Player/Camera3D/Phone2" to="PlayerFull/PhoneScreen" method="change_focus"]
 
 [editable path="Objectif/Panneaux/Panneau250"]
