@@ -55,10 +55,11 @@
 [ext_resource type="Material" uid="uid://c25x6ipnmlb0q" path="res://materials/lightblink.tres" id="36_12qn1"]
 [ext_resource type="Material" uid="uid://8n40011icldj" path="res://materials/M_Sign_250.tres" id="38_enam7"]
 [ext_resource type="Material" uid="uid://5o4k2h1ficso" path="res://materials/M_Sign_200.tres" id="39_mvdmk"]
-[ext_resource type="Material" path="res://materials/M_Sign_150.tres" id="40_jxd1f"]
-[ext_resource type="Material" path="res://materials/M_Sign_100.tres" id="41_paivk"]
-[ext_resource type="Material" path="res://materials/M_Sign_50.tres" id="42_sy0l1"]
+[ext_resource type="Material" uid="uid://dmxv4vkfuywvd" path="res://materials/M_Sign_150.tres" id="40_jxd1f"]
+[ext_resource type="Material" uid="uid://b5fkkrcak316h" path="res://materials/M_Sign_100.tres" id="41_paivk"]
+[ext_resource type="Material" uid="uid://et3hlqli0llm" path="res://materials/M_Sign_50.tres" id="42_sy0l1"]
 [ext_resource type="PackedScene" uid="uid://1agd2r2a5ujy" path="res://Assets/Props/Antenna.glb" id="55_8j2x3"]
+[ext_resource type="PackedScene" uid="uid://d33pmvyxy0ccm" path="res://Assets/Props/SHelter.glb" id="58_3xgyl"]
 
 [sub_resource type="Animation" id="Animation_aa3pj"]
 length = 0.001
@@ -670,7 +671,7 @@ autoplay = true
 
 [node name="HTerrain" type="Node3D" parent="." unique_id=698242185]
 script = ExtResource("1_svmbf")
-ambient_wind = 0.334
+ambient_wind = 0.165
 _terrain_data = ExtResource("2_d3rpm")
 chunk_size = 32
 collision_enabled = true
@@ -866,31 +867,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.70016, 4.5059724, 192.580
 [node name="Panneau250" parent="Objectif/Panneaux" unique_id=732188197 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.65842676, 0, 0.7526448, 0, 1, 0, -0.7526448, 0, -0.65842676, 243.01843, -2.9856389, 152.67757)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau250" index="0" unique_id=1879178494]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau250" index="0" unique_id=467540524]
 surface_material_override/0 = ExtResource("38_enam7")
 
 [node name="Panneau200" parent="Objectif/Panneaux" unique_id=566022292 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.63552594, 0, 0.7720796, 0, 1, 0, -0.7720796, 0, -0.63552594, 192.5238, 3.994462, 190.97482)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau200" index="0" unique_id=1879178494]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau200" index="0" unique_id=467540524]
 surface_material_override/0 = ExtResource("39_mvdmk")
 
 [node name="Panneau150" parent="Objectif/Panneaux" unique_id=1782982148 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.107860535, 0, -0.994166, 0, 1, 0, 0.994166, 0, -0.107860535, 209.14714, -0.32831848, 207.58702)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau150" index="0" unique_id=1879178494]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau150" index="0" unique_id=467540524]
 surface_material_override/0 = ExtResource("40_jxd1f")
 
 [node name="Panneau100" parent="Objectif/Panneaux" unique_id=1518288830 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.97907037, 0, 0.20352203, 0, 1, 0, -0.20352203, 0, -0.97907037, 244.98418, 1.8365636, 241.48737)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau100" index="0" unique_id=1879178494]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau100" index="0" unique_id=467540524]
 surface_material_override/0 = ExtResource("41_paivk")
 
 [node name="Panneau50" parent="Objectif/Panneaux" unique_id=683883435 instance=ExtResource("26_ub1cd")]
 transform = Transform3D(-0.8293108, 0, -0.5587876, 0, 1, 0, 0.5587876, 0, -0.8293108, 252.46814, 1.3806219, 293.4913)
 
-[node name="Plane_021" parent="Objectif/Panneaux/Panneau50" index="0" unique_id=1879178494]
+[node name="Plane_021" parent="Objectif/Panneaux/Panneau50" index="0" unique_id=467540524]
 surface_material_override/0 = ExtResource("42_sy0l1")
 
 [node name="Souche_01" parent="Objectif" unique_id=2043883251 instance=ExtResource("27_8tj1m")]
@@ -1248,7 +1249,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266.9726, 1.3309066, 245.6939
 transform = Transform3D(0.048950616, 0.040999196, 0.9979594, 0.99144936, 0.11901094, -0.053520605, -0.12096242, 0.9920462, -0.034822933, 266.54422, 5.421812, 325.32397)
 
 [node name="Antenna" parent="." unique_id=1318258551 instance=ExtResource("55_8j2x3")]
-transform = Transform3D(1.5813231, -1.2729167, 0, 1.2729167, 1.5813231, 0, 0, 0, 2.03, 272.86072, 16.673016, 348.66022)
+transform = Transform3D(1.0126699, -0.81516826, 1.0434905e-08, 0.590106, 0.7330789, 0.89686686, -0.56238264, -0.69863856, 0.9410791, 273.63446, 15.9039, 348.56458)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Antenna" unique_id=1902030134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17447556e-07, 2.9909275, 0)
@@ -1265,7 +1266,10 @@ script = ExtResource("35_idn73")
 speed = 0.5
 
 [node name="Stone_05" parent="." unique_id=223013670 instance=ExtResource("35_vfges")]
-transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 274.27356, 12.000152, 348.69138)
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 280.12784, 12.000152, 348.69138)
+
+[node name="SHelter" parent="." unique_id=1908494193 instance=ExtResource("58_3xgyl")]
+transform = Transform3D(1.299738, 0, -0.026090898, 0, 1.2999998, 0, 0.026090898, 0, 1.299738, 273.91675, 12.145065, 349.358)
 
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player" method="_on_awake_awake"]
 [connection signal="awake" from="PlayerFull/Awake" to="PlayerFull/Player/Camera3D/Phone2" method="_on_awake_awake"]
@@ -1273,8 +1277,8 @@ transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 274.27356, 12.000152, 3
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player" method="_on_end"]
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/Player/Camera3D/Phone2" method="_on_end"]
 [connection signal="finish" from="PlayerFull/PhoneScreen" to="PlayerFull/End" method="_end"]
-[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_on_button_pressed"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/DefaultScreen/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="toggled" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HourFormat" to="PlayerFull/PhoneScreen" method="_on_hour_format_toggled"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button" to="PlayerFull/PhoneScreen" method="_click_sound"]
@@ -1283,8 +1287,8 @@ transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 274.27356, 12.000152, 3
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button2" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [1]]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="_click_sound"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/Screen/OptionsScreen/HBoxContainer/Button3" to="PlayerFull/PhoneScreen" method="set_wallpaper" binds= [2]]
-[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
 [connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_click_sound"]
+[connection signal="pressed" from="PlayerFull/PhoneScreen/options" to="PlayerFull/PhoneScreen" method="_on_options_pressed"]
 [connection signal="change_focus" from="PlayerFull/Player/Camera3D/Phone2" to="PlayerFull/PhoneScreen" method="change_focus"]
 
 [editable path="Objectif/Panneaux/Panneau250"]

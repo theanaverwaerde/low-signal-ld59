@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://civcmoc4m2enr"]
+
+[ext_resource type="Texture2D" uid="uid://dotoufbumwbds" path="res://Textures/SHelter_M_Wood_BaseColor.png" id="1_731pk"]
+
+[resource]
+albedo_texture = ExtResource("1_731pk")
