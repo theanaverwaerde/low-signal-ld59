@@ -1,9 +1,9 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c8fdg8ehkluvo"]
 
-[ext_resource type="Texture2D" uid="uid://chmb4iyngfd2h" path="res://Assets/Props/Phone_T_Phone.png" id="1_r1plr"]
+[ext_resource type="Texture2D" uid="uid://2s43a0104607" path="res://Textures/PhoneV2_M_Phone_BaseColor.png" id="1_413ji"]
 
 [resource]
 resource_name = "M_Phone"
 no_depth_test = true
-albedo_texture = ExtResource("1_r1plr")
-roughness = 0.5
+albedo_texture = ExtResource("1_413ji")
+roughness = 0.82

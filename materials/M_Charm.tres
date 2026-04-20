@@ -1,7 +1,10 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://b15k641m63x8i"]
 
+[ext_resource type="Texture2D" uid="uid://obks7owsbiq7" path="res://Textures/PhoneV2_M_Charm_BaseColor.png" id="1_w7puo"]
+
 [resource]
 resource_name = "M_Charm"
 no_depth_test = true
 albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
-roughness = 0.5
+albedo_texture = ExtResource("1_w7puo")
+roughness = 0.68
