@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dqpxagix7xi3k"]
+
+[ext_resource type="Shader" uid="uid://bvytp40jglymy" path="res://Shader/S_Tree.tres" id="1_gxqwi"]
+[ext_resource type="Texture2D" uid="uid://625y6l841ljw" path="res://Textures/Grass_BaseColor.png" id="2_gxqwi"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gxqwi")
+shader_parameter/NoiseScale = 20.0
+shader_parameter/InvertUV = true
+shader_parameter/useShaderColor = false
+shader_parameter/Albedo = ExtResource("2_gxqwi")
+shader_parameter/ShiftRange = 0.0990000047025
+shader_parameter/AlphaThreshold = 0.150000007125

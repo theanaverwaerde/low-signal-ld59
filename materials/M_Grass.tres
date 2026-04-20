@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cxngedvx67gxu"]
+
+[ext_resource type="Texture2D" uid="uid://625y6l841ljw" path="res://Textures/Grass_BaseColor.png" id="1_qrmof"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.069
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_qrmof")
