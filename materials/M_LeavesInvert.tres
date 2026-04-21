@@ -9,16 +9,12 @@ colors = PackedColorArray(0, 0.21960784, 0, 1, 0.02745098, 0.59607846, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_pu22v"]
 gradient = SubResource("Gradient_yuky6")
 
-[sub_resource type="Gradient" id="Gradient_fq4x0"]
-colors = PackedColorArray(0.14445123, 0.18279481, 4.813075e-08, 1, 0.41568628, 0.60784316, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjked"]
-gradient = SubResource("Gradient_fq4x0")
-
 [resource]
 render_priority = 0
 shader = ExtResource("1_eb4ub")
 shader_parameter/NoiseScale = 17.2730008204675
 shader_parameter/InvertUV = true
+shader_parameter/useShaderColor = false
 shader_parameter/ColorGratient = SubResource("GradientTexture1D_pu22v")
-shader_parameter/ColorGratient2 = SubResource("GradientTexture1D_tjked")
+shader_parameter/ShiftRange = 0.1
+shader_parameter/AlphaThreshold = 0.0

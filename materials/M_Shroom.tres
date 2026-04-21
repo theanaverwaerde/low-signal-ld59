@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bjvqjae6u6x3k"]
+
+[ext_resource type="Texture2D" uid="uid://dyr4kijscfal8" path="res://Textures/Souche_02_M_Shroom_BaseColor.png" id="1_vxaq6"]
+
+[resource]
+resource_name = "M_Phone"
+albedo_texture = ExtResource("1_vxaq6")

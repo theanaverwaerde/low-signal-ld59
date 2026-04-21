@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://beybix1lgamq1"]
+
+[ext_resource type="Texture2D" uid="uid://csh4f37lemh70" path="res://Textures/Souche_02_Stump_BaseColor.png" id="1_yqukk"]
+
+[resource]
+resource_name = "M_Phone"
+albedo_texture = ExtResource("1_yqukk")
