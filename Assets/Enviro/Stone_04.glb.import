@@ -44,6 +44,11 @@ _subresources={
 "use_external/fallback_path": "res://materials/M_Stone_04.tres",
 "use_external/path": "uid://cwoikrkj0mliq"
 }
+},
+"nodes": {
+"PATH:Stone_01_003": {
+"generate/physics": true
+}
 }
 }
 gltf/naming_version=2
