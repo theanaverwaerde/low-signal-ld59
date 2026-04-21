@@ -8,7 +8,7 @@ extends Node3D
 
 @export var switch_curve : Curve
 const TIME : float = .2
-@onready var phone_screen: SubViewport = %PhoneScreen
+@onready var phone_screen: PhoneScreen = %PhoneScreen
 const PHONE_SCREEN = preload("uid://dwslou3wpdsev")
 @export_flags_2d_physics var phone_physics_layer
 
@@ -35,6 +35,9 @@ func _input(event: InputEvent) -> void:
 	if !enable:
 		return
 	
+	if event.is_action_pressed("call") and show_phone:
+		phone_screen._on_button_pressed()
+	
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		need_click = true
@@ -54,7 +57,7 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 				need_click = true
-		
+	
 	if show_phone and current_time == TIME:
 		if event is InputEventMouseButton:
 			var space_state = get_world_3d().direct_space_state

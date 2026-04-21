@@ -5,7 +5,7 @@ signal awake
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and not animation_player.is_playing():
+	if ((event is InputEventMouseButton and event.pressed) or event.is_action_pressed("jump")) and not animation_player.is_playing():
 		if OS.is_debug_build():
 			_on_animation_player_animation_finished("")
 		else:

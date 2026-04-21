@@ -57,6 +57,9 @@ func process_signal(power : int) -> void:
 	# signal_label.text = "SIGNAL: " + str(power) + "/" + str(signal_source.zones.size())
 
 func _on_button_pressed() -> void:
+	if show_option or not first_focus:
+		return
+	
 	if signal_source.get_signal() == signal_source.zones.size():
 		result.text = "\"We are coming!\""
 		finish.emit()

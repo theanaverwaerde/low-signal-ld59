@@ -7,6 +7,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 const MOUSE_SENSIBILITY = 1000
+const CONTROLLER_SENSIBILITY = 50
 
 const STEP_TIME = .35
 var current_step_time = 0
@@ -33,6 +34,13 @@ func _process(delta: float) -> void:
 	if not enable:
 		return
 	
+	var controller_view_input := Input.get_vector("view_left", "view_right", "view_up", "view_down")
+	if controller_view_input:
+		rotate_y(-controller_view_input.x / CONTROLLER_SENSIBILITY)
+		camera_3d.rotate_x(-controller_view_input.y / CONTROLLER_SENSIBILITY)
+		camera_3d.rotation.x = clampf(camera_3d.rotation.x, -deg_to_rad(70), deg_to_rad(70))
+
+	
 	if is_on_floor() and velocity.x != 0 and velocity.z != 0:
 			current_step_time -= delta
 			if current_step_time <= 0:
@@ -51,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		current_step_time = 0
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
